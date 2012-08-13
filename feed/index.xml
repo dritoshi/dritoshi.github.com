@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[The Cat Way]]></title>
-  <link href="http://dritoshi.github.com/feed" rel="self"/>
-  <link href="http://dritoshi.github.com/"/>
-  <updated>2012-08-14T01:07:44+09:00</updated>
-  <id>http://dritoshi.github.com/</id>
+  <link href="http://cat.hackingisbelieving.org//feed" rel="self"/>
+  <link href="http://cat.hackingisbelieving.org//"/>
+  <updated>2012-08-14T01:12:19+09:00</updated>
+  <id>http://cat.hackingisbelieving.org//</id>
   <author>
     <name><![CDATA[Itoshi NIKAIDO]]></name>
     <email><![CDATA[dritoshi@gmail.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[R Markdown with Octopress on your GitHub]]></title>
-    <link href="http://dritoshi.github.com/blog/2012/08/13/r-markdown-with-octopress/"/>
+    <link href="http://cat.hackingisbelieving.org//blog/2012/08/13/r-markdown-with-octopress/"/>
     <updated>2012-08-13T19:12:00+09:00</updated>
-    <id>http://dritoshi.github.com/blog/2012/08/13/r-markdown-with-octopress</id>
+    <id>http://cat.hackingisbelieving.org//blog/2012/08/13/r-markdown-with-octopress</id>
     <content type="html"><![CDATA[<p>R Markdown を GitHub Pages 上の Octopres にアップロートする方法についてメモしておく。</p>
 
 <h2>準備</h2>
@@ -115,9 +115,9 @@
   
   <entry>
     <title type="html"><![CDATA[NGS analysis with R and Bioconductor: 1st. Learning R]]></title>
-    <link href="http://dritoshi.github.com/blog/2012/08/13/NGS-R-Bioconductor-1st/"/>
+    <link href="http://cat.hackingisbelieving.org//blog/2012/08/13/NGS-R-Bioconductor-1st/"/>
     <updated>2012-08-13T18:00:00+09:00</updated>
-    <id>http://dritoshi.github.com/blog/2012/08/13/NGS-R-Bioconductor-1st</id>
+    <id>http://cat.hackingisbelieving.org//blog/2012/08/13/NGS-R-Bioconductor-1st</id>
     <content type="html"><![CDATA[<h1>RとBioconductorでNGS解析: 第1時限 Rの基礎</h1>
 
 <h2>はじめに</h2>
@@ -1042,7 +1042,7 @@ t.test(expression ~ sample, data = gene)</code></pre>
 </div>
 
 
-<p><img src="http://dritoshi.github.com/images/2012-08-13-NGS-R-Bioconductor-1st/unnamed-chunk-24.png" alt="center" /></p>
+<p><img src="http://cat.hackingisbelieving.org//images/2012-08-13-NGS-R-Bioconductor-1st/unnamed-chunk-24.png" alt="center" /></p>
 
 <h3>回帰</h3>
 
@@ -1108,7 +1108,7 @@ abline(gene.lm, col = &quot;blue&quot;)</code></pre>
 </div>
 
 
-<p><img src="http://dritoshi.github.com/images/2012-08-13-NGS-R-Bioconductor-1st/unnamed-chunk-26.png" alt="center" /></p>
+<p><img src="http://cat.hackingisbelieving.org//images/2012-08-13-NGS-R-Bioconductor-1st/unnamed-chunk-26.png" alt="center" /></p>
 
 <h2>次になにを学べばよいか</h2>
 
@@ -1118,9 +1118,9 @@ abline(gene.lm, col = &quot;blue&quot;)</code></pre>
   
   <entry>
     <title type="html"><![CDATA[Sampling from Probability Density Function]]></title>
-    <link href="http://dritoshi.github.com/blog/2012/03/31/sampling-from-probability-density-function/"/>
+    <link href="http://cat.hackingisbelieving.org//blog/2012/03/31/sampling-from-probability-density-function/"/>
     <updated>2012-03-31T15:19:00+09:00</updated>
-    <id>http://dritoshi.github.com/blog/2012/03/31/sampling-from-probability-density-function</id>
+    <id>http://cat.hackingisbelieving.org//blog/2012/03/31/sampling-from-probability-density-function</id>
     <content type="html"><![CDATA[<p>前のメモの続き。</p>
 
 <h3>モンテカルロ積分の例</h3>
@@ -1189,9 +1189,9 @@ $$ \widehat { \Phi(x) }  = \frac{1}{m}\sum_{i=1}<sup>{m}I(z_i</sup> \leq x ) $$
   
   <entry>
     <title type="html"><![CDATA[MCMC Tutorials on Web]]></title>
-    <link href="http://dritoshi.github.com/blog/2012/03/31/mcmc-tutorials-on-web/"/>
+    <link href="http://cat.hackingisbelieving.org//blog/2012/03/31/mcmc-tutorials-on-web/"/>
     <updated>2012-03-31T15:00:00+09:00</updated>
-    <id>http://dritoshi.github.com/blog/2012/03/31/mcmc-tutorials-on-web</id>
+    <id>http://cat.hackingisbelieving.org//blog/2012/03/31/mcmc-tutorials-on-web</id>
     <content type="html"><![CDATA[<p>ウェブにある MCMC の講義資料のリンク集</p>
 
 <ol>
@@ -1210,9 +1210,9 @@ $$ \widehat { \Phi(x) }  = \frac{1}{m}\sum_{i=1}<sup>{m}I(z_i</sup> \leq x ) $$
   
   <entry>
     <title type="html"><![CDATA[Monte Carlo for unbounded integration]]></title>
-    <link href="http://dritoshi.github.com/blog/2012/03/30/monte-carlo-for-unbounded-integration/"/>
+    <link href="http://cat.hackingisbelieving.org//blog/2012/03/30/monte-carlo-for-unbounded-integration/"/>
     <updated>2012-03-30T19:28:00+09:00</updated>
-    <id>http://dritoshi.github.com/blog/2012/03/30/monte-carlo-for-unbounded-integration</id>
+    <id>http://cat.hackingisbelieving.org//blog/2012/03/30/monte-carlo-for-unbounded-integration</id>
     <content type="html"><![CDATA[<p>前のメモの続き。</p>
 
 <h3>モンテカルロ積分の例</h3>
@@ -1279,9 +1279,9 @@ print(t(res))</code></pre></noscript></div>
   
   <entry>
     <title type="html"><![CDATA[MCMC in R]]></title>
-    <link href="http://dritoshi.github.com/blog/2012/03/29/mcmc-in-r/"/>
+    <link href="http://cat.hackingisbelieving.org//blog/2012/03/29/mcmc-in-r/"/>
     <updated>2012-03-29T20:25:00+09:00</updated>
-    <id>http://dritoshi.github.com/blog/2012/03/29/mcmc-in-r</id>
+    <id>http://cat.hackingisbelieving.org//blog/2012/03/29/mcmc-in-r</id>
     <content type="html"><![CDATA[<h2>背景</h2>
 
 <p>必要にせまられて MCMC の勉強を始めるなど。<a href="http://www.amazon.co.jp/gp/product/4274068307?ie=UTF8&amp;tag=itoshitv-22&amp;linkCode=shr&amp;camp=1207&amp;creative=8411&amp;creativeASIN=4274068307">Rによる計算機統計学</a>を必要なところだけ読んでいる。目的はベイズ回帰でMCMCが使われているあたりを理解すること。そのために</p>
@@ -1383,9 +1383,9 @@ $$ \Phi \left( x \right) = \int_{-\infty}<sup>{\infty}\frac{1}{</sup> \sqrt{2\pi
   
   <entry>
     <title type="html"><![CDATA[New entry in Japanese]]></title>
-    <link href="http://dritoshi.github.com/blog/2012/03/29/new-entry-in-japanese/"/>
+    <link href="http://cat.hackingisbelieving.org//blog/2012/03/29/new-entry-in-japanese/"/>
     <updated>2012-03-29T20:13:00+09:00</updated>
-    <id>http://dritoshi.github.com/blog/2012/03/29/new-entry-in-japanese</id>
+    <id>http://cat.hackingisbelieving.org//blog/2012/03/29/new-entry-in-japanese</id>
     <content type="html"><![CDATA[<p>Cocoa Emacs で SKK 使おうとするとなにやら面倒なので、CotEditor を入れてみた。早速に日本語で書いてみる。ちゃんと表示されるかな?</p>
 
 <p>コマンドラインから CotEditor を起動できるようにした。やり方は、~/zshrc に以下のように書いておく。</p>
@@ -1407,9 +1407,9 @@ c hoge.txt
   
   <entry>
     <title type="html"><![CDATA[Writing a equation in Octopress]]></title>
-    <link href="http://dritoshi.github.com/blog/2012/03/29/writing-a-equation-in-octopress/"/>
+    <link href="http://cat.hackingisbelieving.org//blog/2012/03/29/writing-a-equation-in-octopress/"/>
     <updated>2012-03-29T18:42:00+09:00</updated>
-    <id>http://dritoshi.github.com/blog/2012/03/29/writing-a-equation-in-octopress</id>
+    <id>http://cat.hackingisbelieving.org//blog/2012/03/29/writing-a-equation-in-octopress</id>
     <content type="html"><![CDATA[<p>This entry is test of <a href="http://www.mathjax.org/">MathJax</a> to show a equation in Octopress. I am going to write Tex in Octopress.</p>
 
 <p>Let&#8217;s do some practice: <strong>Energy eigenstate</strong></p>
@@ -1453,9 +1453,9 @@ $$</p>
   
   <entry>
     <title type="html"><![CDATA[Hello, world]]></title>
-    <link href="http://dritoshi.github.com/blog/2012/03/29/hello/"/>
+    <link href="http://cat.hackingisbelieving.org//blog/2012/03/29/hello/"/>
     <updated>2012-03-29T14:33:00+09:00</updated>
-    <id>http://dritoshi.github.com/blog/2012/03/29/hello</id>
+    <id>http://cat.hackingisbelieving.org//blog/2012/03/29/hello</id>
     <content type="html"><![CDATA[<p>I am tring to use the <a href="http://octopress.org/">Octopress</a>, a cool static html generater on
 GitHub Pages. This is first commit of the blog entry. Can you see me?
 To setup a Octpress, I refer to this blog entry. <a href="http://tokkonopapa.github.com/blog/2011/12/30/octopress-on-github-and-bitbucket/">Octopressのインストールから運用管理まで</a></p>

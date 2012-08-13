@@ -5,12 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Monte Carlo for unbounded integration - The Cat Way</title>
+  <title>leture - The Cat Way</title>
   <meta name="author" content="Itoshi NIKAIDO">
 
   
-  <meta name="description" content="前のメモの続き。 モンテカルロ積分の例 非有界区間のモンテカルロ積分 標準正規分布の累積分布関数を推定をしてみる。
-$$ \Phi \left( x \right) = \int_{-\infty}{\infty}\frac{1}{ \sqrt{2\pi} } { e }{ \frac{t2}{2 &hellip;">
+  <meta name="description" content="Leture Aug 13th, 2012 2012/08/24 統合データベース講習会：AJACSみちのく2「RとBioconductorを使ったNGS解析」 第1限: Rの基礎
+第2限: NGSデータの操作
+第3限: 実例: ChIP-seq 解析 Aug 13th, 2012 Tweet &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +20,7 @@ $$ \Phi \left( x \right) = \int_{-\infty}{\infty}\frac{1}{ \sqrt{2\pi} } { e }{ 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://dritoshi.github.com/blog/2012/03/30/monte-carlo-for-unbounded-integration/">
+  <link rel="canonical" href="http://dritoshi.github.com/lecture/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -81,15 +82,41 @@ MathJax.Hub.Config({
   <div id="main">
     <div id="content">
       <div>
-<article class="hentry" role="article">
+<article role="article">
   
   <header>
-    
-      <h1 class="entry-title">Monte Carlo for Unbounded Integration</h1>
-    
-    
+    <h1 class="entry-title">Leture</h1>
+    <p class="meta">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-13T20:27:00+09:00" pubdate data-updated="true">Aug 13<span>th</span>, 2012</time></p>
+  </header>
+  
+  <h2>2012/08/24</h2>
+
+<p>統合データベース講習会：AJACSみちのく2「RとBioconductorを使ったNGS解析」</p>
+
+<ul>
+<li>第1限: <a href="/blog/2012/08/13/NGS-R-Bioconductor-1st/">Rの基礎</a></li>
+<li>第2限: <a href="">NGSデータの操作</a></li>
+<li>第3限: <a href="">実例: ChIP-seq 解析</a></li>
+</ul>
+
+
+  
+    <footer>
       <p class="meta">
         
+        
 
 
 
@@ -101,105 +128,13 @@ MathJax.Hub.Config({
   
 
 
-<time datetime="2012-03-30T19:28:00+09:00" pubdate data-updated="true">Mar 30<span>th</span>, 2012</time>
+<time datetime="2012-08-13T20:27:00+09:00" pubdate data-updated="true">Aug 13<span>th</span>, 2012</time>
         
       </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>前のメモの続き。</p>
-
-<h3>モンテカルロ積分の例</h3>
-
-<h4>非有界区間のモンテカルロ積分</h4>
-
-<p>標準正規分布の累積分布関数を推定をしてみる。
-$$ \Phi \left( x \right) = \int_{-\infty}<sup>{\infty}\frac{1}{</sup> \sqrt{2\pi} } { e }<sup>{</sup> \frac{t<sup>2}{2}</sup> }dt $$</p>
-
-<p>積分範囲が非有界だが、左右対称な関数なので、$x \geq 0$ と $x &lt; 0$ に分けして考えることができる。なので $x \geq 0$ だけを考えて、</p>
-
-<p>$$ \theta = \int_{0}<sup>{x}</sup> {e}<sup>{-t<sup>2/2}</sup></sup> dt $$</p>
-
-<p>を推定すればよい。</p>
-
-<p>戦略は2つある。例によって、$Uniform(0, x)$ から確率変数を生成して推定すればよいのだが、このままでは、CDFの値が変わるたびに、$Uniform$ のパラメータを変えなければならない。なので置換積分で、0 から 1 の区間にしてしまってから、$Uniform(0, 1)$ を生成し推定する。これがひとつの方法である。もうひとつの方法は、そのまま、$Uniform(0, x)$ を生成して推定する方法である。後者は計算機を使えばそれほど難しくなく、置換積分する必要もないので簡単である。置換積分については<a href="http://ja.wikisource.org/wiki/%E8%A7%A3%E6%9E%90%E6%A6%82%E8%AB%96/%E7%AC%AC3%E7%AB%A0/%E7%A9%8D%E5%88%86%E5%A4%89%E6%95%B0%E3%81%AE%E5%A4%89%E6%8F%9B">解析概論第3章</a>が詳しい。</p>
-
-<p>両方とも実装してみる。</p>
-
-<div><script src='https://gist.github.com/2250888.js?file='></script>
-<noscript><pre><code>x.num &lt;- 10 
-x &lt;- seq(0.1, 2.5, length = x.num)
-m &lt;- 100000
-u &lt;- runif(m)
-
-# integration by substitution
-cdf &lt;- numeric(x.num)
-for ( i in 1:x.num ) {
-  g   &lt;- x[i] * exp( -(u * x[i])^2 / 2)
-  cdf[i] &lt;- mean(g) / sqrt(2 * pi) + 0.5
-}  
-
-# do not substitution
-cdf.2 &lt;- numeric(x.num)
-for ( i in 1:x.num ) {
-  u &lt;- runif(m, 0, x[i])
-  g &lt;- x[i] * exp( -(u)^2 / 2 )
-  cdf.2[i] &lt;- mean(g) / sqrt(2 * pi) + 0.5
-} 
-
-phi &lt;- pnorm(x)
-
-# plot
-matplot(x[,1], x[,2:4], type = &quot;o&quot;, xlab = &quot;x&quot;, ylab = &quot;CDF&quot;)
-
-# output
-res &lt;- cbind(x, cdf, cdf.2, phi)
-print(t(res))</code></pre></noscript></div>
-
-
-<p>あえて m の数を小さくして実行してみた。前半はよくあっているが最後のほうが上手く推定できていない。もちろん乱数を使うので、毎度結果は違うのでまったく同じグラフになることはない。</p>
-
-<p><img src="https://img.skitch.com/20120402-fm7isrugi6pn6srxy21kxm2tjq.png" title="CDF" alt="CDF" /></p>
-
-<p>m = 10000 ぐらいから、もう見た目には差がわからないレベルになる。以下は m を10万にしたものグラフ。ほとんど一致している。</p>
-
-<p><img src="https://img.skitch.com/20120402-t3t52gxat3fmfyhunsi85u8pu5.png," title="100000" alt="CDB (100000)" /></p>
-
-<h3>次は?</h3>
-
-<p>今回は、被積分関数自体が確率密度関数 (PDF) なので、$Uniform$ ではなく、この PDFから確率変数を生成させることで、積分の推定値を求めることができる。次はこれをやってみる。</p>
-</div>
-
-
-  <footer>
-    <p class="meta">
       
+        <div class="sharing">
   
-
-<span class="byline author vcard">Posted by <span class="fn">Itoshi NIKAIDO</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-30T19:28:00+09:00" pubdate data-updated="true">Mar 30<span>th</span>, 2012</time>
-      
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://dritoshi.github.com/blog/2012/03/30/monte-carlo-for-unbounded-integration/" data-via="dritoshi" data-counturl="http://dritoshi.github.com/blog/2012/03/30/monte-carlo-for-unbounded-integration/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://dritoshi.github.com/lecture/index.html" data-via="dritoshi" data-counturl="http://dritoshi.github.com/lecture/index.html" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -209,16 +144,9 @@ print(t(res))</code></pre></noscript></div>
   
 </div>
 
-    
-    <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/03/29/mcmc-in-r/" title="Previous Post: MCMC in R">&laquo; MCMC in R</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2012/03/31/mcmc-tutorials-on-web/" title="Next Post: MCMC Tutorials on Web">MCMC Tutorials on Web &raquo;</a>
-      
-    </p>
-  </footer>
+    </footer>
+  
 </article>
 
 </div>

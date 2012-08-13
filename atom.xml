@@ -4,7 +4,7 @@
   <title><![CDATA[The Cat Way]]></title>
   <link href="http://dritoshi.github.com/atom.xml" rel="self"/>
   <link href="http://dritoshi.github.com/"/>
-  <updated>2012-08-13T19:09:15+09:00</updated>
+  <updated>2012-08-13T19:47:40+09:00</updated>
   <id>http://dritoshi.github.com/</id>
   <author>
     <name><![CDATA[Itoshi NIKAIDO]]></name>
@@ -12,6 +12,106 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[R Markdown with Octopress on your GitHub]]></title>
+    <link href="http://dritoshi.github.com/blog/2012/08/13/r-markdown-with-octopress/"/>
+    <updated>2012-08-13T19:12:00+09:00</updated>
+    <id>http://dritoshi.github.com/blog/2012/08/13/r-markdown-with-octopress</id>
+    <content type="html"><![CDATA[<p>R Markdown を GitHub Pages 上の Octopres にアップロートする方法についてメモしておく。</p>
+
+<h2>準備</h2>
+
+<p>Knitr の設定済みの状態からスタートする。RStudio 入れればそれでおしまい。次に Octopress の準備。これ読むひとはもう終わっているだろうから飛す。</p>
+
+<p>Rmdを変換する関数は以下の通り。関数名が無駄に長い。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Rmd2md.for.octopress &lt;- function(input, base.url = "/") {
+</span><span class='line'>    require(knitr)
+</span><span class='line'>
+</span><span class='line'>    opts_knit$set(base.url = base.url)
+</span><span class='line'>    fig.path &lt;- paste0("images/", sub(".Rmd$", "", basename(input)), "/")
+</span><span class='line'>    output   &lt;- sub(".Rmd", ".markdown", input)
+</span><span class='line'>
+</span><span class='line'>    opts_chunk$set(fig.path = fig.path)
+</span><span class='line'>    opts_chunk$set(fig.cap = "center")
+</span><span class='line'>
+</span><span class='line'>    render_jekyll()
+</span><span class='line'>    knit(input, output = output, envir = parent.frame())
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>knit() ではなく、この関数を使うのは画像のパスをよきにはからうため。これで準備終了。</p>
+
+<p>ここを参考にした。 http://jfisher-usgs.github.com/r/2012/07/03/knitr-jekyll/
+ほかにも、Octpress のディレクトリを指定できると以下のステップが省けてよいかも。</p>
+
+<h2>R Markdown を書く</h2>
+
+<p>ファイル名を yyyy-mm-dd-file-name.Rmd として RStudio やらなにやらで R Markdown のファイルを作成する。次に、生成されたファイルの先頭に、Octopress 用のヘッダを挿入する。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>---
+</span><span class='line'>layout: post
+</span><span class='line'>title: "R Markdown with Octopress"
+</span><span class='line'>date: 2012-08-13 19:12
+</span><span class='line'>comments: true
+</span><span class='line'>categories: 
+</span><span class='line'>---</span></code></pre></td></tr></table></div></figure>
+
+
+<p>みたいな感じ。あとはひたすら書く。</p>
+
+<h2>Octopress 用の Markdown へ変換する</h2>
+
+<p>R を起動して、Markdown へ変換する。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Rmd2md.for.octopress("yyyy-mm-dd.Rmd")</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>公開する</h2>
+
+<p>変換したファイルを Octopress のディレクトリにコピーする。画像もコピーする。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cp yyyy-mm-dd.Rmd $OCTPRESS_HOME/source/_posts/
+</span><span class='line'>cp -a yyyy-mm-dd $OCTPRESS_HOME/source/images/</span></code></pre></td></tr></table></div></figure>
+
+
+<p>静的HTMLを生成して、preview したり、github へデプロイしたり。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd $OCTPRESS_HOME
+</span><span class='line'>rake generate
+</span><span class='line'>rake preview
+</span><span class='line'>rake gen_deploy</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[NGS analysis with R and Bioconductor: 1st. Learning R]]></title>

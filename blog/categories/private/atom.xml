@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: private | The Cat Way]]></title>
+  <link href="http://dritoshi.github.com/blog/categories/private/atom.xml" rel="self"/>
+  <link href="http://dritoshi.github.com/"/>
+  <updated>2012-08-13T18:18:09+09:00</updated>
+  <id>http://dritoshi.github.com/</id>
+  <author>
+    <name><![CDATA[Itoshi NIKAIDO]]></name>
+    <email><![CDATA[dritoshi@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Hello, world]]></title>
+    <link href="http://dritoshi.github.com/blog/2012/03/29/hello/"/>
+    <updated>2012-03-29T14:33:00+09:00</updated>
+    <id>http://dritoshi.github.com/blog/2012/03/29/hello</id>
+    <content type="html"><![CDATA[<p>I am tring to use the <a href="http://octopress.org/">Octopress</a>, a cool static html generater on
+GitHub Pages. This is first commit of the blog entry. Can you see me?
+To setup a Octpress, I refer to this blog entry. <a href="http://tokkonopapa.github.com/blog/2011/12/30/octopress-on-github-and-bitbucket/">Octopressのインストールから運用管理まで</a></p>
+
+<p>I need to install text editor to write a blog entry in Terminal. AquaSKK
+cannot work in Cocoa Emacs.</p>
+]]></content>
+  </entry>
+  
+</feed>

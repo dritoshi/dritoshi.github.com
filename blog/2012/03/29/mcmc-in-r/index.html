@@ -1,0 +1,253 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>MCMC in R - The Cat Way</title>
+	<meta name="author" content="Itoshi NIKAIDO">
+
+	
+	<meta name="description" content="背景 必要にせまられて MCMC の勉強を始めるなど。Rによる計算機統計学を必要なところだけ読んでいる。目的はベイズ回帰でMCMCが使われているあたりを理解すること。そのために 2.1.7. で期待値の定義を確認
+5.1-5.2 でモンテカルロ積分
+9 から MCMC という流れを考えている。 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="The Cat Way" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">The Cat Way</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:dritoshi.github.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		<a class="google" href="https://plus.google.com/116140930812537145672?rel=author" title="Google+">Google+</a>
+		
+		
+		
+		<a class="github" href="https://github.com/dritoshi" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:dritoshi.github.com">
+	</form>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">MCMC in R</h1>
+	<div class="entry-content"><h2>背景</h2>
+
+<p>必要にせまられて MCMC の勉強を始めるなど。<a href="http://www.amazon.co.jp/gp/product/4274068307?ie=UTF8&amp;tag=itoshitv-22&amp;linkCode=shr&amp;camp=1207&amp;creative=8411&amp;creativeASIN=4274068307">Rによる計算機統計学</a>を必要なところだけ読んでいる。目的はベイズ回帰でMCMCが使われているあたりを理解すること。そのために</p>
+
+<ul>
+<li>2.1.7. で期待値の定義を確認</li>
+<li>5.1-5.2 でモンテカルロ積分</li>
+<li>9 から MCMC</li>
+</ul>
+
+
+<p>という流れを考えている。このメモは、2番目の途中まで。</p>
+
+<h2>期待値</h2>
+
+<p>まずは期待値の定義を確認する。確率変数 $X$ の平均は、期待値 $E[X]$ で表わす。Xが確率密度 $f$ で連続型であるなら、$X$ の期待値は
+$$ E[X] = \int_{-\infty}<sup>{\infty}{xf(x)}dx</sup> $$
+で与えられる。</p>
+
+<p>確率密度関数fを持つ連続確率変数Xの関数 $g(x)$ の期待値は、
+$$ E[g(x)]=\int _{ -\infty }<sup>{</sup> \infty  }{ g(x)f(x) } dx $$
+で与えられる。</p>
+
+<h2>モンテカルロ積分</h2>
+
+<p>$g(x)$ という関数が存在し、$\int<em>{a}<sup>{b}{g(x)}dx$</sup> を計算したい。ここで
+$$ E[g(x)]=\int </em>{ -\infty }<sup>{</sup> \infty}{ g(x)f(x) } dx $$
+なので、無作為標本がXの確率分布から得ることができれば、$E[g(x)]$ の不偏推定量は標本平均になる。</p>
+
+<h3>モンテカルロ積分の推定量 $\theta$ の計算手順</h3>
+
+<ol>
+<li>一様分布 Uniform(a, b) から、独立同分布 (iid) の確率変数 $X_1$, …, $X_m$ を生成</li>
+<li>$\overline{ g(X) } = \frac{1}{m}\sum_{i=1}<sup>{m}g(X_i)$</sup> を計算する。</li>
+<li>推定値は、$\hat{\theta} = (b - a)\overline{g(X)}$ になる。</li>
+</ol>
+
+
+<h3>モンテカルロ積分の例</h3>
+
+<h4>単純モンテカルロ積分推定量</h4>
+
+<p>$\theta = \int_{0}<sup>{1}</sup> g(x)$ を推定する問題を考えてみる。もし、$X_1, … X_m$ が一様分布 Uniform(0, 1) からの無作為標本である場合、</p>
+
+<p>$$ \hat{ \theta } = \overline{ g_m(x) } = \frac{1}{m} \sum_{i=1}<sup>{m}g(X_i)</sup> $$</p>
+
+<p>Rで実装してみる。</p>
+
+<div><script src='https://gist.github.com/2250944.js?file='></script>
+<noscript><pre><code>m &lt;- 100000
+x &lt;- runif(m)
+
+# Monte Carlo method
+theta.hat &lt;- mean(exp(-x))
+
+# numeric integral
+theta &lt;- 1 - exp(-1)
+
+results &lt;- sprintf(&quot;Theta hat: %f\nNumeric integral: %f\n&quot;, theta.hat, theta)
+cat(results)
+
+Theta hat: 0.629351
+Numeric integral: 0.632121</code></pre></noscript></div>
+
+
+<p>一様分布からサンプリングして平均するだけ。実装はとても簡単。結果もそこそこ似た感じ。</p>
+
+<p>確率1で $E[g(X)] = \theta$に収束する (大数の強法則)。このときの単純モンテカルロ推定量は、$\overline{g_m(X)}$ となる。</p>
+
+<p>区間が {a, b} の場合は、 $y = (t - a)(b -a)$ および $dy = (1/(b -a)) dt$ に変数変換してやるか、$Uniform(0,1)$ を区間内で別の密度関数に置き換えればよい。</p>
+
+<h4>非有界区間のモンテカルロ積分</h4>
+
+<p>標準正規分布の累積分布関数を推定する。
+$$ \Phi \left( x \right) = \int_{-\infty}<sup>{\infty}\frac{1}{</sup> \sqrt{2\pi} } { e }<sup>{</sup> \frac{t<sup>2}{2}</sup> }dt $$</p>
+
+<p>(つづく)</p>
+
+<h2>ここまでのまとめ</h2>
+
+<p>確率は確率分布関数の面積だと考えることができるので、確率を推定するために積分できると嬉しい。そのために、積分したい区間を期待値に均してしまってから、区間の分だけ足し合せればよい。そのとき、複雑な関数だと積分できないので、期待値の定義と元となる確率分布からのサンプリングをすることで、データから標本平均を計算し、積分するのがモンテカルロ積分ということか。</p>
+
+<p>だから平均や分散の計算や積分などにMCMCが使われる、というオチ。</p>
+
+<h2>次にやること</h2>
+
+<ol>
+<li>非有界区間のモンテカルロ積分について理解する</li>
+<li>マルコフ連鎖の復習。特に詳細釣り合い条件と収束の話など。</li>
+<li>MHアルゴリズムを理解し、ギブスサンプラーの復習</li>
+<li>MHアルゴリズムの例と実装。</li>
+<li>ベイズ回帰との関係の理解</li>
+</ol>
+
+
+<p><a href="http://park.itc.u-tokyo.ac.jp/atstat/jss75shunen/Vol3.pdf">第III巻 数理・計算の統計科学 (北川源四郎・竹村彰通編) </a> (pdf) の第10章「マルコフ連鎖モンテカルロ法入門」が非常にわかりやすいので、こちらも並行して読む予定。統計科学のフロンティア12「<a href="http://www.amazon.co.jp/gp/product/4000068520?ie=UTF8&amp;tag=itoshitv-22&amp;linkCode=shr&amp;camp=1207&amp;creative=8411&amp;creativeASIN=4000068520&amp;ref_=sr_1_1&amp;qid=1333101908&amp;sr=8-1">計算統計II</a>」も参考になりそう。</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-29T20:25:00+09:00" pubdate data-updated="true">Mar 29<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2012
+
+    Itoshi NIKAIDO
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>

@@ -2,54 +2,62 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://dritoshi.github.com/blog/2012/03/29/hello/</loc>
-        <lastmod>2012-08-13T17:36:14+09:00</lastmod>
+        <lastmod>2012-08-13T20:07:10+09:00</lastmod>
     </url>
     <url>
         <loc>http://dritoshi.github.com/blog/2012/03/29/writing-a-equation-in-octopress/</loc>
-        <lastmod>2012-08-13T17:36:14+09:00</lastmod>
+        <lastmod>2012-08-13T20:07:10+09:00</lastmod>
     </url>
     <url>
         <loc>http://dritoshi.github.com/blog/2012/03/29/new-entry-in-japanese/</loc>
-        <lastmod>2012-08-13T17:36:14+09:00</lastmod>
+        <lastmod>2012-08-13T20:07:10+09:00</lastmod>
     </url>
     <url>
         <loc>http://dritoshi.github.com/blog/2012/03/29/mcmc-in-r/</loc>
-        <lastmod>2012-08-13T17:36:14+09:00</lastmod>
+        <lastmod>2012-08-13T20:07:10+09:00</lastmod>
     </url>
     <url>
         <loc>
             http://dritoshi.github.com/blog/2012/03/30/monte-carlo-for-unbounded-integration/
         </loc>
-        <lastmod>2012-08-13T17:36:14+09:00</lastmod>
+        <lastmod>2012-08-13T20:07:10+09:00</lastmod>
     </url>
     <url>
         <loc>http://dritoshi.github.com/blog/2012/03/31/mcmc-tutorials-on-web/</loc>
-        <lastmod>2012-08-13T17:36:14+09:00</lastmod>
+        <lastmod>2012-08-13T20:07:10+09:00</lastmod>
     </url>
     <url>
         <loc>
             http://dritoshi.github.com/blog/2012/03/31/sampling-from-probability-density-function/
         </loc>
-        <lastmod>2012-08-13T17:36:14+09:00</lastmod>
+        <lastmod>2012-08-13T20:07:10+09:00</lastmod>
     </url>
     <url>
         <loc>http://dritoshi.github.com/blog/2012/08/13/NGS-R-Bioconductor-1st/</loc>
-        <lastmod>2012-08-13T19:06:48+09:00</lastmod>
+        <lastmod>2012-08-13T20:07:10+09:00</lastmod>
     </url>
     <url>
         <loc>http://dritoshi.github.com/blog/2012/08/13/r-markdown-with-octopress/</loc>
-        <lastmod>2012-08-13T19:46:24+09:00</lastmod>
+        <lastmod>2012-08-13T20:07:10+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://dritoshi.github.com/404.html</loc>
+        <lastmod>2012-08-13T20:07:10+09:00</lastmod>
     </url>
     <url>
         <loc>http://dritoshi.github.com/about/</loc>
-        <lastmod>2012-08-13T19:54:22+09:00</lastmod>
+        <lastmod>2012-08-13T20:07:10+09:00</lastmod>
     </url>
     <url>
         <loc>http://dritoshi.github.com/blog/archives/</loc>
-        <lastmod>2012-08-13T19:46:24+09:00</lastmod>
+        <lastmod>2012-08-13T20:07:10+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://dritoshi.github.com/feed/index.xml</loc>
+        <lastmod>2012-08-13T20:03:26+09:00</lastmod>
     </url>
     <url>
         <loc>http://dritoshi.github.com/</loc>
-        <lastmod>2012-08-13T19:46:24+09:00</lastmod>
+        <lastmod>2012-08-13T20:07:10+09:00</lastmod>
     </url>
 </urlset>

@@ -249,7 +249,7 @@ MathJax.Hub.Config({
   </header>
 
 
-  <div class="entry-content"><h1>RとBioconductorでNGS解析: 第1時限 Rの基礎</h1>
+  <div class="entry-content"><p>RとBioconductorでNGS解析: 1限 Rの基礎</p>
 
 <h2>はじめに</h2>
 
@@ -402,6 +402,34 @@ y</code></pre>
 <h3>型の確認</h3>
 
 <div>
+  <pre><code class='r'>mode(1)</code></pre>
+</div>
+
+
+
+
+<div>
+  <pre><code class='text'>## [1] &quot;numeric&quot;</code></pre>
+</div>
+
+
+
+
+<div>
+  <pre><code class='r'>mode(&quot;A&quot;)</code></pre>
+</div>
+
+
+
+
+<div>
+  <pre><code class='text'>## [1] &quot;character&quot;</code></pre>
+</div>
+
+
+
+
+<div>
   <pre><code class='r'>is(1)</code></pre>
 </div>
 
@@ -409,7 +437,7 @@ y</code></pre>
 
 
 <div>
-  <pre><code class='text'>## [1] &quot;numeric&quot;          &quot;vector&quot;           &quot;EnumerationValue&quot;</code></pre>
+  <pre><code class='text'>## [1] &quot;numeric&quot; &quot;vector&quot;</code></pre>
 </div>
 
 
@@ -423,9 +451,8 @@ y</code></pre>
 
 
 <div>
-  <pre><code class='text'>## [1] &quot;character&quot;             &quot;vector&quot;                &quot;data.frameRowLabels&quot;  
-## [4] &quot;SuperClassMethod&quot;      &quot;EnumerationValue&quot;      &quot;characterORconnection&quot;
-## [7] &quot;characterORMIAME&quot;</code></pre>
+  <pre><code class='text'>## [1] &quot;character&quot;           &quot;vector&quot;              &quot;data.frameRowLabels&quot;
+## [4] &quot;SuperClassMethod&quot;</code></pre>
 </div>
 
 
@@ -475,8 +502,7 @@ y</code></pre>
 ## [1] 4
 ## 
 ## [[4]]
-## [1] 1
-##</code></pre>
+## [1] 1</code></pre>
 </div>
 
 
@@ -547,8 +573,7 @@ d</code></pre>
 
 
 <div>
-  <pre><code class='text'>## [1] &quot;data.frame&quot;       &quot;list&quot;             &quot;oldClass&quot;        
-## [4] &quot;data.frameOrNULL&quot; &quot;vector&quot;</code></pre>
+  <pre><code class='text'>## [1] &quot;data.frame&quot; &quot;list&quot;       &quot;oldClass&quot;   &quot;vector&quot;</code></pre>
 </div>
 
 
@@ -669,8 +694,7 @@ x</code></pre>
 ## [1] 4
 ## 
 ## [[4]]
-## [1] 1
-##</code></pre>
+## [1] 1</code></pre>
 </div>
 
 
@@ -1161,8 +1185,7 @@ t.test(expression ~ sample, data = gene)</code></pre>
 ##  -8.415 -2.585 
 ## sample estimates:
 ## mean in group Cont  mean in group Exp 
-##                8.4               13.9 
-##</code></pre>
+##                8.4               13.9</code></pre>
 </div>
 
 
@@ -1196,8 +1219,7 @@ gene.lm</code></pre>
 ## 
 ## Coefficients:
 ## (Intercept)         time  
-##       0.976        2.403  
-##</code></pre>
+##       0.976        2.403</code></pre>
 </div>
 
 
@@ -1226,8 +1248,7 @@ gene.lm</code></pre>
 ## 
 ## Residual standard error: 1.03 on 4 degrees of freedom
 ## Multiple R-squared: 0.96,    Adjusted R-squared: 0.95 
-## F-statistic: 95.6 on 1 and 4 DF,  p-value: 0.000613 
-##</code></pre>
+## F-statistic: 95.6 on 1 and 4 DF,  p-value: 0.000613</code></pre>
 </div>
 
 

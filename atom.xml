@@ -4,7 +4,7 @@
   <title><![CDATA[The Cat Way]]></title>
   <link href="http://dritoshi.github.com/atom.xml" rel="self"/>
   <link href="http://dritoshi.github.com/"/>
-  <updated>2012-08-13T18:48:34+09:00</updated>
+  <updated>2012-08-13T19:07:43+09:00</updated>
   <id>http://dritoshi.github.com/</id>
   <author>
     <name><![CDATA[Itoshi NIKAIDO]]></name>
@@ -14,9 +14,9 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Ngs R Bioconductor 1st]]></title>
+    <title type="html"><![CDATA[NGS analysis with R and Bioconductor: 1st. Learning R]]></title>
     <link href="http://dritoshi.github.com/blog/2012/08/13/NGS-R-Bioconductor-1st/"/>
-    <updated>2012-08-13T00:00:00+09:00</updated>
+    <updated>2012-08-13T18:00:00+09:00</updated>
     <id>http://dritoshi.github.com/blog/2012/08/13/NGS-R-Bioconductor-1st</id>
     <content type="html"><![CDATA[<h1>RとBioconductorでNGS解析: 第1時限 Rの基礎</h1>
 
@@ -942,7 +942,7 @@ t.test(expression ~ sample, data = gene)</code></pre>
 </div>
 
 
-<p><img src="http://dritoshi.github.com/images/NGS_R_Bioconductor_1st/unnamed-chunk-24.png" alt="center" /></p>
+<p><img src="http://dritoshi.github.com/images/2012-08-13-NGS-R-Bioconductor-1st/unnamed-chunk-24.png" alt="center" /></p>
 
 <h3>回帰</h3>
 
@@ -1008,7 +1008,7 @@ abline(gene.lm, col = &quot;blue&quot;)</code></pre>
 </div>
 
 
-<p><img src="http://dritoshi.github.com/images/NGS_R_Bioconductor_1st/unnamed-chunk-26.png" alt="center" /></p>
+<p><img src="http://dritoshi.github.com/images/2012-08-13-NGS-R-Bioconductor-1st/unnamed-chunk-26.png" alt="center" /></p>
 
 <h2>次になにを学べばよいか</h2>
 

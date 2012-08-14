@@ -4,7 +4,7 @@
   <title><![CDATA[The Cat Way]]></title>
   <link href="http://cat.hackingisbelieving.org//feed" rel="self"/>
   <link href="http://cat.hackingisbelieving.org//"/>
-  <updated>2012-08-14T11:21:16+09:00</updated>
+  <updated>2012-08-14T11:26:04+09:00</updated>
   <id>http://cat.hackingisbelieving.org//</id>
   <author>
     <name><![CDATA[Itoshi NIKAIDO]]></name>
@@ -18,17 +18,19 @@
     <link href="http://cat.hackingisbelieving.org//blog/2012/08/14/how-to-write-a-new-entry/"/>
     <updated>2012-08-14T11:12:00+09:00</updated>
     <id>http://cat.hackingisbelieving.org//blog/2012/08/14/how-to-write-a-new-entry</id>
-    <content type="html"><![CDATA[<h2>Markdown ファイルの生成</h2>
+    <content type="html"><![CDATA[<h1>Blog entry の場合</h1>
+
+<h2>Markdown ファイルの生成</h2>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>cd /Users/itoshi/Projects/writing/octopress
-</span><span class='line'>rake new_page\['How to write a new entry'\] # zsh はエスケープが必要</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>rake new_post\['How to write a new entry'\] # zsh はエスケープが必要</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>執筆</h2>
 
-<p>sublime text 2 でエントリを執筆する。もちろん事前に sublime text 2 のコマンドを path に通しておく。</p>
+<p><a href="http://www.sublimetext.com/2">Sublime text 2</a> でエントリを執筆する。もちろん事前に sublime text 2 のコマンドを path に通しておく。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl ~/opt/bin/subl</span></code></pre></td></tr></table></div></figure>
@@ -59,6 +61,22 @@
 
 
 <p>generate と deploy の両方を同時におこなっている。generate し忘れがないように、これを使っている。</p>
+
+<h1>ページの場合</h1>
+
+<p>基本的には上の流れてほぼ同じ。最初のページ生成コマンドが違う。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd /Users/itoshi/Projects/writing/octopress
+</span><span class='line'>rake new_page\['How to write a new entry'\] # zsh はエスケープが必要</span></code></pre></td></tr></table></div></figure>
+
+
+<p>生成されるファイルは、source/how-to-write-a-new-entry/index.markdown のようになる。</p>
+
+<p>ナビゲーションバーに表示させるには、source/_includes/custom/navigation.html を編集する。</p>
+
+<p>HTML生成やプレビュー、デプロイの流れは blog entry とまったく同じ。</p>
 ]]></content>
   </entry>
   

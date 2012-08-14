@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Sampling from Probability Density Function - The Cat Way</title>
+  <title>The Cat Way</title>
   <meta name="author" content="Itoshi NIKAIDO">
 
   
-  <meta name="description" content="前のメモの続き。 モンテカルロ積分の例 非有界区間のモンテカルロ積分 前回までは、非有界区間のモンテカルロ積分を $Uniform$ からサンプリングしたが、前回の関数 (CDF)、 $$ \Phi \left( x \right) = \int_{-\infty}{\infty}\frac{1 &hellip;">
+  <meta name="description" content="I am tring to use the Octopress, a cool static html generater on
+GitHub Pages. This is first commit of the blog entry. Can you see me?
+To setup a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://cat.hackingisbelieving.org//blog/2012/03/31/sampling-from-probability-density-function/">
+  <link rel="canonical" href="http://cat.hackingisbelieving.org//blog/page/2/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -92,12 +94,15 @@ MathJax.Hub.Config({
 </nav>
   <div id="main">
     <div id="content">
-      <div>
-<article class="hentry" role="article">
+      <div class="blog-index">
   
+  
+  
+    <article>
+      
   <header>
     
-      <h1 class="entry-title">Sampling From Probability Density Function</h1>
+      <h1 class="entry-title"><a href="/blog/2012/03/29/hello/">Hello, World</a></h1>
     
     
       <p class="meta">
@@ -113,138 +118,36 @@ MathJax.Hub.Config({
   
 
 
-<time datetime="2012-03-31T15:19:00+09:00" pubdate data-updated="true">Mar 31<span>st</span>, 2012</time>
+<time datetime="2012-03-29T14:33:00+09:00" pubdate data-updated="true">Mar 29<span>th</span>, 2012</time>
         
-         | <a href="#disqus_thread">Comments</a>
+         | <a href="/blog/2012/03/29/hello/#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>前のメモの続き。</p>
+  <div class="entry-content"><p>I am tring to use the <a href="http://octopress.org/">Octopress</a>, a cool static html generater on
+GitHub Pages. This is first commit of the blog entry. Can you see me?
+To setup a Octpress, I refer to this blog entry. <a href="http://tokkonopapa.github.com/blog/2011/12/30/octopress-on-github-and-bitbucket/">Octopressのインストールから運用管理まで</a></p>
 
-<h3>モンテカルロ積分の例</h3>
-
-<h4>非有界区間のモンテカルロ積分</h4>
-
-<p>前回までは、非有界区間のモンテカルロ積分を $Uniform$ からサンプリングしたが、前回の関数 (CDF)、</p>
-
-<p>$$ \Phi \left( x \right) = \int_{-\infty}<sup>{\infty}\frac{1}{</sup> \sqrt{2\pi} } { e }<sup>{</sup> \frac{t<sup>2}{2}</sup> }dt $$</p>
-
-<p>はこれ自体が PDF になっているので、これから直接サンプリングするこで、モンテカルロ積分ができる。</p>
-
-<p>このように被積分関数そのものが PDF になっている例を考える。まず標準正規分布変数 $Z \sim N(0, 1)$ と指示関数 $I(\cdot)$ があると考える。指示関数とは、集合の元がその集合の特定の部分集合に属するかどうかを指定することによって定義する関数である。ダミー変数を出力するときに使うような関数を考えればよい。<a href="http://ja.wikipedia.org/wiki/%E6%8C%87%E7%A4%BA%E9%96%A2%E6%95%B0">Wikipedia:指示関数</a></p>
-
-<p>どのような $x$ についても $x$ で推定される正規分布の累積関数 $E[I(Z \leq x)] = P(Z \leq x) = \Phi(x)$ の値が存在する。</p>
-
-<p>標準正規分布より無作為標本 $z_1, …, z_m$ を生成する。これらの標本平均は、</p>
-
-<p>$$ \widehat { \Phi(x) }  = \frac{1}{m}\sum_{i=1}<sup>{m}I(z_i</sup> \leq x ) $$</p>
-
-<p>となる。この値はその期待値に確率1で収束する。</p>
-
-<p>R で書いてみよう。</p>
-
-<div><script src='https://gist.github.com/2260262.js?file='></script>
-<noscript><pre><code>x.num &lt;- 10
-x &lt;- seq(0.1, 2.5, length = x.num)
-m &lt;- 100
-z &lt;- rnorm(m)
-
-p &lt;- sapply( x, function(x) mean(z &lt; x) )
-
-Phi &lt;- pnorm(x)
-
-res &lt;- cbind(x, p, Phi)
-print(t(res))
-
-png(&quot;sampling_pdf.png&quot;)
-matplot(res[,1], res[,2:3], type = &quot;o&quot;, xlab = &quot;x&quot;, ylab = &quot;CDF&quot;)
-dev.off()</code></pre></noscript></div>
-
-
-<p>コードの</p>
-
-<pre><code>sapply( x, function(x) mean(z &lt; x) )
-</code></pre>
-
-<p>の部分を少し解説すると、sapply が x をひとつずつ取りだして、ベクトル z とすべてに対して大小を判定する。このときベクトルで計算されるので、z より小さいものが TRUE, z 以上のものが FALSE として、ベクトルで返ってくる。mean() は TRUE の数を数えあげて、その個数で割る。これによって、
-$$ \widehat { \Phi(x) }  = \frac{1}{m}\sum_{i=1}<sup>{m}I(z_i</sup> \leq x ) $$
-を達成している。</p>
-
-<p>m = 100 ぐらいでこのぐらいになる。
-<img src="http://img.skitch.com/20120402-caj59bgccmr8tdcexwha2kw892.png" alt="CDF" /></p>
-
-<p>m = 10000 ぐらいやると区別がつかないレベルになる。</p>
-
-<h3>まとめ</h3>
-
-<p>モンテカルロ積分は、一様分布からサンプリングすることで、積分する手法だった。被積分関数がPDFの場合は、直接その分布からサンプリングすることによっても積分が可能だった。実装もとても簡単。</p>
-
-<h3>次は?</h3>
-
-<p>教科書的には、このあと推定量の標準誤差や誤差上限の議論をして、分散を減少させる方法を述べる。次に重点サンプリング、層別サンプリングなどと続くであろう。そしてMCMCへと続くのが定番か。現在読んでいる Rによる計算機統計学が羅列的で少し読みにくいので、計算統計II に移行するかな?</p>
+<p>I need to install text editor to write a blog entry in Terminal. AquaSKK
+cannot work in Cocoa Emacs.</p>
 </div>
-
-
-  <footer>
-    <p class="meta">
-      
   
-
-<span class="byline author vcard">Posted by <span class="fn">Itoshi NIKAIDO</span></span>
-
-      
-
-
-
-
-
-
-
-
   
 
 
-<time datetime="2012-03-31T15:19:00+09:00" pubdate data-updated="true">Mar 31<span>st</span>, 2012</time>
-      
-
-
-    </p>
+    </article>
+  
+  <div class="pagination">
     
-      <div class="sharing">
-  
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://cat.hackingisbelieving.org//blog/2012/03/31/sampling-from-probability-density-function/" data-via="dritoshi" data-counturl="http://cat.hackingisbelieving.org//blog/2012/03/31/sampling-from-probability-density-function/" >Tweet</a>
-  
-  
-  <div class="g-plusone" data-size="medium"></div>
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
-  
-</div>
-
+    <a href="/blog/archives">Blog Archives</a>
     
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2012/03/31/mcmc-tutorials-on-web/" title="Previous Post: MCMC Tutorials on Web">&laquo; MCMC Tutorials on Web</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2012/08/13/NGS-R-Bioconductor-1st/" title="Next Post: NGS analysis with R and Bioconductor: 1st. Learning R">NGS analysis with R and Bioconductor: 1st. Learning R &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a class="next" href="/">Newer &rarr;</a>
+    
+  </div>
 </div>
-  </section>
-
-</div>
-
 <aside class="sidebar">
   
     <section>
@@ -277,7 +180,7 @@ $$ \widehat { \Phi(x) }  = \frac{1}{m}\sum_{i=1}<sup>{m}I(z_i</sup> \leq x ) $$
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   
   <a href="https://github.com/dritoshi">@dritoshi</a> on GitHub
@@ -307,7 +210,7 @@ $$ \widehat { \Phi(x) }  = \frac{1}{m}\sum_{i=1}<sup>{m}I(z_i</sup> \leq x ) $$
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating...</li>
+    <li class="loading">Status updating&#8230;</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -336,7 +239,6 @@ $$ \widehat { \Phi(x) }  = \frac{1}{m}\sum_{i=1}<sup>{m}I(z_i</sup> \leq x ) $$
   
 </aside>
 
-
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -351,10 +253,7 @@ $$ \widehat { \Phi(x) }  = \frac{1}{m}\sum_{i=1}<sup>{m}I(z_i</sup> \leq x ) $$
       var disqus_shortname = 'catway';
       
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://cat.hackingisbelieving.org//blog/2012/03/31/sampling-from-probability-density-function/';
-        var disqus_url = 'http://cat.hackingisbelieving.org//blog/2012/03/31/sampling-from-probability-density-function/';
-        var disqus_script = 'embed.js';
+        var disqus_script = 'count.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

@@ -5,11 +5,19 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Sampling from Probability Density Function - The Cat Way</title>
+  <title>How to install Octopress on your Github Pages - The Cat Way</title>
   <meta name="author" content="Itoshi NIKAIDO">
 
   
-  <meta name="description" content="前のメモの続き。 モンテカルロ積分の例 非有界区間のモンテカルロ積分 前回までは、非有界区間のモンテカルロ積分を $Uniform$ からサンプリングしたが、前回の関数 (CDF)、 $$ \Phi \left( x \right) = \int_{-\infty}{\infty}\frac{1 &hellip;">
+  <meta name="description" content="Octopress を GitHub Pages にインストールして設定するまでのメモ 準備 GitHub, git, Ruby 1.9.3, rvm を用意する。GitHub の username は dritoshi GitHub の準備 1
+2
+3
+4
+5
+6
+7
+8
+mkdir &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +26,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://cat.hackingisbelieving.org//blog/2012/03/31/sampling-from-probability-density-function/">
+  <link rel="canonical" href="http://cat.hackingisbelieving.org//blog/2012/08/14/how-to-install-octopress-on-your-github-pages/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -97,7 +105,7 @@ MathJax.Hub.Config({
   
   <header>
     
-      <h1 class="entry-title">Sampling From Probability Density Function</h1>
+      <h1 class="entry-title">How to Install Octopress on Your Github Pages</h1>
     
     
       <p class="meta">
@@ -113,7 +121,7 @@ MathJax.Hub.Config({
   
 
 
-<time datetime="2012-03-31T15:19:00+09:00" pubdate data-updated="true">Mar 31<span>st</span>, 2012</time>
+<time datetime="2012-08-14T11:44:00+09:00" pubdate data-updated="true">Aug 14<span>th</span>, 2012</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -122,69 +130,91 @@ MathJax.Hub.Config({
   </header>
 
 
-<div class="entry-content"><p>前のメモの続き。</p>
+<div class="entry-content"><p>Octopress を GitHub Pages にインストールして設定するまでのメモ</p>
 
-<h3>モンテカルロ積分の例</h3>
+<h2>準備</h2>
 
-<h4>非有界区間のモンテカルロ積分</h4>
+<p>GitHub, git, Ruby 1.9.3, rvm を用意する。GitHub の username は dritoshi</p>
 
-<p>前回までは、非有界区間のモンテカルロ積分を $Uniform$ からサンプリングしたが、前回の関数 (CDF)、</p>
+<h2>GitHub の準備</h2>
 
-<p>$$ \Phi \left( x \right) = \int_{-\infty}<sup>{\infty}\frac{1}{</sup> \sqrt{2\pi} } { e }<sup>{</sup> \frac{t<sup>2}{2}</sup> }dt $$</p>
-
-<p>はこれ自体が PDF になっているので、これから直接サンプリングするこで、モンテカルロ積分ができる。</p>
-
-<p>このように被積分関数そのものが PDF になっている例を考える。まず標準正規分布変数 $Z \sim N(0, 1)$ と指示関数 $I(\cdot)$ があると考える。指示関数とは、集合の元がその集合の特定の部分集合に属するかどうかを指定することによって定義する関数である。ダミー変数を出力するときに使うような関数を考えればよい。<a href="http://ja.wikipedia.org/wiki/%E6%8C%87%E7%A4%BA%E9%96%A2%E6%95%B0">Wikipedia:指示関数</a></p>
-
-<p>どのような $x$ についても $x$ で推定される正規分布の累積関数 $E[I(Z \leq x)] = P(Z \leq x) = \Phi(x)$ の値が存在する。</p>
-
-<p>標準正規分布より無作為標本 $z_1, …, z_m$ を生成する。これらの標本平均は、</p>
-
-<p>$$ \widehat { \Phi(x) }  = \frac{1}{m}\sum_{i=1}<sup>{m}I(z_i</sup> \leq x ) $$</p>
-
-<p>となる。この値はその期待値に確率1で収束する。</p>
-
-<p>R で書いてみよう。</p>
-
-<div><script src='https://gist.github.com/2260262.js?file='></script>
-<noscript><pre><code>x.num &lt;- 10
-x &lt;- seq(0.1, 2.5, length = x.num)
-m &lt;- 100
-z &lt;- rnorm(m)
-
-p &lt;- sapply( x, function(x) mean(z &lt; x) )
-
-Phi &lt;- pnorm(x)
-
-res &lt;- cbind(x, p, Phi)
-print(t(res))
-
-png(&quot;sampling_pdf.png&quot;)
-matplot(res[,1], res[,2:3], type = &quot;o&quot;, xlab = &quot;x&quot;, ylab = &quot;CDF&quot;)
-dev.off()</code></pre></noscript></div>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mkdir dritoshi.github.com
+</span><span class='line'>cd dritoshi.github.com
+</span><span class='line'>touch README.md
+</span><span class='line'>git init
+</span><span class='line'>git add *
+</span><span class='line'>git commit -m 'first commit'
+</span><span class='line'>git remote add origin git@github.com:dritoshi/dritoshi.github.com.git
+</span><span class='line'>$ git push -u origin master</span></code></pre></td></tr></table></div></figure>
 
 
-<p>コードの</p>
+<h2>Octopress のインストール</h2>
 
-<pre><code>sapply( x, function(x) mean(z &lt; x) )
-</code></pre>
+<p>ひと階層上の octopress ディレクトリにインストールする。</p>
 
-<p>の部分を少し解説すると、sapply が x をひとつずつ取りだして、ベクトル z とすべてに対して大小を判定する。このときベクトルで計算されるので、z より小さいものが TRUE, z 以上のものが FALSE として、ベクトルで返ってくる。mean() は TRUE の数を数えあげて、その個数で割る。これによって、
-$$ \widehat { \Phi(x) }  = \frac{1}{m}\sum_{i=1}<sup>{m}I(z_i</sup> \leq x ) $$
-を達成している。</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd ..
+</span><span class='line'>git clone git://github.com/dritoshi/octopress.git octopress
+</span><span class='line'>cd octopress
+</span><span class='line'>sudo gem install bundler
+</span><span class='line'>bundle install
+</span><span class='line'>rake install</span></code></pre></td></tr></table></div></figure>
 
-<p>m = 100 ぐらいでこのぐらいになる。
-<img src="http://img.skitch.com/20120402-caj59bgccmr8tdcexwha2kw892.png" alt="CDF" /></p>
 
-<p>m = 10000 ぐらいやると区別がつかないレベルになる。</p>
+<h2>GitHub へインストールする</h2>
 
-<h3>まとめ</h3>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
 
-<p>モンテカルロ積分は、一様分布からサンプリングすることで、積分する手法だった。被積分関数がPDFの場合は、直接その分布からサンプリングすることによっても積分が可能だった。実装もとても簡単。</p>
 
-<h3>次は?</h3>
+<h2>Octopress の設定</h2>
 
-<p>教科書的には、このあと推定量の標準誤差や誤差上限の議論をして、分散を減少させる方法を述べる。次に重点サンプリング、層別サンプリングなどと続くであろう。そしてMCMCへと続くのが定番か。現在読んでいる Rによる計算機統計学が羅列的で少し読みにくいので、計算統計II に移行するかな?</p>
+<h3>各種機能</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>subl _config.yml</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Google アナリティクスのコード、G+ のアカウントID (URLに含まれる数字の列) などを用意しておき、_config.yml に反映させておく。コメントを有効にするためには、(disqus)[disqus.com] にアカウントを作成し、プログを登録しておく (独自ドメインを利用する場合はそちらを先に設定しておく)。自分で設定したプログの short name が必要になる。アカウントIDではない。</p>
+
+<h3>テーマ</h3>
+
+<p>テーマを変えるには、github で配布されているテーマを探してきて、</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone http://github.com/iwinux/compbits .themes/compbits 
+</span><span class='line'>rake install\['compbits'\] # zsh はエスケープ
+</span><span class='line'>とする。
+</span><span class='line'>
+</span><span class='line'>### 独自ドメイン
+</span><span class='line'>独自ドメインを設置するには、ドメインの設定をCNAME を設定して、</span></code></pre></td></tr></table></div></figure>
+
+
+<p>echo &#8216;cat.hackingisbelieving.org&#8217; > source/CNAME
+rake gen_deploy
+&#8220;`
+Google Apps で取得したドメイン名は、コントロールパネルの Domain settings, Adovanced DNA settings で発行される ドメイン管理会社のアカウントIDとパスワードを使って設定する。
+https://www.google.com/a/cpanel/hackingisbelieving.org/DomainSettingsAdvancedDns</p>
+
+<p>参考: <a href="http://tokkonopapa.github.com/blog/2011/12/30/octopress-on-github-and-bitbucket/">Octopressのインストールから運用管理まで</a></p>
 </div>
 
 
@@ -207,7 +237,7 @@ $$ \widehat { \Phi(x) }  = \frac{1}{m}\sum_{i=1}<sup>{m}I(z_i</sup> \leq x ) $$
   
 
 
-<time datetime="2012-03-31T15:19:00+09:00" pubdate data-updated="true">Mar 31<span>st</span>, 2012</time>
+<time datetime="2012-08-14T11:44:00+09:00" pubdate data-updated="true">Aug 14<span>th</span>, 2012</time>
       
 
 
@@ -215,7 +245,7 @@ $$ \widehat { \Phi(x) }  = \frac{1}{m}\sum_{i=1}<sup>{m}I(z_i</sup> \leq x ) $$
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://cat.hackingisbelieving.org//blog/2012/03/31/sampling-from-probability-density-function/" data-via="dritoshi" data-counturl="http://cat.hackingisbelieving.org//blog/2012/03/31/sampling-from-probability-density-function/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://cat.hackingisbelieving.org//blog/2012/08/14/how-to-install-octopress-on-your-github-pages/" data-via="dritoshi" data-counturl="http://cat.hackingisbelieving.org//blog/2012/08/14/how-to-install-octopress-on-your-github-pages/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -228,10 +258,8 @@ $$ \widehat { \Phi(x) }  = \frac{1}{m}\sum_{i=1}<sup>{m}I(z_i</sup> \leq x ) $$
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/03/31/mcmc-tutorials-on-web/" title="Previous Post: MCMC Tutorials on Web">&laquo; MCMC Tutorials on Web</a>
+        <a class="basic-alignment left" href="/blog/2012/08/14/how-to-write-a-new-entry/" title="Previous Post: How to write a new entry">&laquo; How to write a new entry</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/08/13/NGS-R-Bioconductor-1st/" title="Next Post: NGS analysis with R and Bioconductor: 1st. Learning R">NGS analysis with R and Bioconductor: 1st. Learning R &raquo;</a>
       
     </p>
   </footer>
@@ -352,8 +380,8 @@ $$ \widehat { \Phi(x) }  = \frac{1}{m}\sum_{i=1}<sup>{m}I(z_i</sup> \leq x ) $$
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://cat.hackingisbelieving.org//blog/2012/03/31/sampling-from-probability-density-function/';
-        var disqus_url = 'http://cat.hackingisbelieving.org//blog/2012/03/31/sampling-from-probability-density-function/';
+        var disqus_identifier = 'http://cat.hackingisbelieving.org//blog/2012/08/14/how-to-install-octopress-on-your-github-pages/';
+        var disqus_url = 'http://cat.hackingisbelieving.org//blog/2012/08/14/how-to-install-octopress-on-your-github-pages/';
         var disqus_script = 'embed.js';
       
     (function () {

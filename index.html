@@ -9,10 +9,15 @@
   <meta name="author" content="Itoshi NIKAIDO">
 
   
-  <meta name="description" content="Blog entry の場合 Markdown ファイルの生成 1
+  <meta name="description" content="Octopress を GitHub Pages にインストールして設定するまでのメモ 準備 GitHub, git, Ruby 1.9.3, rvm を用意する。GitHub の username は dritoshi GitHub の準備 1
 2
-cd /Users/itoshi/Projects/writing/octopress
-rake new_post\['How to write a new entry'\] # zsh はエスケープが必要 執筆 &hellip;">
+3
+4
+5
+6
+7
+8
+mkdir &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -97,6 +102,128 @@ MathJax.Hub.Config({
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/08/14/how-to-install-octopress-on-your-github-pages/">How to Install Octopress on Your Github Pages</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-14T11:44:00+09:00" pubdate data-updated="true">Aug 14<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/08/14/how-to-install-octopress-on-your-github-pages/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Octopress を GitHub Pages にインストールして設定するまでのメモ</p>
+
+<h2>準備</h2>
+
+<p>GitHub, git, Ruby 1.9.3, rvm を用意する。GitHub の username は dritoshi</p>
+
+<h2>GitHub の準備</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mkdir dritoshi.github.com
+</span><span class='line'>cd dritoshi.github.com
+</span><span class='line'>touch README.md
+</span><span class='line'>git init
+</span><span class='line'>git add *
+</span><span class='line'>git commit -m 'first commit'
+</span><span class='line'>git remote add origin git@github.com:dritoshi/dritoshi.github.com.git
+</span><span class='line'>$ git push -u origin master</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Octopress のインストール</h2>
+
+<p>ひと階層上の octopress ディレクトリにインストールする。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd ..
+</span><span class='line'>git clone git://github.com/dritoshi/octopress.git octopress
+</span><span class='line'>cd octopress
+</span><span class='line'>sudo gem install bundler
+</span><span class='line'>bundle install
+</span><span class='line'>rake install</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>GitHub へインストールする</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake setup_github_pages</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Octopress の設定</h2>
+
+<h3>各種機能</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>subl _config.yml</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Google アナリティクスのコード、G+ のアカウントID (URLに含まれる数字の列) などを用意しておき、_config.yml に反映させておく。コメントを有効にするためには、(disqus)[disqus.com] にアカウントを作成し、プログを登録しておく (独自ドメインを利用する場合はそちらを先に設定しておく)。自分で設定したプログの short name が必要になる。アカウントIDではない。</p>
+
+<h3>テーマ</h3>
+
+<p>テーマを変えるには、github で配布されているテーマを探してきて、</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone http://github.com/iwinux/compbits .themes/compbits 
+</span><span class='line'>rake install\['compbits'\] # zsh はエスケープ
+</span><span class='line'>とする。
+</span><span class='line'>
+</span><span class='line'>### 独自ドメイン
+</span><span class='line'>独自ドメインを設置するには、ドメインの設定をCNAME を設定して、</span></code></pre></td></tr></table></div></figure>
+
+
+<p>echo &#8216;cat.hackingisbelieving.org&#8217; > source/CNAME
+rake gen_deploy
+&#8220;`
+Google Apps で取得したドメイン名は、コントロールパネルの Domain settings, Adovanced DNA settings で発行される ドメイン管理会社のアカウントIDとパスワードを使って設定する。
+https://www.google.com/a/cpanel/hackingisbelieving.org/DomainSettingsAdvancedDns</p>
+
+<p>参考: <a href="http://tokkonopapa.github.com/blog/2011/12/30/octopress-on-github-and-bitbucket/">Octopressのインストールから運用管理まで</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1892,50 +2019,9 @@ $$</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/03/29/hello/">Hello, World</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-29T14:33:00+09:00" pubdate data-updated="true">Mar 29<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/03/29/hello/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I am tring to use the <a href="http://octopress.org/">Octopress</a>, a cool static html generater on
-GitHub Pages. This is first commit of the blog entry. Can you see me?
-To setup a Octpress, I refer to this blog entry. <a href="http://tokkonopapa.github.com/blog/2011/12/30/octopress-on-github-and-bitbucket/">Octopressのインストールから運用管理まで</a></p>
-
-<p>I need to install text editor to write a blog entry in Terminal. AquaSKK
-cannot work in Cocoa Emacs.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -1946,6 +2032,10 @@ cannot work in Cocoa Emacs.</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/08/14/how-to-install-octopress-on-your-github-pages/">How to install Octopress on your Github Pages</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/08/14/how-to-write-a-new-entry/">How to write a new entry</a>
@@ -1961,10 +2051,6 @@ cannot work in Cocoa Emacs.</p>
     
       <li class="post">
         <a href="/blog/2012/03/31/sampling-from-probability-density-function/">Sampling from Probability Density Function</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/03/31/mcmc-tutorials-on-web/">MCMC Tutorials on Web</a>
       </li>
     
   </ul>

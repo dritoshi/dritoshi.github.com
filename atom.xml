@@ -4,7 +4,7 @@
   <title><![CDATA[The Cat Way]]></title>
   <link href="http://cat.hackingisbelieving.org//atom.xml" rel="self"/>
   <link href="http://cat.hackingisbelieving.org//"/>
-  <updated>2012-08-14T11:28:48+09:00</updated>
+  <updated>2012-08-14T11:30:45+09:00</updated>
   <id>http://cat.hackingisbelieving.org//</id>
   <author>
     <name><![CDATA[Itoshi NIKAIDO]]></name>
@@ -42,15 +42,21 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>subl source/_posts/2012-08-14-how-to-write-a-new-entry.markdown</span></code></pre></td></tr></table></div></figure>
 
 
+<p>Markdown の書きかたは、<a href="http://cat.hackingisbelieving.org//links">Links</a> にある。</p>
+
 <h3>HTMLの生成とプレビュー</h3>
 
-<p>Markdown の書きかたは、<a href="http://cat.hackingisbelieving.org//links">Links</a> にある。</p>
+<p>まず始めに以下のようにする</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>rake generate
 </span><span class='line'>rake preview</span></code></pre></td></tr></table></div></figure>
 
+
+<p>http://localhost:4000/ にブラウザでアクセスしてプレビューを確認する。</p>
+
+<p>その後は、書くたびにブラウザをリドードすればよい。</p>
 
 <h3>デプロイ</h3>
 

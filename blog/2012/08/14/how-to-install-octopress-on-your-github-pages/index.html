@@ -167,7 +167,7 @@ MathJax.Hub.Config({
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>cd ..
-</span><span class='line'>git clone git://github.com/dritoshi/octopress.git octopress
+</span><span class='line'>git clone git://github.com/imathis/octopress.git octopress
 </span><span class='line'>cd octopress
 </span><span class='line'>sudo gem install bundler
 </span><span class='line'>bundle install
@@ -197,21 +197,24 @@ MathJax.Hub.Config({
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>git clone http://github.com/iwinux/compbits .themes/compbits 
 </span><span class='line'>rake install\['compbits'\] # zsh はエスケープ
-</span><span class='line'>とする。
-</span><span class='line'>
-</span><span class='line'>### 独自ドメイン
-</span><span class='line'>独自ドメインを設置するには、ドメインの設定をCNAME を設定して、
-</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>rake generate</span></code></pre></td></tr></table></div></figure>
 
 
-<p>echo &#8216;cat.hackingisbelieving.org&#8217; > source/CNAME
-rake gen_deploy
-&#8220;`</p>
+<p>とする。</p>
+
+<p>参考: <a href="https://github.com/imathis/octopress/wiki/List-Of-Octopress-Themes">List Of Octopress Themes</a></p>
+
+<h3>独自ドメイン</h3>
+
+<p>独自ドメインを設置するには、ドメインの設定をCNAME を設定して、</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>echo 'cat.hackingisbelieving.org' &gt; source/CNAME
+</span><span class='line'>rake gen_deploy</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Google Apps で取得したドメイン名は、コントロールパネルの Domain settings, Adovanced DNA settings で発行される ドメイン管理会社のアカウントIDとパスワードを使って設定する。
 https://www.google.com/a/cpanel/hackingisbelieving.org/DomainSettingsAdvancedDns</p>

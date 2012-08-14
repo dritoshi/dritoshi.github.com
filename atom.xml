@@ -4,7 +4,7 @@
   <title><![CDATA[The Cat Way]]></title>
   <link href="http://cat.hackingisbelieving.org//atom.xml" rel="self"/>
   <link href="http://cat.hackingisbelieving.org//"/>
-  <updated>2012-08-14T12:08:54+09:00</updated>
+  <updated>2012-08-14T12:10:38+09:00</updated>
   <id>http://cat.hackingisbelieving.org//</id>
   <author>
     <name><![CDATA[Itoshi NIKAIDO]]></name>
@@ -22,7 +22,7 @@
 
 <h2>準備</h2>
 
-<p>GitHub, git, Ruby 1.9.3, rvm を用意する。GitHub の username は dritoshi</p>
+<p>GitHub, git, Ruby 1.9.3, rvm を用意する。GitHub の username は dritoshi. 必要に応じて、Google アナリティクスのトラッキングID, disqus.com のアカウント、独自ドメインの設定に必要な情報を用意しておく。</p>
 
 <h2>GitHub の準備</h2>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[The Cat Way]]></title>
   <link href="http://cat.hackingisbelieving.org//atom.xml" rel="self"/>
   <link href="http://cat.hackingisbelieving.org//"/>
-  <updated>2012-08-14T10:51:00+09:00</updated>
+  <updated>2012-08-14T11:20:10+09:00</updated>
   <id>http://cat.hackingisbelieving.org//</id>
   <author>
     <name><![CDATA[Itoshi NIKAIDO]]></name>
@@ -12,6 +12,53 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How to write a new entry]]></title>
+    <link href="http://cat.hackingisbelieving.org//blog/2012/08/14/how-to-write-a-new-entry/"/>
+    <updated>2012-08-14T11:12:00+09:00</updated>
+    <id>http://cat.hackingisbelieving.org//blog/2012/08/14/how-to-write-a-new-entry</id>
+    <content type="html"><![CDATA[<h2>Markdown ファイルの生成</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd /Users/itoshi/Projects/writing/octopress
+</span><span class='line'>rake new_page\['How to write a new entry'\] # zsh はエスケープが必要</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>執筆</h2>
+
+<p>sublime text 2 でエントリを執筆する。もちろん事前に sublime text 2 のコマンドを path に通しておく。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl ~/opt/bin/subl</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>subl source/_posts/2012-08-14-how-to-write-a-new-entry.markdown</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>HTMLの生成とプレビュー</h2>
+
+<p>Markdown の書きかたは、<a href="http://cat.hackingisbelieving.org//links">Links</a> にある。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake generate
+</span><span class='line'>rake preivew</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>デプロイ</h2>
+
+<p>github page 上の Octopress にデプロイする</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake gen_deploy</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[R Markdown with Octopress on your GitHub]]></title>

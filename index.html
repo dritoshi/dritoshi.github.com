@@ -9,7 +9,10 @@
   <meta name="author" content="Itoshi NIKAIDO">
 
   
-  <meta name="description" content="R Markdown を GitHub Pages 上の Octopres にアップロートする方法についてメモしておく。 準備 Knitr の設定済みの状態からスタートする。RStudio 入れればそれでおしまい。次に Octopress の準備。これ読むひとはもう終わっているだろうから飛す。 &hellip;">
+  <meta name="description" content="Markdown ファイルの生成 1
+2
+cd /Users/itoshi/Projects/writing/octopress
+rake new_page\['How to write a new entry'\] # zsh はエスケープが必要 執筆 sublime text 2 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,7 +87,8 @@ MathJax.Hub.Config({
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="/lecture/">Lecture</a></li>      
+  <li><a href="/lecture/">Lecture</a></li>    
+    <li><a href="/links/">Links</a></li>
   <li><a href="/about/">About</a></li>  
 </ul>
 
@@ -93,6 +97,80 @@ MathJax.Hub.Config({
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/08/14/how-to-write-a-new-entry/">How to Write a New Entry</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-14T11:12:00+09:00" pubdate data-updated="true">Aug 14<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Markdown ファイルの生成</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd /Users/itoshi/Projects/writing/octopress
+</span><span class='line'>rake new_page\['How to write a new entry'\] # zsh はエスケープが必要</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>執筆</h2>
+
+<p>sublime text 2 でエントリを執筆する。もちろん事前に sublime text 2 のコマンドを path に通しておく。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl ~/opt/bin/subl</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>subl source/_posts/2012-08-14-how-to-write-a-new-entry.markdown</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>HTMLの生成とプレビュー</h2>
+
+<p>Markdown の書きかたは、<a href="/links">Links</a> にある。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake generate
+</span><span class='line'>rake preivew</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>デプロイ</h2>
+
+<p>github page 上の Octopress にデプロイする</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake gen_deploy</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1824,6 +1902,10 @@ cannot work in Cocoa Emacs.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/08/14/how-to-write-a-new-entry/">How to write a new entry</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/08/13/r-markdown-with-octopress/">R Markdown with Octopress on your GitHub</a>
       </li>
     
@@ -1837,10 +1919,6 @@ cannot work in Cocoa Emacs.</p>
     
       <li class="post">
         <a href="/blog/2012/03/31/mcmc-tutorials-on-web/">MCMC Tutorials on Web</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/03/30/monte-carlo-for-unbounded-integration/">Monte Carlo for unbounded integration</a>
       </li>
     
   </ul>

@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>MCMC in R - The Cat Way</title>
+  <title>How to change key bindings in the RStudio console - The Cat Way</title>
   <meta name="author" content="Itoshi NIKAIDO">
 
   
-  <meta name="description" content="背景 必要にせまられて MCMC の勉強を始めるなど。Rによる計算機統計学を必要なところだけ読んでいる。目的はベイズ回帰でMCMCが使われているあたりを理解すること。そのために 2.1.7. で期待値の定義を確認
-5.1-5.2 でモンテカルロ積分
-9 から MCMC という流れを考えている。 &hellip;">
+  <meta name="description" content="RStudio のキーバインドを変える。ただし、Mac で。 ほぼ emacs like な key binding にはなっているが、console でのコマンド履歴がカーソルの上下に設定されている。これだとホームポジションから手が離れるし、HHK Pro2 とかだとしんどい。これを &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://cat.hackingisbelieving.org//blog/2012/03/29/mcmc-in-r/">
+  <link rel="canonical" href="http://cat.hackingisbelieving.org//blog/2012/08/16/how-to-change-key-bindings-in-the-rstudio-console/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -99,7 +97,7 @@ MathJax.Hub.Config({
   
   <header>
     
-      <h1 class="entry-title">MCMC in R</h1>
+      <h1 class="entry-title">How to Change Key Bindings in the RStudio Console</h1>
     
     
       <p class="meta">
@@ -115,7 +113,7 @@ MathJax.Hub.Config({
   
 
 
-<time datetime="2012-03-29T20:25:00+09:00" pubdate data-updated="true">Mar 29<span>th</span>, 2012</time>
+<time datetime="2012-08-16T16:41:00+09:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -124,102 +122,80 @@ MathJax.Hub.Config({
   </header>
 
 
-<div class="entry-content"><h2>背景</h2>
+<div class="entry-content"><p>RStudio のキーバインドを変える。ただし、Mac で。</p>
 
-<p>必要にせまられて MCMC の勉強を始めるなど。<a href="http://www.amazon.co.jp/gp/product/4274068307?ie=UTF8&amp;tag=itoshitv-22&amp;linkCode=shr&amp;camp=1207&amp;creative=8411&amp;creativeASIN=4274068307">Rによる計算機統計学</a>を必要なところだけ読んでいる。目的はベイズ回帰でMCMCが使われているあたりを理解すること。そのために</p>
+<p>ほぼ emacs like な key binding にはなっているが、console でのコマンド履歴がカーソルの上下に設定されている。これだとホームポジションから手が離れるし、HHK Pro2 とかだとしんどい。これを Control + P, Control + N にそれぞれ割り当てたい。</p>
+
+<p>そこで、KeyRemap4Mac でキーバインドを設定してみた。やりかたは、KeyRemap4Mac をインストールして、メニューバーから設定画面に入る。&#8221;Misc &amp; Uninstall&#8221; を選び、&#8221;Custom Setting&#8221; の &#8220;Open private.xml&#8221; を開く。これを適当なエディタで開いて、以下のようにする。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+</span><span class='line'><span class="nt">&lt;root&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;appdef&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;appname&gt;</span>RSTUDIO<span class="nt">&lt;/appname&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;equal&gt;</span>org.rstudio.RStudio<span class="nt">&lt;/equal&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/appdef&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;item&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;name&gt;</span>RSTUDIO<span class="nt">&lt;/name&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;list&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;item&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;name&gt;</span>Change Ctrl+P to Up-Arrow<span class="nt">&lt;/name&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;appendix&gt;</span>(only in RStudio)<span class="nt">&lt;/appendix&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;identifier&gt;</span>private.RStdio_control_p_up_arrow<span class="nt">&lt;/identifier&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;only&gt;</span>RSTUDIO<span class="nt">&lt;/only&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;autogen&gt;</span>--KeyToKey-- KeyCode::P, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP<span class="nt">&lt;/autogen&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/item&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;item&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;name&gt;</span>Change Ctrl+N to Down-Arrow<span class="nt">&lt;/name&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;appendix&gt;</span>(only in RStudio)<span class="nt">&lt;/appendix&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;identifier&gt;</span>private.RStdio_control_p_down_arrow<span class="nt">&lt;/identifier&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;only&gt;</span>RSTUDIO<span class="nt">&lt;/only&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;autogen&gt;</span>--KeyToKey-- KeyCode::N, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN<span class="nt">&lt;/autogen&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/item&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/list&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/item&gt;</span>
+</span><span class='line'><span class="nt">&lt;/root&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>そして、KeyRemap4MacBook の設定画面に戻って、&#8221;Change Key&#8221; を選択、画面右上の &#8220;ReloadXML&#8221; をクリックすると、以下のようになる。</p>
+
+<p><img src="https://img.skitch.com/20120816-83px9quhd388wc6m8wi7ctsqpb.png" alt="R studio のキーバインドを変更する" /></p>
+
+<p>ふたつともチェックして、RStudio の console で適当なコマンド入力して、Control + P, N してみると、ちゃんと履歴が表示される。めちゃくちゃ快適。<a href="https://twitter.com/ma_ko/status/235983572018810881">@ma_ko さんくす</a>。</p>
+
+<p>参考:</p>
 
 <ul>
-<li>2.1.7. で期待値の定義を確認</li>
-<li>5.1-5.2 でモンテカルロ積分</li>
-<li>9 から MCMC</li>
+<li><a href="http://pqrs.org/macosx/keyremap4macbook/xml.html.ja">private.xml Reference Manual</a></li>
+<li><a href="http://orera.g.hatena.ne.jp/edvakf/20110531/1306858764">Mac版でEmacs風キーバインドがおかしい（とてもおかしい）のをなんとかする</a></li>
 </ul>
 
-
-<p>という流れを考えている。このメモは、2番目の途中まで。</p>
-
-<h2>期待値</h2>
-
-<p>まずは期待値の定義を確認する。確率変数 $X$ の平均は、期待値 $E[X]$ で表わす。Xが確率密度 $f$ で連続型であるなら、$X$ の期待値は
-$$ E[X] = \int_{-\infty}<sup>{\infty}{xf(x)}dx</sup> $$
-で与えられる。</p>
-
-<p>確率密度関数fを持つ連続確率変数Xの関数 $g(x)$ の期待値は、
-$$ E[g(x)]=\int _{ -\infty }<sup>{</sup> \infty  }{ g(x)f(x) } dx $$
-で与えられる。</p>
-
-<h2>モンテカルロ積分</h2>
-
-<p>$g(x)$ という関数が存在し、$\int<em>{a}<sup>{b}{g(x)}dx$</sup> を計算したい。ここで
-$$ E[g(x)]=\int </em>{ -\infty }<sup>{</sup> \infty}{ g(x)f(x) } dx $$
-なので、無作為標本がXの確率分布から得ることができれば、$E[g(x)]$ の不偏推定量は標本平均になる。</p>
-
-<h3>モンテカルロ積分の推定量 $\theta$ の計算手順</h3>
-
-<ol>
-<li>一様分布 Uniform(a, b) から、独立同分布 (iid) の確率変数 $X_1$, …, $X_m$ を生成</li>
-<li>$\overline{ g(X) } = \frac{1}{m}\sum_{i=1}<sup>{m}g(X_i)$</sup> を計算する。</li>
-<li>推定値は、$\hat{\theta} = (b - a)\overline{g(X)}$ になる。</li>
-</ol>
-
-
-<h3>モンテカルロ積分の例</h3>
-
-<h4>単純モンテカルロ積分推定量</h4>
-
-<p>$\theta = \int_{0}<sup>{1}</sup> g(x)$ を推定する問題を考えてみる。もし、$X_1, … X_m$ が一様分布 Uniform(0, 1) からの無作為標本である場合、</p>
-
-<p>$$ \hat{ \theta } = \overline{ g_m(x) } = \frac{1}{m} \sum_{i=1}<sup>{m}g(X_i)</sup> $$</p>
-
-<p>Rで実装してみる。</p>
-
-<div><script src='https://gist.github.com/2250944.js?file='></script>
-<noscript><pre><code>m &lt;- 100000
-x &lt;- runif(m)
-
-# Monte Carlo method
-theta.hat &lt;- mean(exp(-x))
-
-# numeric integral
-theta &lt;- 1 - exp(-1)
-
-results &lt;- sprintf(&quot;Theta hat: %f\nNumeric integral: %f\n&quot;, theta.hat, theta)
-cat(results)
-
-Theta hat: 0.629351
-Numeric integral: 0.632121</code></pre></noscript></div>
-
-
-<p>一様分布からサンプリングして平均するだけ。実装はとても簡単。結果もそこそこ似た感じ。</p>
-
-<p>確率1で $E[g(X)] = \theta$に収束する (大数の強法則)。このときの単純モンテカルロ推定量は、$\overline{g_m(X)}$ となる。</p>
-
-<p>区間が {a, b} の場合は、 $y = (t - a)(b -a)$ および $dy = (1/(b -a)) dt$ に変数変換してやるか、$Uniform(0,1)$ を区間内で別の密度関数に置き換えればよい。</p>
-
-<h4>非有界区間のモンテカルロ積分</h4>
-
-<p>標準正規分布の累積分布関数を推定する。
-$$ \Phi \left( x \right) = \int_{-\infty}<sup>{\infty}\frac{1}{</sup> \sqrt{2\pi} } { e }<sup>{</sup> \frac{t<sup>2}{2}</sup> }dt $$</p>
-
-<p>(つづく)</p>
-
-<h2>ここまでのまとめ</h2>
-
-<p>確率は確率分布関数の面積だと考えることができるので、確率を推定するために積分できると嬉しい。そのために、積分したい区間を期待値に均してしまってから、区間の分だけ足し合せればよい。そのとき、複雑な関数だと積分できないので、期待値の定義と元となる確率分布からのサンプリングをすることで、データから標本平均を計算し、積分するのがモンテカルロ積分ということか。</p>
-
-<p>だから平均や分散の計算や積分などにMCMCが使われる、というオチ。</p>
-
-<h2>次にやること</h2>
-
-<ol>
-<li>非有界区間のモンテカルロ積分について理解する</li>
-<li>マルコフ連鎖の復習。特に詳細釣り合い条件と収束の話など。</li>
-<li>MHアルゴリズムを理解し、ギブスサンプラーの復習</li>
-<li>MHアルゴリズムの例と実装。</li>
-<li>ベイズ回帰との関係の理解</li>
-</ol>
-
-
-<p><a href="http://park.itc.u-tokyo.ac.jp/atstat/jss75shunen/Vol3.pdf">第III巻 数理・計算の統計科学 (北川源四郎・竹村彰通編) </a> (pdf) の第10章「マルコフ連鎖モンテカルロ法入門」が非常にわかりやすいので、こちらも並行して読む予定。統計科学のフロンティア12「<a href="http://www.amazon.co.jp/gp/product/4000068520?ie=UTF8&amp;tag=itoshitv-22&amp;linkCode=shr&amp;camp=1207&amp;creative=8411&amp;creativeASIN=4000068520&amp;ref_=sr_1_1&amp;qid=1333101908&amp;sr=8-1">計算統計II</a>」も参考になりそう。</p>
 </div>
 
 
@@ -242,7 +218,7 @@ $$ \Phi \left( x \right) = \int_{-\infty}<sup>{\infty}\frac{1}{</sup> \sqrt{2\pi
   
 
 
-<time datetime="2012-03-29T20:25:00+09:00" pubdate data-updated="true">Mar 29<span>th</span>, 2012</time>
+<time datetime="2012-08-16T16:41:00+09:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
       
 
 
@@ -250,7 +226,7 @@ $$ \Phi \left( x \right) = \int_{-\infty}<sup>{\infty}\frac{1}{</sup> \sqrt{2\pi
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://cat.hackingisbelieving.org//blog/2012/03/29/mcmc-in-r/" data-via="dritoshi" data-counturl="http://cat.hackingisbelieving.org//blog/2012/03/29/mcmc-in-r/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://cat.hackingisbelieving.org//blog/2012/08/16/how-to-change-key-bindings-in-the-rstudio-console/" data-via="dritoshi" data-counturl="http://cat.hackingisbelieving.org//blog/2012/08/16/how-to-change-key-bindings-in-the-rstudio-console/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -263,10 +239,8 @@ $$ \Phi \left( x \right) = \int_{-\infty}<sup>{\infty}\frac{1}{</sup> \sqrt{2\pi
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/03/29/new-entry-in-japanese/" title="Previous Post: New entry in Japanese">&laquo; New entry in Japanese</a>
+        <a class="basic-alignment left" href="/blog/2012/08/14/how-to-install-octopress-on-your-github-pages/" title="Previous Post: How to install Octopress on your Github Pages">&laquo; How to install Octopress on your Github Pages</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2012/03/30/monte-carlo-for-unbounded-integration/" title="Next Post: Monte Carlo for unbounded integration">Monte Carlo for unbounded integration &raquo;</a>
       
     </p>
   </footer>
@@ -406,8 +380,8 @@ $$ \Phi \left( x \right) = \int_{-\infty}<sup>{\infty}\frac{1}{</sup> \sqrt{2\pi
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://cat.hackingisbelieving.org//blog/2012/03/29/mcmc-in-r/';
-        var disqus_url = 'http://cat.hackingisbelieving.org//blog/2012/03/29/mcmc-in-r/';
+        var disqus_identifier = 'http://cat.hackingisbelieving.org//blog/2012/08/16/how-to-change-key-bindings-in-the-rstudio-console/';
+        var disqus_url = 'http://cat.hackingisbelieving.org//blog/2012/08/16/how-to-change-key-bindings-in-the-rstudio-console/';
         var disqus_script = 'embed.js';
       
     (function () {

@@ -9,7 +9,7 @@
   <meta name="author" content="Itoshi NIKAIDO">
 
   
-  <meta name="description" content="Octopress を GitHub Pages にインストールして設定するまでのメモ 準備 GitHub, git, Ruby 1.9.3, rvm を用意する。GitHub の username は dritoshi. 必要に応じて、Google アナリティクスのトラッキングID, &hellip;">
+  <meta name="description" content="RStudio のキーバインドを変える。ただし、Mac で。 ほぼ emacs like な key binding にはなっているが、console でのコマンド履歴がカーソルの上下に設定されている。これだとホームポジションから手が離れるし、HHK Pro2 とかだとしんどい。これを &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -100,6 +100,117 @@ MathJax.Hub.Config({
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2012/08/16/how-to-change-key-bindings-in-the-rstudio-console/">How to Change Key Bindings in the RStudio Console</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-16T16:41:00+09:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/08/16/how-to-change-key-bindings-in-the-rstudio-console/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>RStudio のキーバインドを変える。ただし、Mac で。</p>
+
+<p>ほぼ emacs like な key binding にはなっているが、console でのコマンド履歴がカーソルの上下に設定されている。これだとホームポジションから手が離れるし、HHK Pro2 とかだとしんどい。これを Control + P, Control + N にそれぞれ割り当てたい。</p>
+
+<p>そこで、KeyRemap4Mac でキーバインドを設定してみた。やりかたは、KeyRemap4Mac をインストールして、メニューバーから設定画面に入る。&#8221;Misc &amp; Uninstall&#8221; を選び、&#8221;Custom Setting&#8221; の &#8220;Open private.xml&#8221; を開く。これを適当なエディタで開いて、以下のようにする。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+</span><span class='line'><span class="nt">&lt;root&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;appdef&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;appname&gt;</span>RSTUDIO<span class="nt">&lt;/appname&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;equal&gt;</span>org.rstudio.RStudio<span class="nt">&lt;/equal&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/appdef&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;item&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;name&gt;</span>RSTUDIO<span class="nt">&lt;/name&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;list&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;item&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;name&gt;</span>Change Ctrl+P to Up-Arrow<span class="nt">&lt;/name&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;appendix&gt;</span>(only in RStudio)<span class="nt">&lt;/appendix&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;identifier&gt;</span>private.RStdio_control_p_up_arrow<span class="nt">&lt;/identifier&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;only&gt;</span>RSTUDIO<span class="nt">&lt;/only&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;autogen&gt;</span>--KeyToKey-- KeyCode::P, ModifierFlag::CONTROL_L, KeyCode::CURSOR_UP<span class="nt">&lt;/autogen&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/item&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;item&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;name&gt;</span>Change Ctrl+N to Down-Arrow<span class="nt">&lt;/name&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;appendix&gt;</span>(only in RStudio)<span class="nt">&lt;/appendix&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;identifier&gt;</span>private.RStdio_control_p_down_arrow<span class="nt">&lt;/identifier&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;only&gt;</span>RSTUDIO<span class="nt">&lt;/only&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;autogen&gt;</span>--KeyToKey-- KeyCode::N, ModifierFlag::CONTROL_L, KeyCode::CURSOR_DOWN<span class="nt">&lt;/autogen&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/item&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/list&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/item&gt;</span>
+</span><span class='line'><span class="nt">&lt;/root&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>そして、KeyRemap4MacBook の設定画面に戻って、&#8221;Change Key&#8221; を選択、画面右上の &#8220;ReloadXML&#8221; をクリックすると、以下のようになる。</p>
+
+<p><img src="https://img.skitch.com/20120816-83px9quhd388wc6m8wi7ctsqpb.png" alt="R studio のキーバインドを変更する" /></p>
+
+<p>ふたつともチェックして、RStudio の console で適当なコマンド入力して、Control + P, N してみると、ちゃんと履歴が表示される。めちゃくちゃ快適。<a href="https://twitter.com/ma_ko/status/235983572018810881">@ma_ko さんくす</a>。</p>
+
+<p>参考:</p>
+
+<ul>
+<li><a href="http://pqrs.org/macosx/keyremap4macbook/xml.html.ja">private.xml Reference Manual</a></li>
+<li><a href="http://orera.g.hatena.ne.jp/edvakf/20110531/1306858764">Mac版でEmacs風キーバインドがおかしい（とてもおかしい）のをなんとかする</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2012/08/14/how-to-install-octopress-on-your-github-pages/">How to Install Octopress on Your Github Pages</a></h1>
     
     
@@ -184,6 +295,8 @@ MathJax.Hub.Config({
 
 
 <p>Google アナリティクスのコード、G+ のアカウントID (URLに含まれる数字の列) などを用意しておき、_config.yml に反映させておく。コメントを有効にするためには、(disqus)[disqus.com] にアカウントを作成し、プログを登録しておく (独自ドメインを利用する場合はそちらを先に設定しておく)。自分で設定したプログの short name が必要になる。アカウントIDではない。</p>
+
+<p>サイドバーに About me を表示するには、source/custom/asides/about.html を編集して、_config.yml の default_asides にファイル名を指定する。</p>
 
 <h3>テーマ</h3>
 
@@ -1941,81 +2054,6 @@ c hoge.txt
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/03/29/writing-a-equation-in-octopress/">Writing a Equation in Octopress</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-29T18:42:00+09:00" pubdate data-updated="true">Mar 29<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/03/29/writing-a-equation-in-octopress/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This entry is test of <a href="http://www.mathjax.org/">MathJax</a> to show a equation in Octopress. I am going to write Tex in Octopress.</p>
-
-<p>Let&#8217;s do some practice: <strong>Energy eigenstate</strong></p>
-
-
-<pre><code>&lt;p&gt;$$
-p_1^{(can, \beta)} = \frac{1}{1+e^{- \beta \Delta E}}
-$$&lt;/p&gt;
-
-&lt;p&gt;$$
-p_2^{(can, \beta)} = \frac{e^{- \beta \Delta E}}{1+e^{- \beta \Delta E}}
-$$&lt;/p&gt;
-</code></pre>
-
-<p>$$
-p_1^{(can, \beta)} = \frac{1}{1+e^{- \beta \Delta E}}
-$$</p>
-
-
-
-
-<p>$$
-p_2^{(can, \beta)} = \frac{e^{- \beta \Delta E}}{1+e^{- \beta \Delta E}}
-$$</p>
-
-
-<p>What&#8217;s happen&#8217;?</p>
-
-<pre><code>$$ \begin{aligned} p_1^{(can, \beta)} &amp;amp; = \frac{1}{1+e^{- \beta \Delta E}} \\ p_2^{(can, \beta)} &amp;amp; = \frac{e^{- \beta \Delta E}}{1+e^{- \beta \Delta E}} \end{aligned} $$
-</code></pre>
-
-<p>$$ \begin{aligned} p_1^{(can, \beta)} &amp; = \frac{1}{1+e^{- \beta \Delta E}} &#92; p_2^{(can, \beta)} &amp; = \frac{e^{- \beta \Delta E}}{1+e^{- \beta \Delta E}} \end{aligned} $$</p>
-
-
-<p>I will test inline mode, $p_{1}<sup>{(can,\beta)}$</sup> on Octopress.</p>
-
-<p>Reference:
-<a href="http://luikore.github.com/2011/09/good-things-learned-from-octopress/">Starting From Octopress</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -2027,12 +2065,16 @@ $$</p>
 <aside class="sidebar">
   
     <section>
-  <h1>About Me</h1>
-  <p>二階堂愛(にかいどういとし)のメモ帳</p>
+  <h1>About</h1>
+  <p>二階堂愛(にかいどういとし♂)のメモ帳。詳しくは<a href="about/">こちら</a>をどうぞ。</P>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/08/16/how-to-change-key-bindings-in-the-rstudio-console/">How to change key bindings in the RStudio console</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/08/14/how-to-install-octopress-on-your-github-pages/">How to install Octopress on your Github Pages</a>
@@ -2056,10 +2098,6 @@ $$</p>
     
       <li class="post">
         <a href="/blog/2012/03/31/mcmc-tutorials-on-web/">MCMC Tutorials on Web</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/03/30/monte-carlo-for-unbounded-integration/">Monte Carlo for unbounded integration</a>
       </li>
     
   </ul>

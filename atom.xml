@@ -4,7 +4,7 @@
   <title><![CDATA[The Cat Way]]></title>
   <link href="http://cat.hackingisbelieving.org//atom.xml" rel="self"/>
   <link href="http://cat.hackingisbelieving.org//"/>
-  <updated>2012-08-16T17:02:41+09:00</updated>
+  <updated>2012-08-17T15:54:44+09:00</updated>
   <id>http://cat.hackingisbelieving.org//</id>
   <author>
     <name><![CDATA[Itoshi NIKAIDO]]></name>
@@ -18,9 +18,9 @@
     <link href="http://cat.hackingisbelieving.org//blog/2012/08/16/how-to-change-key-bindings-in-the-rstudio-console/"/>
     <updated>2012-08-16T16:41:00+09:00</updated>
     <id>http://cat.hackingisbelieving.org//blog/2012/08/16/how-to-change-key-bindings-in-the-rstudio-console</id>
-    <content type="html"><![CDATA[<p>RStudio のキーバインドを変える。ただし、Mac で。</p>
+    <content type="html"><![CDATA[<p><a href="http://rstudio.org/">RStudio</a> のキーバインドを変える。ただし、Mac で。</p>
 
-<p>ほぼ emacs like な key binding にはなっているが、console でのコマンド履歴がカーソルの上下に設定されている。これだとホームポジションから手が離れるし、HHK Pro2 とかだとしんどい。これを Control + P, Control + N にそれぞれ割り当てたい。</p>
+<p>統計解析環境R、最強のGUI環境 <a href="http://rstudio.org/">RStudio</a> を愛用しつつある。ほぼ emacs like な key binding にはなっているが、console でのコマンド履歴がカーソルの上下に設定されている。これだとホームポジションから手が離れるし、HHK Pro2 とかだとしんどい。これを Control + P, Control + N にそれぞれ割り当てたい。</p>
 
 <p>そこで、KeyRemap4Mac でキーバインドを設定してみた。やりかたは、KeyRemap4Mac をインストールして、メニューバーから設定画面に入る。&#8221;Misc &amp; Uninstall&#8221; を選び、&#8221;Custom Setting&#8221; の &#8220;Open private.xml&#8221; を開く。これを適当なエディタで開いて、以下のようにする。</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[The Cat Way]]></title>
   <link href="http://cat.hackingisbelieving.org//feed" rel="self"/>
   <link href="http://cat.hackingisbelieving.org//"/>
-  <updated>2012-08-18T23:15:29+09:00</updated>
+  <updated>2012-08-18T23:17:36+09:00</updated>
   <id>http://cat.hackingisbelieving.org//</id>
   <author>
     <name><![CDATA[Itoshi NIKAIDO]]></name>
@@ -389,18 +389,118 @@ https://www.google.com/a/cpanel/hackingisbelieving.org/DomainSettingsAdvancedDns
 
 <p>まずは R をインストールする。http://rstudio.org/ から、利用しているOSに適した RStudio をインストールする。起動や終了は普通のアプリケーションと同じである。起動したときに3つのペイン(ウィンドウ内にある小窓)が見えるが、左下の console という部分に、Rのプログラムを書き込んでいく。</p>
 
-<p>試しに以下のように入力して同じ結果になれば準備は終了である。ただし、あなたの環境では ## は表示されないがそれで正常である。</p>
+<p>試しに以下のように入力して同じ結果になれば準備は終了である。ただし、あなたの環境では ## は表示されないが、それで正常である。</p>
 
-<div>
-  <pre><code class='r'>1 + 1</code></pre>
-</div>
-
-
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="m">1</span> <span class="o">+</span> <span class="m">1</span>    <span class="c1"># 足し算</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<div>
-  <pre><code class='text'>## [1] 2</code></pre>
-</div>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] 2</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="m">2</span> <span class="o">*</span> <span class="m">2</span>    <span class="c1"># かけ算</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] 4</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="m">15</span> <span class="o">/</span> <span class="m">3</span>   <span class="c1"># 割り算</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] 5</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="m">17</span> <span class="o">%%</span> <span class="m">3</span>  <span class="c1"># 余り</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] 2</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="m">2</span><span class="o">^</span><span class="m">2</span>      <span class="c1"># べき乗</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] 4</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>sqrt<span class="p">(</span><span class="m">2</span><span class="p">)</span>  <span class="c1"># 平方根</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] 1.414</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>pi       <span class="c1"># $\pi$</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] 3.142</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>bmi <span class="o">&lt;-</span> <span class="m">57.8</span> <span class="o">/</span> <span class="m">1.63</span><span class="o">^</span><span class="m">2</span> <span class="c1"># Body Mass Index</span>
+</span><span class='line'>bmi
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] 21.75</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>学習範囲</h2>
@@ -420,164 +520,170 @@ https://www.google.com/a/cpanel/hackingisbelieving.org/DomainSettingsAdvancedDns
 
 <p>データ型 (data type) とはデータの形式のことを意味する。例えば数値や文字列、論理型などがある。</p>
 
-<div>
-  <pre><code class='r'>x &lt;- c()
-x</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>x <span class="o">&lt;-</span> c<span class="p">()</span>
+</span><span class='line'>x
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## NULL</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## NULL</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='r'>y &lt;- c(1, 2)
-y</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>y <span class="o">&lt;-</span> c<span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span>
+</span><span class='line'>y
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] 1 2</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] 1 2</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='r'>z &lt;- c(&quot;ATG&quot;, &quot;GCG&quot;, &quot;CTG&quot;, &quot;TTA&quot;)
-z</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>z <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&quot;ATG&quot;</span><span class="p">,</span> <span class="s">&quot;GCG&quot;</span><span class="p">,</span> <span class="s">&quot;CTG&quot;</span><span class="p">,</span> <span class="s">&quot;TTA&quot;</span><span class="p">)</span>
+</span><span class='line'>z
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] &quot;ATG&quot; &quot;GCG&quot; &quot;CTG&quot; &quot;TTA&quot;</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] &quot;ATG&quot; &quot;GCG&quot; &quot;CTG&quot; &quot;TTA&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='r'>b &lt;- c(TRUE, FALSE)
-b</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>b <span class="o">&lt;-</span> c<span class="p">(</span><span class="kc">TRUE</span><span class="p">,</span> <span class="kc">FALSE</span><span class="p">)</span>
+</span><span class='line'>b
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1]  TRUE FALSE</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1]  TRUE FALSE</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>データ型の変換</h3>
 
 <p>異なるデータ型を行き来したい場合がある。多くのプログラムのエラーはここが原因となるため、データの型の変換方法と、型を調べる方法を理解することは重要である。</p>
 
-<div>
-  <pre><code class='r'>y &lt;- as.character(y)
-y</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>y <span class="o">&lt;-</span> as.character<span class="p">(</span>y<span class="p">)</span>
+</span><span class='line'>y
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] &quot;1&quot; &quot;2&quot;</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] &quot;1&quot; &quot;2&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='r'>as.numeric(y)</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>as.numeric<span class="p">(</span>y<span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] 1 2</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] 1 2</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='r'>y</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>y
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] &quot;1&quot; &quot;2&quot;</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] &quot;1&quot; &quot;2&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>型の確認</h3>
 
-<div>
-  <pre><code class='r'>mode(1)</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>mode<span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] &quot;numeric&quot;</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] &quot;numeric&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='r'>mode(&quot;A&quot;)</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>mode<span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] &quot;character&quot;</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] &quot;character&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='r'>is(1)</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>is<span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] &quot;numeric&quot; &quot;vector&quot;</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] &quot;numeric&quot; &quot;vector&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='r'>is(&quot;1&quot;)</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>is<span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] &quot;character&quot;           &quot;vector&quot;              &quot;data.frameRowLabels&quot;
-## [4] &quot;SuperClassMethod&quot;</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] &quot;character&quot;           &quot;vector&quot;              &quot;data.frameRowLabels&quot;</span>
+</span><span class='line'><span class="c1">## [4] &quot;SuperClassMethod&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>データ構造</h2>
@@ -590,133 +696,158 @@ y</code></pre>
 
 <p>vector は1種類のデータ型からなる1次元データを格納するためのデータ構造である。</p>
 
-<div>
-  <pre><code class='r'>x &lt;- c(3, 2, 4, 1)
-x</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>x <span class="o">&lt;-</span> c<span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
+</span><span class='line'>x
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] 3 2 4 1</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] 3 2 4 1</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>list</h3>
 
 <p>list は複数のデータ型からなる1次元データを格納することができるデータ構造である。例えば文字列型と数値を同時に格納できる。</p>
 
-<div>
-  <pre><code class='r'>y &lt;- list(3, 2, 4, 1)
-y</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>y <span class="o">&lt;-</span> list<span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
+</span><span class='line'>y
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [[1]]
-## [1] 3
-## 
-## [[2]]
-## [1] 2
-## 
-## [[3]]
-## [1] 4
-## 
-## [[4]]
-## [1] 1</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [[1]]</span>
+</span><span class='line'><span class="c1">## [1] 3</span>
+</span><span class='line'><span class="c1">## </span>
+</span><span class='line'><span class="c1">## [[2]]</span>
+</span><span class='line'><span class="c1">## [1] 2</span>
+</span><span class='line'><span class="c1">## </span>
+</span><span class='line'><span class="c1">## [[3]]</span>
+</span><span class='line'><span class="c1">## [1] 4</span>
+</span><span class='line'><span class="c1">## </span>
+</span><span class='line'><span class="c1">## [[4]]</span>
+</span><span class='line'><span class="c1">## [1] 1</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>matrix</h3>
 
 <p>matrix は1種類のデータ型からなる2次元データを格納するためのデータ構造である。いわゆる行列を表現することができる。</p>
 
-<div>
-  <pre><code class='r'>z &lt;- matrix(c(3, 2, 1, 2, 0, 1, 4, 5, 7, 1, 3, 3), nrow = 3)
-z</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>z <span class="o">&lt;-</span> matrix<span class="p">(</span>c<span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> nrow <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+</span><span class='line'>z
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>##      [,1] [,2] [,3] [,4]
-## [1,]    3    2    4    1
-## [2,]    2    0    5    3
-## [3,]    1    1    7    3</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">##      [,1] [,2] [,3] [,4]</span>
+</span><span class='line'><span class="c1">## [1,]    3    2    4    1</span>
+</span><span class='line'><span class="c1">## [2,]    2    0    5    3</span>
+</span><span class='line'><span class="c1">## [3,]    1    1    7    3</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>data frame</h3>
 
 <p>data frame は複数のデータ型からなる2次元データを格納するためのデータ構造である。Excel などのスプレットシートをイメージすればよい。数値行列だけを持つ場合は、matrix のほうが data frame より高速である。</p>
 
-<div>
-  <pre><code class='r'>d &lt;- data.frame(first = c(3, 2, 1), first.base = c(&quot;A&quot;, &quot;T&quot;, &quot;G&quot;), second = c(4, 
-    5, 7), second.base = c(&quot;C&quot;, &quot;G&quot;, &quot;C&quot;))
-d</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>d <span class="o">&lt;-</span> data.frame<span class="p">(</span>first <span class="o">=</span> c<span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span> first.base <span class="o">=</span> c<span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">,</span> <span class="s">&quot;T&quot;</span><span class="p">,</span> <span class="s">&quot;G&quot;</span><span class="p">),</span> second <span class="o">=</span> c<span class="p">(</span><span class="m">4</span><span class="p">,</span>
+</span><span class='line'>    <span class="m">5</span><span class="p">,</span> <span class="m">7</span><span class="p">),</span> second.base <span class="o">=</span> c<span class="p">(</span><span class="s">&quot;C&quot;</span><span class="p">,</span> <span class="s">&quot;G&quot;</span><span class="p">,</span> <span class="s">&quot;C&quot;</span><span class="p">))</span>
+</span><span class='line'>d
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>##   first first.base second second.base
-## 1     3          A      4           C
-## 2     2          T      5           G
-## 3     1          G      7           C</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">##   first first.base second second.base</span>
+</span><span class='line'><span class="c1">## 1     3          A      4           C</span>
+</span><span class='line'><span class="c1">## 2     2          T      5           G</span>
+</span><span class='line'><span class="c1">## 3     1          G      7           C</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>データ構造を確認する</h3>
 
 <p>どんなデータ構造を利用しているかを確認する方法を述べる。自分が使っているデータ構造を理解しておかないと、プログラムのエラー(バグ)の原因となる。特定のデータ構造を前提としている機能を使うとき、データ構造や型が異なる場合は、自動的に型や構造を変換したり、エラーを出したりする。</p>
 
-<div>
-  <pre><code class='r'>is(z)</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>is<span class="p">(</span>z<span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] &quot;matrix&quot;    &quot;array&quot;     &quot;structure&quot; &quot;vector&quot;</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] &quot;matrix&quot;    &quot;array&quot;     &quot;structure&quot; &quot;vector&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='r'>is(d)</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>is<span class="p">(</span>d<span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] &quot;data.frame&quot; &quot;list&quot;       &quot;oldClass&quot;   &quot;vector&quot;</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] &quot;data.frame&quot; &quot;list&quot;       &quot;oldClass&quot;   &quot;vector&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='r'>str(d)</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>str<span class="p">(</span>d<span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## 'data.frame':  3 obs. of  4 variables:
-##  $ first      : num  3 2 1
-##  $ first.base : Factor w/ 3 levels &quot;A&quot;,&quot;G&quot;,&quot;T&quot;: 1 3 2
-##  $ second     : num  4 5 7
-##  $ second.base: Factor w/ 2 levels &quot;C&quot;,&quot;G&quot;: 1 2 1</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## &#39;data.frame&#39;:   3 obs. of  4 variables:</span>
+</span><span class='line'><span class="c1">##  $ first      : num  3 2 1</span>
+</span><span class='line'><span class="c1">##  $ first.base : Factor w/ 3 levels &quot;A&quot;,&quot;G&quot;,&quot;T&quot;: 1 3 2</span>
+</span><span class='line'><span class="c1">##  $ second     : num  4 5 7</span>
+</span><span class='line'><span class="c1">##  $ second.base: Factor w/ 2 levels &quot;C&quot;,&quot;G&quot;: 1 2 1</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>データにアクセスする</h3>
@@ -725,205 +856,226 @@ d</code></pre>
 
 <p>まず vector の要素にアクセスする方法を示す。添字は一番左から1,2,3,&#8230; となる。プログラミング言語によっては、添字が 0 から始まるものもあるが、R は 1 であることに注意すること。</p>
 
-<div>
-  <pre><code class='r'>x &lt;- c(3, 2, 4, 1)
-x[1]</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>x <span class="o">&lt;-</span> c<span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
+</span><span class='line'>x<span class="p">[</span><span class="m">1</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] 3</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] 3</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='r'>x[1] &lt;- 4
-x</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>x<span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="m">4</span>
+</span><span class='line'>x
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] 4 2 4 1</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] 4 2 4 1</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='r'>x[1:2]</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>x<span class="p">[</span><span class="m">1</span>:<span class="m">2</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] 4 2</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] 4 2</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='r'>x[1:2] &lt;- c(3, 8)
-x</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>x<span class="p">[</span><span class="m">1</span>:<span class="m">2</span><span class="p">]</span> <span class="o">&lt;-</span> c<span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">8</span><span class="p">)</span>
+</span><span class='line'>x
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] 3 8 4 1</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] 3 8 4 1</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>次に list の要素にアクセスする方法を示す。</p>
 
-<div>
-  <pre><code class='r'>x &lt;- list(3, 2, 4, 1)
-x[[1]]</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>x <span class="o">&lt;-</span> list<span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">1</span><span class="p">)</span>
+</span><span class='line'>x<span class="p">[[</span><span class="m">1</span><span class="p">]]</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] 3</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] 3</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='r'>x[[2]] &lt;- 5
-x</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>x<span class="p">[[</span><span class="m">2</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="m">5</span>
+</span><span class='line'>x
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [[1]]
-## [1] 3
-## 
-## [[2]]
-## [1] 5
-## 
-## [[3]]
-## [1] 4
-## 
-## [[4]]
-## [1] 1</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [[1]]</span>
+</span><span class='line'><span class="c1">## [1] 3</span>
+</span><span class='line'><span class="c1">## </span>
+</span><span class='line'><span class="c1">## [[2]]</span>
+</span><span class='line'><span class="c1">## [1] 5</span>
+</span><span class='line'><span class="c1">## </span>
+</span><span class='line'><span class="c1">## [[3]]</span>
+</span><span class='line'><span class="c1">## [1] 4</span>
+</span><span class='line'><span class="c1">## </span>
+</span><span class='line'><span class="c1">## [[4]]</span>
+</span><span class='line'><span class="c1">## [1] 1</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>次は、matrix の要素にアクセスする方法を示す。横方向が行、縦方向が列であり、これは数学の行列と同じである。</p>
 
-<div>
-  <pre><code class='r'>x &lt;- matrix(c(3, 2, 1, 2, 0, 1, 4, 5, 7, 1, 3, 3), nrow = 3)
-x[1, ]  # 1行目にアクセス</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>x <span class="o">&lt;-</span> matrix<span class="p">(</span>c<span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> nrow <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+</span><span class='line'>x<span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="p">]</span>  <span class="c1"># 1行目にアクセス</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] 3 2 4 1</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] 3 2 4 1</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='r'>x[, 2]  # 2列目にアクセス</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>x<span class="p">[,</span> <span class="m">2</span><span class="p">]</span>  <span class="c1"># 2列目にアクセス</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] 2 0 1</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] 2 0 1</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='r'>x[3, 2]  # 3行2列目にアクセス</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>x<span class="p">[</span><span class="m">3</span><span class="p">,</span> <span class="m">2</span><span class="p">]</span>  <span class="c1"># 3行2列目にアクセス</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] 1</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] 1</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='r'>x[3, 2] &lt;- 9  # 3行2列目に9を
-x[3, ]</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>x<span class="p">[</span><span class="m">3</span><span class="p">,</span> <span class="m">2</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="m">9</span>  <span class="c1"># 3行2列目に9を</span>
+</span><span class='line'>x<span class="p">[</span><span class="m">3</span><span class="p">,</span> <span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] 1 9 7 3</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] 1 9 7 3</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>最後に data frame の要素にアクセスする方法を示す。</p>
 
-<div>
-  <pre><code class='r'>x &lt;- data.frame(first = c(3, 2, 1), first.base = c(&quot;A&quot;, &quot;T&quot;, &quot;G&quot;), second = c(4, 
-    5, 7), second.base = c(&quot;C&quot;, &quot;G&quot;, &quot;C&quot;))
-x$first</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>x <span class="o">&lt;-</span> data.frame<span class="p">(</span>first <span class="o">=</span> c<span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span> first.base <span class="o">=</span> c<span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">,</span> <span class="s">&quot;T&quot;</span><span class="p">,</span> <span class="s">&quot;G&quot;</span><span class="p">),</span> second <span class="o">=</span> c<span class="p">(</span><span class="m">4</span><span class="p">,</span>
+</span><span class='line'>    <span class="m">5</span><span class="p">,</span> <span class="m">7</span><span class="p">),</span> second.base <span class="o">=</span> c<span class="p">(</span><span class="s">&quot;C&quot;</span><span class="p">,</span> <span class="s">&quot;G&quot;</span><span class="p">,</span> <span class="s">&quot;C&quot;</span><span class="p">))</span>
+</span><span class='line'>x<span class="p">$</span>first
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] 3 2 1</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] 3 2 1</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='r'>x$first.base</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>x<span class="p">$</span>first.base
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] A T G
-## Levels: A G T</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] A T G</span>
+</span><span class='line'><span class="c1">## Levels: A G T</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='r'>x$first.base &lt;- c(&quot;T&quot;, &quot;C&quot;, &quot;A&quot;)
-x$first.base</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>x<span class="p">$</span>first.base <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&quot;T&quot;</span><span class="p">,</span> <span class="s">&quot;C&quot;</span><span class="p">,</span> <span class="s">&quot;A&quot;</span><span class="p">)</span>
+</span><span class='line'>x<span class="p">$</span>first.base
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] &quot;T&quot; &quot;C&quot; &quot;A&quot;</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] &quot;T&quot; &quot;C&quot; &quot;A&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>3つの基本的な処理</h2>
@@ -938,43 +1090,56 @@ x$first.base</code></pre>
 
 <p>次に反復処理について示す。ここでは、<em>for</em> を利用した繰り返しの構文を示す。</p>
 
-<div>
-  <pre><code class='r'>ans &lt;- 0
-for (i in 1:10) {
-    ans &lt;- ans + i
-}
-ans</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>ans <span class="o">&lt;-</span> <span class="m">0</span>
+</span><span class='line'><span class="kr">for</span> <span class="p">(</span>i in <span class="m">1</span>:<span class="m">10</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    ans <span class="o">&lt;-</span> ans <span class="o">+</span> i
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>ans
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] 55</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] 55</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>次に <em>if</em> を使って条件によって処理を分岐してみる。</p>
 
-<div>
-  <pre><code class='r'>odd &lt;- 0
-even &lt;- 0
-for (i in 1:10) {
-    if (i%%2 == 0) {
-        even &lt;- even + i
-    } else {
-        odd &lt;- odd + i
-    }
-}
-cat(even, odd, &quot;\n&quot;)</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>odd <span class="o">&lt;-</span> <span class="m">0</span>
+</span><span class='line'>even <span class="o">&lt;-</span> <span class="m">0</span>
+</span><span class='line'><span class="kr">for</span> <span class="p">(</span>i in <span class="m">1</span>:<span class="m">10</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kr">if</span> <span class="p">(</span>i<span class="o">%%</span><span class="m">2</span> <span class="o">==</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        even <span class="o">&lt;-</span> even <span class="o">+</span> i
+</span><span class='line'>    <span class="p">}</span> <span class="kr">else</span> <span class="p">{</span>
+</span><span class='line'>        odd <span class="o">&lt;-</span> odd <span class="o">+</span> i
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>cat<span class="p">(</span>even<span class="p">,</span> odd<span class="p">,</span> <span class="s">&quot;\n&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## 30 25</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## 30 25</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>関数</h3>
@@ -983,100 +1148,124 @@ cat(even, odd, &quot;\n&quot;)</code></pre>
 
 <p>簡単な統計量を計算する関数を紹介する。</p>
 
-<div>
-  <pre><code class='r'>x &lt;- 1:100
-x.sum &lt;- sum(x)
-x.mean &lt;- mean(x)
-x.sd &lt;- sd(x)
-cat(x.sum, x.mean, x.sd, &quot;\n&quot;)</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>x <span class="o">&lt;-</span> <span class="m">1</span>:<span class="m">100</span>
+</span><span class='line'>x.sum <span class="o">&lt;-</span> sum<span class="p">(</span>x<span class="p">)</span>
+</span><span class='line'>x.mean <span class="o">&lt;-</span> mean<span class="p">(</span>x<span class="p">)</span>
+</span><span class='line'>x.sd <span class="o">&lt;-</span> sd<span class="p">(</span>x<span class="p">)</span>
+</span><span class='line'>cat<span class="p">(</span>x.sum<span class="p">,</span> x.mean<span class="p">,</span> x.sd<span class="p">,</span> <span class="s">&quot;\n&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## 5050 50.5 29.01</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## 5050 50.5 29.01</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>関数を自分で作ることもできる。自分がよく使う機能をまとめておくことで、プログラムの見通しもよくなったり、機能が再利用しやすくなったり、プログラムコードのメンテナンスしやすくなるなどのメリットが多いので、積極的に利用したい機能である。ひとつの関数はなるべくひとつの機能を果すようにし、画面1枚以内に収まる程度にするのがお勧めである。それが守られないときは、よく考えて、複数の関数に分割することが重要である。</p>
 
 <p>ここでは簡単な関数の例として、DNA配列の相補鎖を計算する関数を定義してみる。</p>
 
-<div>
-  <pre><code class='r'>complement &lt;- function(x) {
-    if (x == &quot;A&quot;) {
-        return(&quot;T&quot;)
-    } else if (x == &quot;T&quot;) {
-        return(&quot;A&quot;)
-    } else if (x == &quot;G&quot;) {
-        return(&quot;C&quot;)
-    } else if (x == &quot;C&quot;) {
-        return(&quot;G&quot;)
-    } else {
-        return(&quot;N&quot;)
-    }
-}
-complement(&quot;A&quot;)</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>complement <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kr">if</span> <span class="p">(</span>x <span class="o">==</span> <span class="s">&quot;A&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kr">return</span><span class="p">(</span><span class="s">&quot;T&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span> <span class="kr">else</span> <span class="kr">if</span> <span class="p">(</span>x <span class="o">==</span> <span class="s">&quot;T&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kr">return</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span> <span class="kr">else</span> <span class="kr">if</span> <span class="p">(</span>x <span class="o">==</span> <span class="s">&quot;G&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kr">return</span><span class="p">(</span><span class="s">&quot;C&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span> <span class="kr">else</span> <span class="kr">if</span> <span class="p">(</span>x <span class="o">==</span> <span class="s">&quot;C&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kr">return</span><span class="p">(</span><span class="s">&quot;G&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span> <span class="kr">else</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kr">return</span><span class="p">(</span><span class="s">&quot;N&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>complement<span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] &quot;T&quot;</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] &quot;T&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='r'>complement(&quot;G&quot;)</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>complement<span class="p">(</span><span class="s">&quot;G&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] &quot;C&quot;</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] &quot;C&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='r'>complement(&quot;*&quot;)</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>complement<span class="p">(</span><span class="s">&quot;*&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## [1] &quot;N&quot;</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## [1] &quot;N&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>定義されている関数の使い型を調べるには <em>help</em> を利用する。またRの良いところとして、関数の多くに実行例が付属していることである。これを実行するには、<em>example</em> を利用する。</p>
 
 <h4>関数の使いかたを調べる</h4>
 
-<div>
-  <pre><code class='r'>help(sum)
-example(mean)</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>help<span class="p">(</span>sum<span class="p">)</span>
+</span><span class='line'>example<span class="p">(</span>mean<span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## 
-## meanR&gt; x &lt;- c(0:10, 50)
-## 
-## meanR&gt; xm &lt;- mean(x)
-## 
-## meanR&gt; c(xm, mean(x, trim = 0.10))
-## [1] 8.75 5.50</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## </span>
+</span><span class='line'><span class="c1">## meanR&gt; x &lt;- c(0:10, 50)</span>
+</span><span class='line'><span class="c1">## </span>
+</span><span class='line'><span class="c1">## meanR&gt; xm &lt;- mean(x)</span>
+</span><span class='line'><span class="c1">## </span>
+</span><span class='line'><span class="c1">## meanR&gt; c(xm, mean(x, trim = 0.10))</span>
+</span><span class='line'><span class="c1">## [1] 8.75 5.50</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>パッケージを使う</h2>
@@ -1085,201 +1274,273 @@ example(mean)</code></pre>
 
 <p>まず、CRANからパッケージをインストールする方法を述べる。パッケージはコマンドから簡単にインストールができ <em>install.packages</em> を利用する。</p>
 
-<div>
-  <pre><code class='r'>install.packages(&quot;ggplot2&quot;)</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>install.packages<span class="p">(</span><span class="s">&quot;ggplot2&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## 
-## The downloaded binary packages are in
-##  /var/folders/cz/cny0ysmx205dnj0y2_34k8cc0000gn/T//RtmpvsutiL/downloaded_packages</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## </span>
+</span><span class='line'><span class="c1">## The downloaded binary packages are in</span>
+</span><span class='line'><span class="c1">##   /var/folders/cz/cny0ysmx205dnj0y2_34k8cc0000gn/T//Rtmp2To84t/downloaded_packages</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>インストールが正常に終了していれば、以下のように <em>library</em> でパッケージの機能を読み込むことができる。</p>
 
-<div>
-  <pre><code class='r'>library(&quot;ggplot2&quot;)</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>library<span class="p">(</span><span class="s">&quot;ggplot2&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>次に、Bioconductor からパッケージをダウンロードする。これにはまず専用の関数を <em>biocLite</em> を設定する必要がある。ここでは、<em>biocLite</em> を設定し、マウス脳トランスクリプトームデータ解析ツールである <em>BrainStars</em> パッケージをインストールする。
 いろいろメッセージが表示されるが気にする必要はない。</p>
 
-<div>
-  <pre><code class='r'>source(&quot;http://bioconductor.org/biocLite.R&quot;)
-biocLite(&quot;BrainStars&quot;)</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>source<span class="p">(</span><span class="s">&quot;http://bioconductor.org/biocLite.R&quot;</span><span class="p">)</span>
+</span><span class='line'>biocLite<span class="p">(</span><span class="s">&quot;BrainStars&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## BioC_mirror: http://bioconductor.jp/</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## BioC_mirror: http://bioconductor.jp/</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## Using R version 2.15, BiocInstaller version 1.4.7.</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## Using R version 2.15, BiocInstaller version 1.4.7.</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## Warning: 開けません：HTTP ステータスは '404 Not Found' です</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## Warning: 開けません：HTTP ステータスは &#39;404 Not Found&#39; です</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## Warning: 開けません：HTTP ステータスは '404 Not Found' です</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## Warning: 開けません：HTTP ステータスは &#39;404 Not Found&#39; です</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## Warning: unable to access index for repository
-## http://brainarray.mbni.med.umich.edu/bioc/bin/macosx/leopard/contrib/2.15</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## Warning: unable to access index for repository</span>
+</span><span class='line'><span class="c1">## http://brainarray.mbni.med.umich.edu/bioc/bin/macosx/leopard/contrib/2.15</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## Installing package(s) 'BrainStars'</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## Installing package(s) &#39;BrainStars&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## Warning: 開けません：HTTP ステータスは '404 Not Found' です</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## Warning: 開けません：HTTP ステータスは &#39;404 Not Found&#39; です</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## Warning: 開けません：HTTP ステータスは '404 Not Found' です</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## Warning: 開けません：HTTP ステータスは &#39;404 Not Found&#39; です</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## Warning: unable to access index for repository
-## http://brainarray.mbni.med.umich.edu/bioc/bin/macosx/leopard/contrib/2.15</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## Warning: unable to access index for repository</span>
+</span><span class='line'><span class="c1">## http://brainarray.mbni.med.umich.edu/bioc/bin/macosx/leopard/contrib/2.15</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## Warning: 開けません：HTTP ステータスは '404 Not Found' です</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## Warning: 開けません：HTTP ステータスは &#39;404 Not Found&#39; です</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## Warning: 開けません：HTTP ステータスは '404 Not Found' です</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## Warning: 開けません：HTTP ステータスは &#39;404 Not Found&#39; です</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## Warning: unable to access index for repository
-## http://brainarray.mbni.med.umich.edu/bioc/bin/macosx/leopard/contrib/2.15</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## Warning: unable to access index for repository</span>
+</span><span class='line'><span class="c1">## http://brainarray.mbni.med.umich.edu/bioc/bin/macosx/leopard/contrib/2.15</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>インストールしたパッケージは、CRANパッケージと同様に、<em>library</em> でインストールが可能である。ここでは、3つの遺伝子IDを指定し、それらの脳50領域の遺伝子発現量を取り出している。</p>
 
-<div>
-  <pre><code class='r'>library(BrainStars)
-ids &lt;- c(&quot;1439627_at&quot;, &quot;1439631_at&quot;, &quot;1439633_at&quot;)
-my.esets &lt;- getBrainStars(query = ids, type = &quot;expression&quot;)
-exprs(my.esets)</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>library<span class="p">(</span>BrainStars<span class="p">)</span>
+</span><span class='line'>ids <span class="o">&lt;-</span> c<span class="p">(</span><span class="s">&quot;1439627_at&quot;</span><span class="p">,</span> <span class="s">&quot;1439631_at&quot;</span><span class="p">,</span> <span class="s">&quot;1439633_at&quot;</span><span class="p">)</span>
+</span><span class='line'>my.esets <span class="o">&lt;-</span> getBrainStars<span class="p">(</span>query <span class="o">=</span> ids<span class="p">,</span> type <span class="o">=</span> <span class="s">&quot;expression&quot;</span><span class="p">)</span>
+</span><span class='line'>exprs<span class="p">(</span>my.esets<span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>##                LS   LS.1     RS   RS.1 Cx_motor Cx_motor.1 Cx_cingulate
-## 1439627_at 12.868 12.854  5.686  5.771    5.643      5.650        7.125
-## 1439631_at  6.408  6.851  6.562  6.485    6.191      6.493        6.194
-## 1439633_at 10.286 10.164 10.449 10.540   10.293     10.366       10.452
-##            Cx_cingulate.1 OB_anterior OB_anterior.1 OB_posterior
-## 1439627_at          7.657      10.992        10.772        10.83
-## 1439631_at          6.539       7.315         7.445         7.45
-## 1439633_at         10.421      10.243        10.340        10.37
-##            OB_posterior.1    Pir  Pir.1    Tu  Tu.1 ventral_S ventral_S.1
-## 1439627_at         10.592  6.263  5.842 8.711 8.297     5.557       5.459
-## 1439631_at          7.807  7.019  6.966 6.674 6.667     6.766       6.654
-## 1439633_at         10.338 10.735 10.845 9.657 9.823    10.081       9.937
-##               CA1  CA1.1 CA2_CA3 CA2_CA3.1     DG   DG.1 A_anterior
-## 1439627_at  6.477  7.560   6.044     6.419  8.213  8.600      6.147
-## 1439631_at  6.469  6.562   6.759     6.314  6.796  6.843      6.815
-## 1439633_at 10.611 10.637  10.267    10.221 10.948 10.956      9.842
-##            A_anterior.1 A_posterior A_posterior.1     GP  GP.1 CPu_lateral
-## 1439627_at        5.156       4.999         4.934  8.210 8.028       7.961
-## 1439631_at        6.629       6.794         6.613  6.867 6.503       6.504
-## 1439633_at        9.794      10.356        10.491 10.066 9.948       9.233
-##            CPu_lateral.1 CPu_medial CPu_medial.1     MD   MD.1  VA_VL
-## 1439627_at         7.956      7.665        7.469 11.754 12.097 12.284
-## 1439631_at         6.536      6.417        6.654  6.467  6.543  6.735
-## 1439633_at         9.171      9.408        9.245 11.452 11.459 10.871
-##            VA_VL.1 VPM_VPL VPM_VPL.1     LG   LG.1     MG   MG.1     Hb
-## 1439627_at  11.720  12.228    11.945 12.383 12.309 12.130 12.040 12.943
-## 1439631_at   6.323   6.121     6.524  6.234  6.738  6.432  6.439  6.882
-## 1439633_at  10.761  10.867    10.775 10.611 10.463 11.028 10.946  9.832
-##              Hb.1 Pineal Pineal.1     M   M.1    ME  ME.1 Pituitary
-## 1439627_at 12.993 10.500   10.418 9.154 8.963 6.477 6.633     5.038
-## 1439631_at  6.917  8.658    8.619 7.096 6.844 8.122 8.344     7.431
-## 1439633_at 10.133  8.645    8.950 9.524 9.837 9.260 8.916    10.298
-##            Pituitary.1    SCN  SCN.1    MPA  MPA.1     SO   SO.1     Pa
-## 1439627_at       4.505 11.140 10.935 10.826 11.055 10.234 10.369 10.331
-## 1439631_at       8.091  7.081  7.358  6.861  6.996  6.623  6.538  6.880
-## 1439633_at      10.470  8.846  8.977  9.337  9.023  9.647  9.585  9.489
-##              Pa.1 SPa_ventral SPa_ventral.1 SPa_dorsal SPa_dorsal.1    DM
-## 1439627_at 10.196      11.342        11.038      6.941        6.890 7.063
-## 1439631_at  6.978       8.023         7.141      7.994        7.283 6.834
-## 1439633_at  9.548       9.548         9.513      9.484        9.703 9.304
-##             DM.1   VMH VMH.1   Arc Arc.1     LH  LH.1   PAG PAG.1     SC
-## 1439627_at 6.580 5.898 6.079 6.212 6.736 10.061 9.855 6.723 7.451  8.381
-## 1439631_at 7.252 6.707 6.938 7.088 7.065  6.703 6.734 6.757 6.720  6.902
-## 1439633_at 9.518 9.437 9.377 9.407 9.035  9.570 9.356 9.807 9.985 10.178
-##              SC.1     IC   IC.1   VTA VTA.1     SN   SN.1     Tg   Tg.1
-## 1439627_at  9.588 10.655  7.416 7.060 6.054  7.071  8.107  6.141  8.989
-## 1439631_at  6.917  6.891  6.631 7.721 7.366  6.185  6.171  6.762  6.785
-## 1439633_at 10.239 10.180 10.324 9.732 9.896 10.090 10.053 10.125 10.295
-##                Pn   Pn.1    MVe MVe.1 Cb_vermis Cb_vermis.1 Cb_lobe
-## 1439627_at 11.019 11.206 10.069 10.41    13.023       12.88  12.953
-## 1439631_at  6.562  6.508  6.547  6.52     7.789        7.57   7.641
-## 1439633_at 10.635 10.673 10.355 10.43    10.614       10.51  10.683
-##            Cb_lobe.1 Cb_nucleus Cb_nucleus.1 spinal_cord_anterior
-## 1439627_at    13.105      9.774       10.216                7.581
-## 1439631_at     7.819      6.534        6.508                6.352
-## 1439633_at    10.771     10.593       10.547                9.931
-##            spinal_cord_anterior.1 spinal_cord_posterior
-## 1439627_at                  7.675                 9.452
-## 1439631_at                  6.391                 6.695
-## 1439633_at                  9.941                 9.976
-##            spinal_cord_posterior.1 Retina Retina.1
-## 1439627_at                   9.638  8.233    6.822
-## 1439631_at                   6.507  7.340    6.641
-## 1439633_at                  10.019  8.668    8.967</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">##                LS   LS.1     RS   RS.1 Cx_motor Cx_motor.1 Cx_cingulate</span>
+</span><span class='line'><span class="c1">## 1439627_at 12.868 12.854  5.686  5.771    5.643      5.650        7.125</span>
+</span><span class='line'><span class="c1">## 1439631_at  6.408  6.851  6.562  6.485    6.191      6.493        6.194</span>
+</span><span class='line'><span class="c1">## 1439633_at 10.286 10.164 10.449 10.540   10.293     10.366       10.452</span>
+</span><span class='line'><span class="c1">##            Cx_cingulate.1 OB_anterior OB_anterior.1 OB_posterior</span>
+</span><span class='line'><span class="c1">## 1439627_at          7.657      10.992        10.772        10.83</span>
+</span><span class='line'><span class="c1">## 1439631_at          6.539       7.315         7.445         7.45</span>
+</span><span class='line'><span class="c1">## 1439633_at         10.421      10.243        10.340        10.37</span>
+</span><span class='line'><span class="c1">##            OB_posterior.1    Pir  Pir.1    Tu  Tu.1 ventral_S ventral_S.1</span>
+</span><span class='line'><span class="c1">## 1439627_at         10.592  6.263  5.842 8.711 8.297     5.557       5.459</span>
+</span><span class='line'><span class="c1">## 1439631_at          7.807  7.019  6.966 6.674 6.667     6.766       6.654</span>
+</span><span class='line'><span class="c1">## 1439633_at         10.338 10.735 10.845 9.657 9.823    10.081       9.937</span>
+</span><span class='line'><span class="c1">##               CA1  CA1.1 CA2_CA3 CA2_CA3.1     DG   DG.1 A_anterior</span>
+</span><span class='line'><span class="c1">## 1439627_at  6.477  7.560   6.044     6.419  8.213  8.600      6.147</span>
+</span><span class='line'><span class="c1">## 1439631_at  6.469  6.562   6.759     6.314  6.796  6.843      6.815</span>
+</span><span class='line'><span class="c1">## 1439633_at 10.611 10.637  10.267    10.221 10.948 10.956      9.842</span>
+</span><span class='line'><span class="c1">##            A_anterior.1 A_posterior A_posterior.1     GP  GP.1 CPu_lateral</span>
+</span><span class='line'><span class="c1">## 1439627_at        5.156       4.999         4.934  8.210 8.028       7.961</span>
+</span><span class='line'><span class="c1">## 1439631_at        6.629       6.794         6.613  6.867 6.503       6.504</span>
+</span><span class='line'><span class="c1">## 1439633_at        9.794      10.356        10.491 10.066 9.948       9.233</span>
+</span><span class='line'><span class="c1">##            CPu_lateral.1 CPu_medial CPu_medial.1     MD   MD.1  VA_VL</span>
+</span><span class='line'><span class="c1">## 1439627_at         7.956      7.665        7.469 11.754 12.097 12.284</span>
+</span><span class='line'><span class="c1">## 1439631_at         6.536      6.417        6.654  6.467  6.543  6.735</span>
+</span><span class='line'><span class="c1">## 1439633_at         9.171      9.408        9.245 11.452 11.459 10.871</span>
+</span><span class='line'><span class="c1">##            VA_VL.1 VPM_VPL VPM_VPL.1     LG   LG.1     MG   MG.1     Hb</span>
+</span><span class='line'><span class="c1">## 1439627_at  11.720  12.228    11.945 12.383 12.309 12.130 12.040 12.943</span>
+</span><span class='line'><span class="c1">## 1439631_at   6.323   6.121     6.524  6.234  6.738  6.432  6.439  6.882</span>
+</span><span class='line'><span class="c1">## 1439633_at  10.761  10.867    10.775 10.611 10.463 11.028 10.946  9.832</span>
+</span><span class='line'><span class="c1">##              Hb.1 Pineal Pineal.1     M   M.1    ME  ME.1 Pituitary</span>
+</span><span class='line'><span class="c1">## 1439627_at 12.993 10.500   10.418 9.154 8.963 6.477 6.633     5.038</span>
+</span><span class='line'><span class="c1">## 1439631_at  6.917  8.658    8.619 7.096 6.844 8.122 8.344     7.431</span>
+</span><span class='line'><span class="c1">## 1439633_at 10.133  8.645    8.950 9.524 9.837 9.260 8.916    10.298</span>
+</span><span class='line'><span class="c1">##            Pituitary.1    SCN  SCN.1    MPA  MPA.1     SO   SO.1     Pa</span>
+</span><span class='line'><span class="c1">## 1439627_at       4.505 11.140 10.935 10.826 11.055 10.234 10.369 10.331</span>
+</span><span class='line'><span class="c1">## 1439631_at       8.091  7.081  7.358  6.861  6.996  6.623  6.538  6.880</span>
+</span><span class='line'><span class="c1">## 1439633_at      10.470  8.846  8.977  9.337  9.023  9.647  9.585  9.489</span>
+</span><span class='line'><span class="c1">##              Pa.1 SPa_ventral SPa_ventral.1 SPa_dorsal SPa_dorsal.1    DM</span>
+</span><span class='line'><span class="c1">## 1439627_at 10.196      11.342        11.038      6.941        6.890 7.063</span>
+</span><span class='line'><span class="c1">## 1439631_at  6.978       8.023         7.141      7.994        7.283 6.834</span>
+</span><span class='line'><span class="c1">## 1439633_at  9.548       9.548         9.513      9.484        9.703 9.304</span>
+</span><span class='line'><span class="c1">##             DM.1   VMH VMH.1   Arc Arc.1     LH  LH.1   PAG PAG.1     SC</span>
+</span><span class='line'><span class="c1">## 1439627_at 6.580 5.898 6.079 6.212 6.736 10.061 9.855 6.723 7.451  8.381</span>
+</span><span class='line'><span class="c1">## 1439631_at 7.252 6.707 6.938 7.088 7.065  6.703 6.734 6.757 6.720  6.902</span>
+</span><span class='line'><span class="c1">## 1439633_at 9.518 9.437 9.377 9.407 9.035  9.570 9.356 9.807 9.985 10.178</span>
+</span><span class='line'><span class="c1">##              SC.1     IC   IC.1   VTA VTA.1     SN   SN.1     Tg   Tg.1</span>
+</span><span class='line'><span class="c1">## 1439627_at  9.588 10.655  7.416 7.060 6.054  7.071  8.107  6.141  8.989</span>
+</span><span class='line'><span class="c1">## 1439631_at  6.917  6.891  6.631 7.721 7.366  6.185  6.171  6.762  6.785</span>
+</span><span class='line'><span class="c1">## 1439633_at 10.239 10.180 10.324 9.732 9.896 10.090 10.053 10.125 10.295</span>
+</span><span class='line'><span class="c1">##                Pn   Pn.1    MVe MVe.1 Cb_vermis Cb_vermis.1 Cb_lobe</span>
+</span><span class='line'><span class="c1">## 1439627_at 11.019 11.206 10.069 10.41    13.023       12.88  12.953</span>
+</span><span class='line'><span class="c1">## 1439631_at  6.562  6.508  6.547  6.52     7.789        7.57   7.641</span>
+</span><span class='line'><span class="c1">## 1439633_at 10.635 10.673 10.355 10.43    10.614       10.51  10.683</span>
+</span><span class='line'><span class="c1">##            Cb_lobe.1 Cb_nucleus Cb_nucleus.1 spinal_cord_anterior</span>
+</span><span class='line'><span class="c1">## 1439627_at    13.105      9.774       10.216                7.581</span>
+</span><span class='line'><span class="c1">## 1439631_at     7.819      6.534        6.508                6.352</span>
+</span><span class='line'><span class="c1">## 1439633_at    10.771     10.593       10.547                9.931</span>
+</span><span class='line'><span class="c1">##            spinal_cord_anterior.1 spinal_cord_posterior</span>
+</span><span class='line'><span class="c1">## 1439627_at                  7.675                 9.452</span>
+</span><span class='line'><span class="c1">## 1439631_at                  6.391                 6.695</span>
+</span><span class='line'><span class="c1">## 1439633_at                  9.941                 9.976</span>
+</span><span class='line'><span class="c1">##            spinal_cord_posterior.1 Retina Retina.1</span>
+</span><span class='line'><span class="c1">## 1439627_at                   9.638  8.233    6.822</span>
+</span><span class='line'><span class="c1">## 1439631_at                   6.507  7.340    6.641</span>
+</span><span class='line'><span class="c1">## 1439633_at                  10.019  8.668    8.967</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>簡単な統計解析</h2>
@@ -1290,102 +1551,207 @@ exprs(my.esets)</code></pre>
 
 <p>ある遺伝子の発現量を測定したとしよう。ここでは、処理群(ここではExp)と対照群(ここではCont)でそれぞれ n = 3, つまり3回の biological replication の発現量を測定してあるとする。これを data frame に格納し、処理、対照群間の平均値の差の検定、ここではT検定を行う。</p>
 
-<div>
-  <pre><code class='r'>gene &lt;- data.frame(sample = c(&quot;Exp&quot;, &quot;Exp&quot;, &quot;Exp&quot;, &quot;Cont&quot;, &quot;Cont&quot;, &quot;Cont&quot;), 
-    expression = c(12.8, 13.7, 15.2, 8, 7.3, 9.9))
-t.test(expression ~ sample, data = gene)</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>gene <span class="o">&lt;-</span> data.frame<span class="p">(</span>sample <span class="o">=</span> c<span class="p">(</span><span class="s">&quot;Exp&quot;</span><span class="p">,</span> <span class="s">&quot;Exp&quot;</span><span class="p">,</span> <span class="s">&quot;Exp&quot;</span><span class="p">,</span> <span class="s">&quot;Cont&quot;</span><span class="p">,</span> <span class="s">&quot;Cont&quot;</span><span class="p">,</span> <span class="s">&quot;Cont&quot;</span><span class="p">),</span>
+</span><span class='line'>    expression <span class="o">=</span> c<span class="p">(</span><span class="m">12.8</span><span class="p">,</span> <span class="m">13.7</span><span class="p">,</span> <span class="m">15.2</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">7.3</span><span class="p">,</span> <span class="m">9.9</span><span class="p">))</span>
+</span><span class='line'>t.test<span class="p">(</span>expression ~ sample<span class="p">,</span> data <span class="o">=</span> gene<span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## 
-##  Welch Two Sample t-test
-## 
-## data:  expression by sample 
-## t = -5.26, df = 3.957, p-value = 0.006442
-## alternative hypothesis: true difference in means is not equal to 0 
-## 95 percent confidence interval:
-##  -8.415 -2.585 
-## sample estimates:
-## mean in group Cont  mean in group Exp 
-##                8.4               13.9</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## </span>
+</span><span class='line'><span class="c1">##   Welch Two Sample t-test</span>
+</span><span class='line'><span class="c1">## </span>
+</span><span class='line'><span class="c1">## data:  expression by sample </span>
+</span><span class='line'><span class="c1">## t = -5.26, df = 3.957, p-value = 0.006442</span>
+</span><span class='line'><span class="c1">## alternative hypothesis: true difference in means is not equal to 0 </span>
+</span><span class='line'><span class="c1">## 95 percent confidence interval:</span>
+</span><span class='line'><span class="c1">##  -8.415 -2.585 </span>
+</span><span class='line'><span class="c1">## sample estimates:</span>
+</span><span class='line'><span class="c1">## mean in group Cont  mean in group Exp </span>
+</span><span class='line'><span class="c1">##                8.4               13.9</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>統計解析を行うときには <strong><em>必ず</em></strong> グラフを書いて、データの傾向を目視することを忘れてはならない。ここでは boxplot で2群の傾向を可視化する。</p>
 
-<div>
-  <pre><code class='r'>plot(expression ~ sample, data = gene)</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>plot<span class="p">(</span>expression ~ sample<span class="p">,</span> data <span class="o">=</span> gene<span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p><img src="http://cat.hackingisbelieving.org//images/2012-08-13-NGS-R-Bioconductor-1st/unnamed-chunk-24.png" alt="center" /></p>
+<p><img src="figure/unnamed-chunk-24.png" alt="plot of chunk unnamed-chunk-24" /></p>
 
 <h3>回帰</h3>
 
 <p>ここでは、一日ごとに遺伝子発現を測定したとする。この遺伝子発現が時間に応じてどのように変化しているか、その傾向を知りたいとする。そこで、一日ごとの発現量を data frame に格納し、回帰分析を行う。</p>
 
-<div>
-  <pre><code class='r'>gene &lt;- data.frame(time = c(0, 1, 2, 3, 4, 5), expression = c(1.8, 3.7, 4.2, 
-    8, 10.3, 13.9))
-gene.lm &lt;- lm(expression ~ time, data = gene)
-gene.lm</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>gene <span class="o">&lt;-</span> data.frame<span class="p">(</span>time <span class="o">=</span> c<span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">),</span> expression <span class="o">=</span> c<span class="p">(</span><span class="m">1.8</span><span class="p">,</span> <span class="m">3.7</span><span class="p">,</span> <span class="m">4.2</span><span class="p">,</span>
+</span><span class='line'>    <span class="m">8</span><span class="p">,</span> <span class="m">10.3</span><span class="p">,</span> <span class="m">13.9</span><span class="p">))</span>
+</span><span class='line'>gene.lm <span class="o">&lt;-</span> lm<span class="p">(</span>expression ~ time<span class="p">,</span> data <span class="o">=</span> gene<span class="p">)</span>
+</span><span class='line'>gene.lm
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## 
-## Call:
-## lm(formula = expression ~ time, data = gene)
-## 
-## Coefficients:
-## (Intercept)         time  
-##       0.976        2.403</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## </span>
+</span><span class='line'><span class="c1">## Call:</span>
+</span><span class='line'><span class="c1">## lm(formula = expression ~ time, data = gene)</span>
+</span><span class='line'><span class="c1">## </span>
+</span><span class='line'><span class="c1">## Coefficients:</span>
+</span><span class='line'><span class="c1">## (Intercept)         time  </span>
+</span><span class='line'><span class="c1">##       0.976        2.403</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='r'>summary(gene.lm)</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>summary<span class="p">(</span>gene.lm<span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<div>
-  <pre><code class='text'>## 
-## Call:
-## lm(formula = expression ~ time, data = gene)
-## 
-## Residuals:
-##      1      2      3      4      5      6 
-##  0.824  0.321 -1.582 -0.185 -0.288  0.910 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)
-## (Intercept)    0.976      0.744    1.31  0.25978
-## time           2.403      0.246    9.78  0.00061
-## 
-## Residual standard error: 1.03 on 4 degrees of freedom
-## Multiple R-squared: 0.96,    Adjusted R-squared: 0.95 
-## F-statistic: 95.6 on 1 and 4 DF,  p-value: 0.000613</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'><span class="c1">## </span>
+</span><span class='line'><span class="c1">## Call:</span>
+</span><span class='line'><span class="c1">## lm(formula = expression ~ time, data = gene)</span>
+</span><span class='line'><span class="c1">## </span>
+</span><span class='line'><span class="c1">## Residuals:</span>
+</span><span class='line'><span class="c1">##      1      2      3      4      5      6 </span>
+</span><span class='line'><span class="c1">##  0.824  0.321 -1.582 -0.185 -0.288  0.910 </span>
+</span><span class='line'><span class="c1">## </span>
+</span><span class='line'><span class="c1">## Coefficients:</span>
+</span><span class='line'><span class="c1">##             Estimate Std. Error t value Pr(&gt;|t|)</span>
+</span><span class='line'><span class="c1">## (Intercept)    0.976      0.744    1.31  0.25978</span>
+</span><span class='line'><span class="c1">## time           2.403      0.246    9.78  0.00061</span>
+</span><span class='line'><span class="c1">## </span>
+</span><span class='line'><span class="c1">## Residual standard error: 1.03 on 4 degrees of freedom</span>
+</span><span class='line'><span class="c1">## Multiple R-squared: 0.96, Adjusted R-squared: 0.95 </span>
+</span><span class='line'><span class="c1">## F-statistic: 95.6 on 1 and 4 DF,  p-value: 0.000613</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>次に生データと回帰分析によって得られた回帰直線を同時にプロットする。</p>
 
-<div>
-  <pre><code class='r'>plot(gene, type = &quot;b&quot;, xlim = c(0, 6), ylim = c(0, 14))
-abline(gene.lm, col = &quot;blue&quot;)</code></pre>
-</div>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>plot<span class="p">(</span>gene<span class="p">,</span> type <span class="o">=</span> <span class="s">&quot;b&quot;</span><span class="p">,</span> xlim <span class="o">=</span> c<span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">6</span><span class="p">),</span> ylim <span class="o">=</span> c<span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">14</span><span class="p">))</span>
+</span><span class='line'>abline<span class="p">(</span>gene.lm<span class="p">,</span> col <span class="o">=</span> <span class="s">&quot;blue&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p><img src="http://cat.hackingisbelieving.org//images/2012-08-13-NGS-R-Bioconductor-1st/unnamed-chunk-26.png" alt="center" /></p>
+<p><img src="figure/unnamed-chunk-26.png" alt="plot of chunk unnamed-chunk-26" /></p>
+
+<h2>練習問題</h2>
+
+<h3>問題1</h3>
+
+<p>1から順に数字を表示しなさい。ただしその数が3で割り切れるならは数字のかわりに Fizz と、5で割り切れるなら Buzz と、3でも5でも割り切れる場合は FizzBuzz と表示しなさい (いわゆる FizzBuzz 問題と呼ばれており、プログラマならば、なにも参考にせずに、2分で解けなければならないと言われている)。</p>
+
+<h3>問題2</h3>
+
+<p>問題1を条件分岐を使わずに解きなさい。</p>
+
+<h3>問題3</h3>
+
+<p>以下のようにすると、Rに組み込まれているデータフレーム iris を読み込むことができる。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='r'><span class='line'>data<span class="p">(</span>iris<span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>この <em>iris</em> の1から4列の各列の標準偏差を <em>for</em> を使って求めなさい。</p>
+
+<h3>問題4</h3>
+
+<p>問題2で利用した <em>iris</em> の列ごとの平均を <em>for</em> を使って求めなさい。</p>
+
+<h3>問題5</h3>
+
+<p>問題2を <em>for</em> を用いずに一行で求めなさい。ヒント: <em>sapply</em> あるいは、<em>colMeans</em> を <em>help</em> で調べる。</p>
+
+<h3>問題6</h3>
+
+<p>問題2で利用した <em>iris</em> の1から4列の各列の標準偏差を <em>for</em> を用いずに、sapply 関数を使って求めなさい。</p>
+
+<h3>問題7</h3>
+
+<p>「パッケージを使う」のパートで出てきた <em>exprs(my.esets)</em> を <em>boxplot</em> 関数を用いてプロットせよ。</p>
+
+<h2>発展問題</h2>
+
+<p>ここで解説したRプログラミングの知識がすでにあるという人は、講義を聞かずに以下の問題を解いていてもよい。ウェブ検索を駆使して答えよ。</p>
+
+<h3>初級</h3>
+
+<ul>
+<li>前項の練習問題すべてを、ヘルプや検索を用いずに、20分以内に解け</li>
+<li>講義資料中にある「DNA配列の相補鎖を計算する関数」を、関数を自作せずに、Rに組み込まれているたったひとつの関数で実現せよ。</li>
+<li>練習問題1の結果をファイルを出力せよ。ただし一行ごとにひとつの数字または文字列を表示せよ。</li>
+</ul>
+
+
+<h3>中級</h3>
+
+<ul>
+<li>lapply, apply, sapply の違いについて述べよ。</li>
+<li>Rに組み込みこまれている apply 族関数と plyr package で提供される関数について比較し説明せよ。</li>
+<li>multicore package を利用して、練習問題1をマルチコアを使った並列計算するコードに直せ。</li>
+</ul>
+
+
+<h3>上級</h3>
+
+<ul>
+<li>Rのスコープについて解説せよ。ヒント: (環境、レキシカルスコープ)</li>
+<li>総称関数とはなにか。<em>summary</em> か <em>plot</em> を例に説明せよ。</li>
+<li>上記の回答をすべて、R markdown で執筆し、<a href="http://www.rpubs.com/">RPubs</a> にアップロードせよ。</li>
+</ul>
+
 
 <h2>次になにを学べばよいか</h2>
 

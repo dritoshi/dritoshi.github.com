@@ -844,8 +844,69 @@ plot(oct4.jaspar, ncol = 2, top = 5, rev = FALSE, main = &quot;Oct4 ChIP-seq&quo
   <pre><code class='r'>library(&quot;QuGAcomp&quot;)
 library(&quot;corrplot&quot;)
 
-oct4.fat &lt;- fat(oct4.gr, 200)
-sox2.fat &lt;- fat(sox2.gr, 200)
+genome.length.file &lt;- file.path(system.file(package = &quot;QuGAcomp&quot;), &quot;data&quot;, &quot;mm9.info&quot;)
+
+oct4.bed.file &lt;- file.path(system.file(package = &quot;QuGAcomp&quot;), &quot;data&quot;, &quot;GSM288346_ES_Oct4.mm9.header.bed&quot;)
+sox2.bed.file &lt;- file.path(system.file(package = &quot;QuGAcomp&quot;), &quot;data&quot;, &quot;GSM288347_ES_Sox2.mm9.header.bed&quot;)
+nanog.bed.file &lt;- file.path(system.file(package = &quot;QuGAcomp&quot;), &quot;data&quot;, &quot;GSM288345_ES_Nanog.mm9.header.bed&quot;)
+
+oct4.gr &lt;- loadBedFile(oct4.bed.file, genome.length.file)</code></pre>
+</div>
+
+
+
+
+<div>
+  <pre><code class='text'>## [1] 3760    6</code></pre>
+</div>
+
+
+
+
+<div>
+  <pre><code class='r'>sox2.gr &lt;- loadBedFile(sox2.bed.file, genome.length.file)</code></pre>
+</div>
+
+
+
+
+<div>
+  <pre><code class='text'>## [1] 4526    6</code></pre>
+</div>
+
+
+
+
+<div>
+  <pre><code class='r'>nanog.gr &lt;- loadBedFile(nanog.bed.file, genome.length.file)</code></pre>
+</div>
+
+
+
+
+<div>
+  <pre><code class='text'>## [1] 10343     6</code></pre>
+</div>
+
+
+
+
+<div>
+  <pre><code class='r'>oct4.fat &lt;- fat(oct4.gr, 200)</code></pre>
+</div>
+
+
+
+
+<div>
+  <pre><code class='text'>## Warning: trimmed end values to be &lt;= seqlengths</code></pre>
+</div>
+
+
+
+
+<div>
+  <pre><code class='r'>sox2.fat &lt;- fat(sox2.gr, 200)
 nanog.fat &lt;- fat(nanog.gr, 200)
 
 oct4.unistd &lt;- unifyStrand(oct4.fat)
@@ -875,70 +936,11 @@ colnames(mat.cor) &lt;- c(&quot;Oct4&quot;, &quot;Sox2&quot;, &quot;Nanog&quot;)
 
 diag(mat.cor) &lt;- rep(1, num)
 
-mat.cor[1, 2] &lt;- mat.cor[2, 1] &lt;- pearsonCoef(quga.oct4.sox2)</code></pre>
-</div>
+mat.cor[1, 2] &lt;- mat.cor[2, 1] &lt;- pearsonCoef(quga.oct4.sox2)
+mat.cor[1, 3] &lt;- mat.cor[3, 1] &lt;- pearsonCoef(quga.oct4.nanog)
+mat.cor[2, 3] &lt;- mat.cor[3, 2] &lt;- pearsonCoef(quga.sox2.nanog)
 
-
-
-
-<div>
-  <pre><code class='text'>## Warning: longer object length is not a multiple of shorter object length</code></pre>
-</div>
-
-
-
-
-<div>
-  <pre><code class='text'>## Warning: longer object length is not a multiple of shorter object length</code></pre>
-</div>
-
-
-
-
-<div>
-  <pre><code class='r'>mat.cor[1, 3] &lt;- mat.cor[3, 1] &lt;- pearsonCoef(quga.oct4.nanog)</code></pre>
-</div>
-
-
-
-
-<div>
-  <pre><code class='text'>## Warning: longer object length is not a multiple of shorter object length</code></pre>
-</div>
-
-
-
-
-<div>
-  <pre><code class='text'>## Warning: longer object length is not a multiple of shorter object length</code></pre>
-</div>
-
-
-
-
-<div>
-  <pre><code class='r'>mat.cor[2, 3] &lt;- mat.cor[3, 2] &lt;- pearsonCoef(quga.sox2.nanog)</code></pre>
-</div>
-
-
-
-
-<div>
-  <pre><code class='text'>## Warning: longer object length is not a multiple of shorter object length</code></pre>
-</div>
-
-
-
-
-<div>
-  <pre><code class='text'>## Warning: longer object length is not a multiple of shorter object length</code></pre>
-</div>
-
-
-
-
-<div>
-  <pre><code class='r'>mat.cor.max &lt;- max(mat.cor[upper.tri(mat.cor, diag = F)])
+mat.cor.max &lt;- max(mat.cor[upper.tri(mat.cor, diag = F)])
 mat.cor.min &lt;- min(mat.cor[upper.tri(mat.cor, diag = F)])
 
 corrplot(mat.cor, method = &quot;circle&quot;, type = &quot;full&quot;, diag = FALSE, outline = FALSE, 

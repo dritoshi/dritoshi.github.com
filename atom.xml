@@ -4,7 +4,7 @@
   <title><![CDATA[The Cat Way]]></title>
   <link href="http://cat.hackingisbelieving.org//atom.xml" rel="self"/>
   <link href="http://cat.hackingisbelieving.org//"/>
-  <updated>2012-08-20T15:02:07+09:00</updated>
+  <updated>2012-08-20T15:06:05+09:00</updated>
   <id>http://cat.hackingisbelieving.org//</id>
   <author>
     <name><![CDATA[Itoshi NIKAIDO]]></name>
@@ -334,7 +334,29 @@ https://www.google.com/a/cpanel/hackingisbelieving.org/DomainSettingsAdvancedDns
 </span><span class='line'>---</span></code></pre></td></tr></table></div></figure>
 
 
-<p>みたいな感じ。あとはひたすら書く。</p>
+<p>みたいな感じ。ブログエントリではなくて、page を作りたい場合は、</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>---
+</span><span class='line'>layout: page
+</span><span class='line'>title: "R Markdown with Octopress"
+</span><span class='line'>date: 2012-08-13 18:00
+</span><span class='line'>comments: true
+</span><span class='line'>sharing: true
+</span><span class='line'>footer: true
+</span><span class='line'>---</span></code></pre></td></tr></table></div></figure>
+
+
+<p>とする。</p>
+
+<p>あとはひたすら書く。</p>
 
 <h2>Octopress 用の Markdown へ変換する</h2>
 
@@ -350,8 +372,8 @@ https://www.google.com/a/cpanel/hackingisbelieving.org/DomainSettingsAdvancedDns
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>cp yyyy-mm-dd.Rmd $OCTPRESS_HOME/source/_posts/
-</span><span class='line'>cp -a yyyy-mm-dd $OCTPRESS_HOME/source/images/</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cp yyyy-mm-dd-file-name.Rmd $OCTPRESS_HOME/source/_posts/
+</span><span class='line'>cp -a yyyy-mm-dd-file-name $OCTPRESS_HOME/source/images/</span></code></pre></td></tr></table></div></figure>
 
 
 <p>静的HTMLを生成して、preview したり、github へデプロイしたり。</p>

@@ -399,7 +399,8 @@ y</code></pre>
 
 
 <div>
-  <pre><code class='text'>## [1] &quot;numeric&quot;          &quot;vector&quot;           &quot;EnumerationValue&quot;</code></pre>
+  <pre><code class='text'>## [1] &quot;numeric&quot;          &quot;vector&quot;           &quot;EnumerationValue&quot;
+## [4] &quot;atomic&quot;           &quot;vectorORfactor&quot;</code></pre>
 </div>
 
 
@@ -413,9 +414,11 @@ y</code></pre>
 
 
 <div>
-  <pre><code class='text'>## [1] &quot;character&quot;             &quot;vector&quot;                &quot;data.frameRowLabels&quot;  
-## [4] &quot;SuperClassMethod&quot;      &quot;EnumerationValue&quot;      &quot;characterORconnection&quot;
-## [7] &quot;characterORMIAME&quot;</code></pre>
+  <pre><code class='text'>##  [1] &quot;character&quot;             &quot;vector&quot;               
+##  [3] &quot;data.frameRowLabels&quot;   &quot;SuperClassMethod&quot;     
+##  [5] &quot;EnumerationValue&quot;      &quot;characterORconnection&quot;
+##  [7] &quot;characterORMIAME&quot;      &quot;atomic&quot;               
+##  [9] &quot;characterORNULL&quot;       &quot;vectorORfactor&quot;</code></pre>
 </div>
 
 
@@ -522,7 +525,8 @@ d</code></pre>
 
 
 <div>
-  <pre><code class='text'>## [1] &quot;matrix&quot;    &quot;array&quot;     &quot;structure&quot; &quot;vector&quot;</code></pre>
+  <pre><code class='text'>## [1] &quot;matrix&quot;         &quot;array&quot;          &quot;structure&quot;      &quot;vector&quot;        
+## [5] &quot;vectorORfactor&quot;</code></pre>
 </div>
 
 
@@ -1227,6 +1231,41 @@ abline(gene.lm, col = &quot;blue&quot;)</code></pre>
 
 <p><img src="/images/NGS-R-Bioconductor-1st/unnamed-chunk-26.png" alt="center" /></p>
 
+<h3>データの保存と読み込み</h3>
+
+<p>これまでの解析経過をすべて保存するには、単にそのまま R を終了すればよい。このとき「ワークスペースイメージを保存する」を y にする。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>q()
+</span><span class='line'>Save workspace image? [y/n/c]: </span></code></pre></td></tr></table></div></figure>
+
+
+<p>とする。すると、現在のフォルダに .RData というファイルが作られる。ここにこれまで入力したコマンドや関数、データなどがすべて保存されている。</p>
+
+<p>このワークスペースをロードするには、そのディレクトリでRを起動するか、Rを起動したあとそのディレクトリをワークスペースとして設定する。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>setwd(DIR_NAME)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>DIR_NAME には、.RData が保存されているディレクトリを指定する。</p>
+
+<p>またファイル名を明示的に指定して、解析途中などに保存するようにするには、</p>
+
+<div>
+  <pre><code class='r'>save(list = ls(), file = &quot;results.rda&quot;)</code></pre>
+</div>
+
+
+<p>としたのち保存を選択しても同じである。</p>
+
+<p>このファイルをロードするには以下のようにする。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>load("results.rda")</span></code></pre></td></tr></table></div></figure>
+
+
 <h2>練習問題</h2>
 
 <h3>問題1</h3>
@@ -1316,23 +1355,58 @@ abline(gene.lm, col = &quot;blue&quot;)</code></pre>
 ## [1] ja_JP.UTF-8/ja_JP.UTF-8/ja_JP.UTF-8/C/ja_JP.UTF-8/ja_JP.UTF-8
 ## 
 ## attached base packages:
-## [1] splines   datasets  utils     stats     graphics  grDevices methods  
-## [8] base     
+## [1] grid      splines   datasets  utils     stats     graphics  grDevices
+## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] Hmisc_3.9-3         survival_2.36-14    cluster_1.14.2     
-##  [4] cummeRbund_1.99.2   fastcluster_1.1.6   reshape2_1.2.1     
-##  [7] RSQLite_0.11.1      DBI_0.2-5           BrainStars_1.0.0   
-## [10] Biobase_2.16.0      BiocGenerics_0.2.0  RCurl_1.91-1       
-## [13] bitops_1.0-4.1      ggplot2_0.9.1       knitr_0.7.6        
-## [16] stringr_0.6.1       RColorBrewer_1.0-5  MASS_7.3-20        
-## [19] plyr_1.7.1          BiocInstaller_1.4.7
+##  [1] ChIPpeakAnno_2.4.0                 
+##  [2] limma_3.12.1                       
+##  [3] org.Hs.eg.db_2.7.1                 
+##  [4] GO.db_2.7.1                        
+##  [5] BSgenome.Ecoli.NCBI.20080805_1.3.17
+##  [6] multtest_2.12.0                    
+##  [7] biomaRt_2.12.0                     
+##  [8] gplots_2.11.0                      
+##  [9] KernSmooth_2.23-8                  
+## [10] caTools_1.13                       
+## [11] gdata_2.11.0                       
+## [12] gtools_2.7.0                       
+## [13] org.Mm.eg.db_2.7.1                 
+## [14] AnnotationDbi_1.18.1               
+## [15] BSgenome.Mmusculus.UCSC.mm9_1.3.17 
+## [16] rGADEM_2.4.0                       
+## [17] seqLogo_1.22.0                     
+## [18] BSgenome_1.24.0                    
+## [19] GenomicRanges_1.8.12               
+## [20] Biostrings_2.24.1                  
+## [21] IRanges_1.14.4                     
+## [22] MotIV_1.10.0                       
+## [23] Hmisc_3.9-3                        
+## [24] survival_2.36-14                   
+## [25] cluster_1.14.2                     
+## [26] cummeRbund_1.99.2                  
+## [27] fastcluster_1.1.6                  
+## [28] reshape2_1.2.1                     
+## [29] RSQLite_0.11.1                     
+## [30] DBI_0.2-5                          
+## [31] BrainStars_1.0.0                   
+## [32] Biobase_2.16.0                     
+## [33] BiocGenerics_0.2.0                 
+## [34] RCurl_1.91-1                       
+## [35] bitops_1.0-4.1                     
+## [36] ggplot2_0.9.1                      
+## [37] knitr_0.7.6                        
+## [38] stringr_0.6.1                      
+## [39] RColorBrewer_1.0-5                 
+## [40] MASS_7.3-20                        
+## [41] plyr_1.7.1                         
+## [42] BiocInstaller_1.4.7                
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] colorspace_1.1-1 dichromat_1.2-4  digest_0.5.2     evaluate_0.4.2  
-##  [5] formatR_0.6      grid_2.15.1      labeling_0.1     lattice_0.20-6  
-##  [9] memoise_0.1      munsell_0.3      proto_0.3-9.2    RJSONIO_0.98-1  
-## [13] scales_0.2.1     tools_2.15.1</code></pre>
+##  [5] formatR_0.6      labeling_0.1     lattice_0.20-6   memoise_0.1     
+##  [9] munsell_0.3      proto_0.3-9.2    RJSONIO_0.98-1   scales_0.2.1    
+## [13] stats4_2.15.1    tools_2.15.1     XML_3.9-4</code></pre>
 </div>
 
 

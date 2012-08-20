@@ -635,7 +635,7 @@ is(oct4.mf.goterm)</code></pre>
 
 <p>もうひとつはピークの配列のなかに頻出するDNA配列パターン、すなわち、DNAモチーフを発見するために必要となるからです。DNAモチーフを発見することで、タンパク質がどのようなDNA配列を認識して結合するのかを明らかにすることができます。またすでにモチーフ配列が既知の場合は、その含有率を知ることで、ChIP-seq の実験がうまくいっているかを評価することができます。</p>
 
-<p>では、DNAモチーフを発見してみます。</p>
+<p>では配列を得てみます。</p>
 
 <div>
   <pre><code class='r'>library(&quot;BSgenome.Mmusculus.UCSC.mm9&quot;)
@@ -708,7 +708,11 @@ is(oct4.peaksWithSeqs)</code></pre>
 </div>
 
 
+<p>最終的には、FASTA 形式でファイルに保存しています。</p>
+
 <h3>ピーク領域に頻出するDNAモチーフを得る</h3>
+
+<p>では、前項で作成した配列に含まれるDNAモチーフを発見してみます。</p>
 
 <div>
   <pre><code class='r'>library(&quot;rGADEM&quot;)
@@ -791,7 +795,7 @@ oct4.motif &lt;- GADEM(oct4.seqs, verbose = 1, genome = Mmusculus)</code></pre>
 </div>
 
 
-
+<p>次は発見したモチーフが既知のモチーフに似ているかどうかを調べます。ここでは、JASPAR という転写因子結合モチーフのデータベースに対し、発見したモチーフに似たものを検索します。実際には、PWM の相関係数を計算しています。</p>
 
 <div>
   <pre><code class='r'>library(&quot;MotIV&quot;)
@@ -830,6 +834,12 @@ plot(oct4.jaspar, ncol = 2, top = 5, rev = FALSE, main = &quot;Oct4 ChIP-seq&quo
 <p><img src="/images/NGS-R-Bioconductor-3rd/unnamed-chunk-7.png" alt="center" /></p>
 
 <h3>異なるChIP-seqデータの比較</h3>
+
+<p>異なる転写因子やエピジェネティクス因子の ChIP-seq のデータを比較したり、peak 解析ソフトによる結果の比較をしたい場合がある。このときは、それぞれの peak データを取り込んで、その重なりの数を数えるのが一般的である。</p>
+
+<p>より定量的に比較するには、それぞれのピークの位置にどのぐらい相関があるかを計算する。まずピークの区間データを、ある座標に peka が存在するかどうかを 0, 1 で示した localization vector と呼ばれるデータに変換する。次に、適切な大きさに、区間ごとに binning (window analysis, smoothing) した後、そのベクター間の相関を計算する。</p>
+
+<p>以下では3つの転写因子の peak データをピアソンの積率相関係数によって比較する方法である。これは 2 x 2 contingency table (cross table) の phi coefficient と等価である。一般的に、localization vector の相関は高くならないので注意が必要である。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

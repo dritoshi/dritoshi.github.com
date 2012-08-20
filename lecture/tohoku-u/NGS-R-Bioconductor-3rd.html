@@ -9,7 +9,7 @@
   <meta name="author" content="Itoshi NIKAIDO">
 
   
-  <meta name="description" content="ChIP-seq Analysis With R/Bioconductor Aug 13th, 2012 RとBioconductorでNGS解析: 3限 ChIP-seq データ解析 ToDo はじめに この文章は統合データベース講習会：AJACSみちのく2「 &hellip;">
+  <meta name="description" content="ChIP-seq Analysis With R/Bioconductor Aug 13th, 2012 RとBioconductorでNGS解析: 3限 ChIP-seq データ解析 はじめに この文章は統合データベース講習会：AJACSみちのく2「 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -114,8 +114,6 @@ MathJax.Hub.Config({
   
   <p>RとBioconductorでNGS解析: 3限 ChIP-seq データ解析</p>
 
-<h2>ToDo</h2>
-
 <h2>はじめに</h2>
 
 <p>この文章は統合データベース講習会：AJACSみちのく2「RとBioconductorを使ったNGS解析」3限目「ChIP-seq データ解析の基礎」の講義資料です。</p>
@@ -125,8 +123,6 @@ MathJax.Hub.Config({
 <h2>対象</h2>
 
 <p>ここでは、Rの基礎知識がある人を対象に、RとBioconductor を使った ChIP-seq データ解析について説明します。基本的な Unix コマンドが利用できることが前提です。</p>
-
-<h2>準備</h2>
 
 <h2>学習範囲</h2>
 
@@ -952,9 +948,13 @@ corrplot(mat.cor, method = &quot;circle&quot;, type = &quot;full&quot;, diag = F
 
 <h2>次に学ぶこと</h2>
 
-<p>QC, リピート
-マッピング
-発現との関連</p>
+<p>ここでは、シーケンス実験のQCについては扱っていませんでした。ChIP-seq の場合はシーケンスライブラリを作成するときに、PCR 増幅をしますが、元々サンプルの準備が難しい実験ですので、PCRサイクルが多くなってしまう場合があります。また、ChIP assay 自体が抗体やサンプルによって、十分にタンパク質結合領域を enrich できない場合もあります。そのため、QCは非常に重要なステップになります。</p>
+
+<p>特に、ChIP-qPCR によって enrichnment が確認された領域、DNA断片が落ちてこない領域などの情報を事前に入手し、その領域にリードがどの程度含まれるかを確認する必要があります。また、まったく同一のリードというのは確率的にあまり出てこないはずですが、これがどのぐらい含まれるかを定量することも大切です。もし PCR のサイクル数が過剰な場合は、この重複リード率が増える傾向にあります。</p>
+
+<p>また、ChIP-seq は、RNA-seq よりもゲノムのリピート領域にマップされる遺伝子が多い傾向があります。このとき、リピート領域にマップされたリードが、真のタンパク質結合サイトに含まれるリードに比べて、かなり多くなります。そのため、peak 解析のスコアの計算に影響を与える場合があるので、マッピングが終了後に、これらを除くことが重要です。</p>
+
+<p>このような問題点の指標になる数値やデータ操作、解析についても R/Bioconductor で計算することが可能です。このようなステップを入れることで、より正確な解析と実験へのフィードバックができるデータ解析パイプラインが作成することができるでしょう。</p>
 
 <h2>実行環境</h2>
 

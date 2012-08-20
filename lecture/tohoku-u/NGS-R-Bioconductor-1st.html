@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>NGS analysis with R and Bioconductor: 1st. Learning R - The Cat Way</title>
+  <title>Learning R - The Cat Way</title>
   <meta name="author" content="Itoshi NIKAIDO">
 
   
-  <meta name="description" content="RとBioconductorでNGS解析: 1限 Rの基礎 はじめに この文章は統合データベース講習会：AJACSみちのく2「RとBioconductorを使ったNGS解析」1限目「Rの基礎」講義資料です。 この文章の著作権は二階堂愛にあります。ファイルのダウンロード、印刷、複製、 &hellip;">
+  <meta name="description" content="Learning R Aug 13th, 2012 RとBioconductorでNGS解析: 1限 Rの基礎 はじめに この文章は統合データベース講習会：AJACSみちのく2「RとBioconductorを使ったNGS解析」1限目「Rの基礎」講義資料です。 この文章の著作権は二階堂愛にあります &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,15 +93,11 @@ MathJax.Hub.Config({
   <div id="main">
     <div id="content">
       <div>
-<article class="hentry" role="article">
+<article role="article">
   
   <header>
-    
-      <h1 class="entry-title">NGS Analysis With R and Bioconductor: 1st. Learning R</h1>
-    
-    
-      <p class="meta">
-        
+    <h1 class="entry-title">Learning R</h1>
+    <p class="meta">
 
 
 
@@ -113,16 +109,10 @@ MathJax.Hub.Config({
   
 
 
-<time datetime="2012-08-13T18:00:00+09:00" pubdate data-updated="true">Aug 13<span>th</span>, 2012</time>
-        
-         | <a href="#disqus_thread">Comments</a>
-        
-      </p>
-    
+<time datetime="2012-08-13T18:00:00+09:00" pubdate data-updated="true">Aug 13<span>th</span>, 2012</time></p>
   </header>
-
-
-<div class="entry-content"><p>RとBioconductorでNGS解析: 1限 Rの基礎</p>
+  
+  <p>RとBioconductorでNGS解析: 1限 Rの基礎</p>
 
 <h2>はじめに</h2>
 
@@ -409,7 +399,7 @@ y</code></pre>
 
 
 <div>
-  <pre><code class='text'>## [1] &quot;numeric&quot; &quot;vector&quot;</code></pre>
+  <pre><code class='text'>## [1] &quot;numeric&quot;          &quot;vector&quot;           &quot;EnumerationValue&quot;</code></pre>
 </div>
 
 
@@ -423,8 +413,9 @@ y</code></pre>
 
 
 <div>
-  <pre><code class='text'>## [1] &quot;character&quot;           &quot;vector&quot;              &quot;data.frameRowLabels&quot;
-## [4] &quot;SuperClassMethod&quot;</code></pre>
+  <pre><code class='text'>## [1] &quot;character&quot;             &quot;vector&quot;                &quot;data.frameRowLabels&quot;  
+## [4] &quot;SuperClassMethod&quot;      &quot;EnumerationValue&quot;      &quot;characterORconnection&quot;
+## [7] &quot;characterORMIAME&quot;</code></pre>
 </div>
 
 
@@ -545,7 +536,8 @@ d</code></pre>
 
 
 <div>
-  <pre><code class='text'>## [1] &quot;data.frame&quot; &quot;list&quot;       &quot;oldClass&quot;   &quot;vector&quot;</code></pre>
+  <pre><code class='text'>## [1] &quot;data.frame&quot;       &quot;list&quot;             &quot;oldClass&quot;        
+## [4] &quot;data.frameOrNULL&quot; &quot;vector&quot;</code></pre>
 </div>
 
 
@@ -1324,34 +1316,33 @@ abline(gene.lm, col = &quot;blue&quot;)</code></pre>
 ## [1] ja_JP.UTF-8/ja_JP.UTF-8/ja_JP.UTF-8/C/ja_JP.UTF-8/ja_JP.UTF-8
 ## 
 ## attached base packages:
-## [1] datasets  utils     stats     graphics  grDevices methods   base     
+## [1] splines   datasets  utils     stats     graphics  grDevices methods  
+## [8] base     
 ## 
 ## other attached packages:
-##  [1] BrainStars_1.0.0    Biobase_2.16.0      BiocGenerics_0.2.0 
-##  [4] RCurl_1.91-1        bitops_1.0-4.1      ggplot2_0.9.1      
-##  [7] knitr_0.7.6         stringr_0.6.1       RColorBrewer_1.0-5 
-## [10] MASS_7.3-20         plyr_1.7.1          BiocInstaller_1.4.7
+##  [1] Hmisc_3.9-3         survival_2.36-14    cluster_1.14.2     
+##  [4] cummeRbund_1.99.2   fastcluster_1.1.6   reshape2_1.2.1     
+##  [7] RSQLite_0.11.1      DBI_0.2-5           BrainStars_1.0.0   
+## [10] Biobase_2.16.0      BiocGenerics_0.2.0  RCurl_1.91-1       
+## [13] bitops_1.0-4.1      ggplot2_0.9.1       knitr_0.7.6        
+## [16] stringr_0.6.1       RColorBrewer_1.0-5  MASS_7.3-20        
+## [19] plyr_1.7.1          BiocInstaller_1.4.7
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] colorspace_1.1-1 dichromat_1.2-4  digest_0.5.2     evaluate_0.4.2  
-##  [5] formatR_0.6      grid_2.15.1      labeling_0.1     memoise_0.1     
-##  [9] munsell_0.3      proto_0.3-9.2    reshape2_1.2.1   RJSONIO_0.98-1  
+##  [5] formatR_0.6      grid_2.15.1      labeling_0.1     lattice_0.20-6  
+##  [9] memoise_0.1      munsell_0.3      proto_0.3-9.2    RJSONIO_0.98-1  
 ## [13] scales_0.2.1     tools_2.15.1</code></pre>
 </div>
 
 
 
-</div>
 
-
-  <footer>
-    <p class="meta">
-      
   
-
-<span class="byline author vcard">Posted by <span class="fn">Itoshi NIKAIDO</span></span>
-
-      
+    <footer>
+      <p class="meta">
+        
+        
 
 
 
@@ -1364,18 +1355,10 @@ abline(gene.lm, col = &quot;blue&quot;)</code></pre>
 
 
 <time datetime="2012-08-13T18:00:00+09:00" pubdate data-updated="true">Aug 13<span>th</span>, 2012</time>
+        
+      </p>
       
-
-<span class="categories">
-  
-    Liquid error: undefined method `sort!' for nil:NilClass
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
+        <div class="sharing">
   
   <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://cat.hackingisbelieving.org//lecture/tohoku-u/NGS-R-Bioconductor-1st.html" data-via="dritoshi" data-counturl="http://cat.hackingisbelieving.org//lecture/tohoku-u/NGS-R-Bioconductor-1st.html" >Tweet</a>
   
@@ -1387,12 +1370,9 @@ abline(gene.lm, col = &quot;blue&quot;)</code></pre>
   
 </div>
 
-    
-    <p class="meta">
       
-      
-    </p>
-  </footer>
+    </footer>
+  
 </article>
 
   <section>

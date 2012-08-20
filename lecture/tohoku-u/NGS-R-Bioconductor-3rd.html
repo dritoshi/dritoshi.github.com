@@ -143,6 +143,248 @@ MathJax.Hub.Config({
 <p>ChIP-seq を取り扱う。Peak解析については、Rではなく、ほかのオープンソースプログラムを利用して解析を行う。Rと Bioconductor ではその後の高次解析から論文の図の作成に至るまでを紹介する。</p>
 
 <h2>ChIP-seq</h2>
+
+<p>illumina HiSeq は、塩基とその精度を表す quality value のセットで出力します。これは fastq file と呼ばれており、すべての解析のスタートになります。</p>
+
+<h3>マッピング</h3>
+
+<p>まずこのファイルに含まれるシーケンスリードをリファレンスゲノムにマッピングすることで、どのゲノム領域由来のリードだったのかを調べます。ここでは、代表的なマッピングソフトである bowtie を用いて、マッピングを行います。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>bowtie -t -p 8 -n 3 -m 1 -a --best --strata --sam mm9 -q Oct4.fastq  &gt; Oct4.bowtie.sam
+</span><span class='line'>bowtie -t -p 8 -n 3 -m 1 -a --best --strata --sam mm9 -q Sox2.fastq  &gt; Sox2.bowtie.sam
+</span><span class='line'>bowtie -t -p 8 -n 3 -m 1 -a --best --strata --sam mm9 -q Nanog.fastq &gt; Nanog.bowtie.sam
+</span><span class='line'>bowtie -t -p 8 -n 3 -m 1 -a --best --strata --sam mm9 -q GFP.fastq   &gt; GFP.bowtie.sam</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>samtools view -bS Oct4.bowtie.sam &gt; Oct4.bowtie.bam
+</span><span class='line'>samtools sort       Oct4.bowtie.bam Oct4.bowtie.sort
+</span><span class='line'>samtools index      Oct4.bowtie.sort.bam
+</span><span class='line'>rm Oct4.bowtie.bam</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>macs2 -t results/bowtie/Oct4/Oct4.bowtie.sort.rmRepeat.bam -c results/ bowtie/GFP/GFP.bowtie.sort.rmRepeat.bam -f BAM -g mm -n Oct4 -B -q 0.01</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> source("Oct4_model.r")</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>library("ChIPpeakAnno")
+</span><span class='line'>
+</span><span class='line'>oct4.df  &lt;- read.table("results/macs2/Oct4_peaks.bed",  header = FALSE)
+</span><span class='line'>sox2.df  &lt;- read.table("results/macs2/Sox2_peaks.bed",  header = FALSE)
+</span><span class='line'>nanog.df &lt;- read.table("results/macs2/Nanog_peaks.bed", header = FALSE)
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>oct4.gr &lt;- BED2RangedData(oct4.df, header = FALSE)
+</span><span class='line'>sox2.gr &lt;- BED2RangedData(sox2.df, header = FALSE)
+</span><span class='line'>nanog.gr &lt;- BED2RangedData(oct4.df, header = FALSE)</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>pie(table(as.data.frame(sox2.anno)$insideFeature))
+</span><span class='line'>pie(table(as.data.frame(oct4.anno)$insideFeature))
+</span><span class='line'>pie(table(as.data.frame(nanog.anno)$insideFeature))</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>library(org.Mm.eg.db)
+</span><span class='line'>
+</span><span class='line'>oct4.go &lt;- getEnrichedGO(
+</span><span class='line'>  oct4.anno,
+</span><span class='line'>  orgAnn    = "org.Mm.eg.db",
+</span><span class='line'>  maxP      = 0.01,
+</span><span class='line'>  multiAdj  = TRUE,
+</span><span class='line'>  minGOterm = 10,
+</span><span class='line'>  multiAdjMethod = "BH"
+</span><span class='line'>)
+</span><span class='line'>
+</span><span class='line'>oct4.bp.goterm &lt;- unique(oct4.go$bp[order(oct4.go$bp[,10]), c(2,10)])
+</span><span class='line'>oct4.cc.goterm &lt;- unique(oct4.go$cc[order(oct4.go$cc[,10]), c(2,10)])
+</span><span class='line'>oct4.mf.goterm &lt;- unique(oct4.go$mf[order(oct4.go$mf[,10]), c(2,10)])
+</span><span class='line'>head(oct4.mf.goterm)</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>library("BSgenome.Mmusculus.UCSC.mm9")
+</span><span class='line'>
+</span><span class='line'>oct4.peaksWithSeqs &lt;- getAllPeakSequence(
+</span><span class='line'>  oct4.gr,
+</span><span class='line'>  upstream   = 0,
+</span><span class='line'>  downstream = 0,
+</span><span class='line'>  genome = Mmusculus
+</span><span class='line'>)
+</span><span class='line'>
+</span><span class='line'>write2FASTA(oct4.peaksWithSeqs, file="results/3rd/oct4.peaksWithSeqs.fa")</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>library("rGADEM")
+</span><span class='line'>
+</span><span class='line'>oct4.seqs  &lt;- read.DNAStringSet("results/3rd/oct4.peaksWithSeqs.fa", "fasta")
+</span><span class='line'>oct4.motif &lt;- GADEM(oct4.seqs, verbose=1, genome = Mmusculus)</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>library("MotIV")
+</span><span class='line'>
+</span><span class='line'>## prep. database
+</span><span class='line'>path &lt;- system.file(package = "MotIV")
+</span><span class='line'>jaspar        &lt;- readPWMfile(file.path(path, "extdata/jaspar2010.txt"))
+</span><span class='line'>jaspar.scores &lt;- readDBScores(
+</span><span class='line'>  file.path(path, "extdata/jaspar2010_PCC_SWU.scores")
+</span><span class='line'>)
+</span><span class='line'>
+</span><span class='line'>## search motifs
+</span><span class='line'>oct4.motif.pwms &lt;- getPWM(oct4.motif)
+</span><span class='line'>oct4.jaspar &lt;- motifMatch(
+</span><span class='line'>  inputPWM = oct4.motif.pwms,
+</span><span class='line'>  align = "SWU",
+</span><span class='line'>  cc    = "PCC",
+</span><span class='line'>  database = jaspar,
+</span><span class='line'>  DBscores = jaspar.scores,
+</span><span class='line'>  top = 5
+</span><span class='line'>)
+</span><span class='line'>
+</span><span class='line'>## output results with sequence logos
+</span><span class='line'>plot(oct4.jaspar, ncol = 2, top = 5, rev = FALSE,
+</span><span class='line'>     main = "Oct4 ChIP-seq", bysim = TRUE)</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>quga.oct4.sox2  &lt;- qugacomp(oct4.bin500,  sox2.bin500)
+</span><span class='line'>quga.oct4.nanog &lt;- qugacomp(oct4.bin500, nanog.bin500)
+</span><span class='line'>quga.sox2.nanog &lt;- qugacomp(sox2.bin500, nanog.bin500)
+</span><span class='line'>
+</span><span class='line'>num &lt;- 3
+</span><span class='line'>mat.cor &lt;- matrix(0, nrow=num, ncol=num)
+</span><span class='line'>rownames(mat.cor) &lt;- c("Oct4", "Sox2", "Nanog")
+</span><span class='line'>colnames(mat.cor) &lt;- c("Oct4", "Sox2", "Nanog")
+</span><span class='line'>
+</span><span class='line'>diag(mat.cor) &lt;- rep(1, num)
+</span><span class='line'>
+</span><span class='line'>mat.cor[1,2] &lt;- mat.cor[2,1] &lt;- pearsonCoef(quga.oct4.sox2)
+</span><span class='line'>mat.cor[1,3] &lt;- mat.cor[3,1] &lt;- pearsonCoef(quga.oct4.nanog)
+</span><span class='line'>mat.cor[2,3] &lt;- mat.cor[3,2] &lt;- pearsonCoef(quga.sox2.nanog)
+</span><span class='line'>
+</span><span class='line'>mat.cor.max &lt;- max( mat.cor[upper.tri(mat.cor, diag=F)] )
+</span><span class='line'>mat.cor.min &lt;- min( mat.cor[upper.tri(mat.cor, diag=F)] )
+</span><span class='line'>
+</span><span class='line'>corrplot(
+</span><span class='line'>  mat.cor, method="circle", type="full", diag=FALSE, outline=FALSE,
+</span><span class='line'>  addcolorlabel="bottom", cl.lim=c(mat.cor.min, mat.cor.max), cl.ratio=0.2
+</span><span class='line'>)</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 

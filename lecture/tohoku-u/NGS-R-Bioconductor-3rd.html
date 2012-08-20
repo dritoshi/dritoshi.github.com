@@ -130,7 +130,7 @@ MathJax.Hub.Config({
 
 <h2>学習範囲</h2>
 
-<p>ChIP-seq を取り扱う。Peak解析については、Rではなく、ほかのオープンソースプログラムを利用して解析を行う。Rと Bioconductor ではその後の高次解析から論文の図の作成に至るまでを紹介する。</p>
+<p>ChIP-seq を取り扱う。Peak解析については、Rではなく、ほかのオープンソースプログラムを利用して解析を行う。Rと Bioconductor ではその後の高次解析から論文の図の作成に至るまでを紹介します。</p>
 
 <h2>ChIP-seq</h2>
 
@@ -150,7 +150,7 @@ MathJax.Hub.Config({
 </span><span class='line'>bowtie -t -p 8 -n 3 -m 1 -a --best --strata --sam mm9 -q GFP.fastq   &gt; GFP.bowtie.sam</span></code></pre></td></tr></table></div></figure>
 
 
-
+<p>各ディレクトリに *.sam というファイルができます。これはDNAショートリードとゲノム上の座標と保存するファイル形式です。これを bam file に変換します。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -162,10 +162,38 @@ MathJax.Hub.Config({
 </span><span class='line'>rm Oct4.bowtie.bam</span></code></pre></td></tr></table></div></figure>
 
 
-
+<p>変換された bam file を使って、binding site の場所を予測します。</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>macs2 -t results/bowtie/Oct4/Oct4.bowtie.sort.rmRepeat.bam -c results/ bowtie/GFP/GFP.bowtie.sort.rmRepeat.bam -f BAM -g mm -n Oct4 -B -q 0.01</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>高次解析</h2>
+
+<h3>準備</h3>
+
+<p>ここから R と Bioconductor を使っていきます。まず必要なパッケージをインストールします。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>source("http://bioconductor.org/biocLite.R")
+</span><span class='line'>biocLite("ChIPpeakAnno")
+</span><span class='line'>biocLite("org.Mm.eg.db")
+</span><span class='line'>biocLite("BSgenome.Mmusculus.UCSC.mm9")
+</span><span class='line'>biocLite("rGADEM")
+</span><span class='line'>biocLite("MotIV")</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>curl -O https://github.com/dritoshi/QuGAcomp/raw/master/QuGAcomp_0.99.2.tar.gz
+</span><span class='line'>sudo R CMD INSTALL QuGAcomp_0.99.2.tar.gz</span></code></pre></td></tr></table></div></figure>
 
 
 
@@ -174,7 +202,7 @@ MathJax.Hub.Config({
 </pre></td><td class='code'><pre><code class=''><span class='line'> source("Oct4_model.r")</span></code></pre></td></tr></table></div></figure>
 
 
-
+<h3>ピークデータの操作</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -208,7 +236,7 @@ MathJax.Hub.Config({
 </span><span class='line'>pie(table(as.data.frame(nanog.anno)$insideFeature))</span></code></pre></td></tr></table></div></figure>
 
 
-
+<h3>ピークデータのアノテーション</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -242,7 +270,7 @@ MathJax.Hub.Config({
 </span><span class='line'>head(oct4.mf.goterm)</span></code></pre></td></tr></table></div></figure>
 
 
-
+<h3>ピーク領域の配列を得る</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -266,7 +294,7 @@ MathJax.Hub.Config({
 </span><span class='line'>write2FASTA(oct4.peaksWithSeqs, file="results/3rd/oct4.peaksWithSeqs.fa")</span></code></pre></td></tr></table></div></figure>
 
 
-
+<h3>ピーク領域に頻出するDNAモチーフを得る</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -328,7 +356,7 @@ MathJax.Hub.Config({
 </span><span class='line'>     main = "Oct4 ChIP-seq", bysim = TRUE)</span></code></pre></td></tr></table></div></figure>
 
 
-
+<h3>異なるChIP-seqデータの比較</h3>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

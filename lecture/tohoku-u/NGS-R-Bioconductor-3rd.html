@@ -198,12 +198,11 @@ MathJax.Hub.Config({
 </span><span class='line'>biocLite("TSS.mouse.NCBIM37")</span></code></pre></td></tr></table></div></figure>
 
 
-<p>以下のパッケージもインストールします。</p>
+<p>以下のパッケージをダウンロードしインストールします。
+* <a href="https://github.com/dritoshi/QuGAcomp/blob/master/QuGAcomp_0.99.1.tar.gz?raw=true">QuGAcomp</a></p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>curl -O https://github.com/dritoshi/QuGAcomp/raw/master/QuGAcomp_0.99.2.tar.gz
-</span><span class='line'>sudo R CMD INSTALL QuGAcomp_0.99.2.tar.gz</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo R CMD INSTALL QuGAcomp_0.99.2.tar.gz</span></code></pre></td></tr></table></div></figure>
 
 
 <p>これで準備は終了です。</p>
@@ -219,7 +218,7 @@ MathJax.Hub.Config({
 
 oct4.df &lt;- read.table(&quot;results/Oct4_peaks.bed&quot;, header = FALSE)
 sox2.df &lt;- read.table(&quot;results/Sox2_peaks.bed&quot;, header = FALSE)
-# nanog.df &lt;- read.table('results/Nanog_peaks.bed', header = FALSE)
+nanog.df &lt;- read.table(&quot;results/Nanog_peaks.bed&quot;, header = FALSE)
 is(oct4.df)</code></pre>
 </div>
 
@@ -257,7 +256,7 @@ is(oct4.df)</code></pre>
 <div>
   <pre><code class='r'>oct4.gr &lt;- BED2RangedData(oct4.df, header = FALSE)
 sox2.gr &lt;- BED2RangedData(sox2.df, header = FALSE)
-# nanog.gr &lt;- BED2RangedData(oct4.df, header = FALSE)
+nanog.gr &lt;- BED2RangedData(oct4.df, header = FALSE)
 is(oct4.gr)</code></pre>
 </div>
 
@@ -841,51 +840,99 @@ plot(oct4.jaspar, ncol = 2, top = 5, rev = FALSE, main = &quot;Oct4 ChIP-seq&quo
 
 <p>以下では3つの転写因子の peak データをピアソンの積率相関係数によって比較する方法である。これは 2 x 2 contingency table (cross table) の phi coefficient と等価である。一般的に、localization vector の相関は高くならないので注意が必要である。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>quga.oct4.sox2  &lt;- qugacomp(oct4.bin500,  sox2.bin500)
-</span><span class='line'>quga.oct4.nanog &lt;- qugacomp(oct4.bin500, nanog.bin500)
-</span><span class='line'>quga.sox2.nanog &lt;- qugacomp(sox2.bin500, nanog.bin500)
-</span><span class='line'>
-</span><span class='line'>num &lt;- 3
-</span><span class='line'>mat.cor &lt;- matrix(0, nrow=num, ncol=num)
-</span><span class='line'>rownames(mat.cor) &lt;- c("Oct4", "Sox2", "Nanog")
-</span><span class='line'>colnames(mat.cor) &lt;- c("Oct4", "Sox2", "Nanog")
-</span><span class='line'>
-</span><span class='line'>diag(mat.cor) &lt;- rep(1, num)
-</span><span class='line'>
-</span><span class='line'>mat.cor[1,2] &lt;- mat.cor[2,1] &lt;- pearsonCoef(quga.oct4.sox2)
-</span><span class='line'>mat.cor[1,3] &lt;- mat.cor[3,1] &lt;- pearsonCoef(quga.oct4.nanog)
-</span><span class='line'>mat.cor[2,3] &lt;- mat.cor[3,2] &lt;- pearsonCoef(quga.sox2.nanog)
-</span><span class='line'>
-</span><span class='line'>mat.cor.max &lt;- max( mat.cor[upper.tri(mat.cor, diag=F)] )
-</span><span class='line'>mat.cor.min &lt;- min( mat.cor[upper.tri(mat.cor, diag=F)] )
-</span><span class='line'>
-</span><span class='line'>corrplot(
-</span><span class='line'>  mat.cor, method="circle", type="full", diag=FALSE, outline=FALSE,
-</span><span class='line'>  addcolorlabel="bottom", cl.lim=c(mat.cor.min, mat.cor.max), cl.ratio=0.2
-</span><span class='line'>)</span></code></pre></td></tr></table></div></figure>
+<div>
+  <pre><code class='r'>library(&quot;QuGAcomp&quot;)
+library(&quot;corrplot&quot;)
 
+oct4.fat &lt;- fat(oct4.gr, 200)
+sox2.fat &lt;- fat(sox2.gr, 200)
+nanog.fat &lt;- fat(nanog.gr, 200)
+
+oct4.unistd &lt;- unifyStrand(oct4.fat)
+sox2.unistd &lt;- unifyStrand(sox2.fat)
+nanog.unistd &lt;- unifyStrand(nanog.fat)
+
+oct4.cov &lt;- coverage(oct4.unistd)
+sox2.cov &lt;- coverage(sox2.unistd)
+nanog.cov &lt;- coverage(nanog.unistd)
+
+oct4.bin500 &lt;- lapply(oct4.cov, function(x) rleBinning(x, 500))
+sox2.bin500 &lt;- lapply(sox2.cov, function(x) rleBinning(x, 500))
+nanog.bin500 &lt;- lapply(nanog.cov, function(x) rleBinning(x, 500))
+
+oct4.bin500 &lt;- flatRleList(oct4.bin500)
+sox2.bin500 &lt;- flatRleList(sox2.bin500)
+nanog.bin500 &lt;- flatRleList(nanog.bin500)
+
+quga.oct4.sox2 &lt;- qugacomp(oct4.bin500, sox2.bin500)
+quga.oct4.nanog &lt;- qugacomp(oct4.bin500, nanog.bin500)
+quga.sox2.nanog &lt;- qugacomp(sox2.bin500, nanog.bin500)
+
+num &lt;- 3
+mat.cor &lt;- matrix(0, nrow = num, ncol = num)
+rownames(mat.cor) &lt;- c(&quot;Oct4&quot;, &quot;Sox2&quot;, &quot;Nanog&quot;)
+colnames(mat.cor) &lt;- c(&quot;Oct4&quot;, &quot;Sox2&quot;, &quot;Nanog&quot;)
+
+diag(mat.cor) &lt;- rep(1, num)
+
+mat.cor[1, 2] &lt;- mat.cor[2, 1] &lt;- pearsonCoef(quga.oct4.sox2)</code></pre>
+</div>
+
+
+
+
+<div>
+  <pre><code class='text'>## Warning: longer object length is not a multiple of shorter object length</code></pre>
+</div>
+
+
+
+
+<div>
+  <pre><code class='text'>## Warning: longer object length is not a multiple of shorter object length</code></pre>
+</div>
+
+
+
+
+<div>
+  <pre><code class='r'>mat.cor[1, 3] &lt;- mat.cor[3, 1] &lt;- pearsonCoef(quga.oct4.nanog)
+mat.cor[2, 3] &lt;- mat.cor[3, 2] &lt;- pearsonCoef(quga.sox2.nanog)</code></pre>
+</div>
+
+
+
+
+<div>
+  <pre><code class='text'>## Warning: longer object length is not a multiple of shorter object length</code></pre>
+</div>
+
+
+
+
+<div>
+  <pre><code class='text'>## Warning: longer object length is not a multiple of shorter object length</code></pre>
+</div>
+
+
+
+
+<div>
+  <pre><code class='r'>mat.cor.max &lt;- max(mat.cor[upper.tri(mat.cor, diag = F)])
+mat.cor.min &lt;- min(mat.cor[upper.tri(mat.cor, diag = F)])
+
+corrplot(mat.cor, method = &quot;circle&quot;, type = &quot;full&quot;, diag = FALSE, outline = FALSE, 
+    addcolorlabel = &quot;bottom&quot;, cl.lim = c(mat.cor.min, mat.cor.max), cl.ratio = 0.2)</code></pre>
+</div>
+
+
+<p><img src="/images/NGS-R-Bioconductor-3rd/unnamed-chunk-8.png" alt="center" /></p>
+
+<h2>次に学ぶこと</h2>
+
+<p>QC, リピート
+マッピング
+発現との関連</p>
 
 <h2>実行環境</h2>
 
@@ -908,48 +955,50 @@ plot(oct4.jaspar, ncol = 2, top = 5, rev = FALSE, main = &quot;Oct4 ChIP-seq&quo
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] ChIPpeakAnno_2.4.0                 
-##  [2] limma_3.12.1                       
-##  [3] org.Hs.eg.db_2.7.1                 
-##  [4] GO.db_2.7.1                        
-##  [5] BSgenome.Ecoli.NCBI.20080805_1.3.17
-##  [6] multtest_2.12.0                    
-##  [7] biomaRt_2.12.0                     
-##  [8] gplots_2.11.0                      
-##  [9] KernSmooth_2.23-8                  
-## [10] caTools_1.13                       
-## [11] gdata_2.11.0                       
-## [12] gtools_2.7.0                       
-## [13] org.Mm.eg.db_2.7.1                 
-## [14] AnnotationDbi_1.18.1               
-## [15] BSgenome.Mmusculus.UCSC.mm9_1.3.17 
-## [16] rGADEM_2.4.0                       
-## [17] seqLogo_1.22.0                     
-## [18] BSgenome_1.24.0                    
-## [19] GenomicRanges_1.8.12               
-## [20] Biostrings_2.24.1                  
-## [21] IRanges_1.14.4                     
-## [22] MotIV_1.10.0                       
-## [23] Hmisc_3.9-3                        
-## [24] survival_2.36-14                   
-## [25] cluster_1.14.2                     
-## [26] cummeRbund_1.99.2                  
-## [27] fastcluster_1.1.6                  
-## [28] reshape2_1.2.1                     
-## [29] RSQLite_0.11.1                     
-## [30] DBI_0.2-5                          
-## [31] BrainStars_1.0.0                   
-## [32] Biobase_2.16.0                     
-## [33] BiocGenerics_0.2.0                 
-## [34] RCurl_1.91-1                       
-## [35] bitops_1.0-4.1                     
-## [36] ggplot2_0.9.1                      
-## [37] knitr_0.7.6                        
-## [38] stringr_0.6.1                      
-## [39] RColorBrewer_1.0-5                 
-## [40] MASS_7.3-20                        
-## [41] plyr_1.7.1                         
-## [42] BiocInstaller_1.4.7                
+##  [1] corrplot_0.60                      
+##  [2] QuGAcomp_0.99.2                    
+##  [3] ChIPpeakAnno_2.4.0                 
+##  [4] limma_3.12.1                       
+##  [5] org.Hs.eg.db_2.7.1                 
+##  [6] GO.db_2.7.1                        
+##  [7] BSgenome.Ecoli.NCBI.20080805_1.3.17
+##  [8] multtest_2.12.0                    
+##  [9] biomaRt_2.12.0                     
+## [10] gplots_2.11.0                      
+## [11] KernSmooth_2.23-8                  
+## [12] caTools_1.13                       
+## [13] gdata_2.11.0                       
+## [14] gtools_2.7.0                       
+## [15] org.Mm.eg.db_2.7.1                 
+## [16] AnnotationDbi_1.18.1               
+## [17] BSgenome.Mmusculus.UCSC.mm9_1.3.17 
+## [18] rGADEM_2.4.0                       
+## [19] seqLogo_1.22.0                     
+## [20] BSgenome_1.24.0                    
+## [21] GenomicRanges_1.8.12               
+## [22] Biostrings_2.24.1                  
+## [23] IRanges_1.14.4                     
+## [24] MotIV_1.10.0                       
+## [25] Hmisc_3.9-3                        
+## [26] survival_2.36-14                   
+## [27] cluster_1.14.2                     
+## [28] cummeRbund_1.99.2                  
+## [29] fastcluster_1.1.6                  
+## [30] reshape2_1.2.1                     
+## [31] RSQLite_0.11.1                     
+## [32] DBI_0.2-5                          
+## [33] BrainStars_1.0.0                   
+## [34] Biobase_2.16.0                     
+## [35] BiocGenerics_0.2.0                 
+## [36] RCurl_1.91-1                       
+## [37] bitops_1.0-4.1                     
+## [38] ggplot2_0.9.1                      
+## [39] knitr_0.7.6                        
+## [40] stringr_0.6.1                      
+## [41] RColorBrewer_1.0-5                 
+## [42] MASS_7.3-20                        
+## [43] plyr_1.7.1                         
+## [44] BiocInstaller_1.4.7                
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] colorspace_1.1-1 dichromat_1.2-4  digest_0.5.2     evaluate_0.4.2  

@@ -256,7 +256,7 @@ is(oct4.df)</code></pre>
 <div>
   <pre><code class='r'>oct4.gr &lt;- BED2RangedData(oct4.df, header = FALSE)
 sox2.gr &lt;- BED2RangedData(sox2.df, header = FALSE)
-nanog.gr &lt;- BED2RangedData(oct4.df, header = FALSE)
+nanog.gr &lt;- BED2RangedData(nanog.df, header = FALSE)
 is(oct4.gr)</code></pre>
 </div>
 
@@ -896,8 +896,28 @@ mat.cor[1, 2] &lt;- mat.cor[2, 1] &lt;- pearsonCoef(quga.oct4.sox2)</code></pre>
 
 
 <div>
-  <pre><code class='r'>mat.cor[1, 3] &lt;- mat.cor[3, 1] &lt;- pearsonCoef(quga.oct4.nanog)
-mat.cor[2, 3] &lt;- mat.cor[3, 2] &lt;- pearsonCoef(quga.sox2.nanog)</code></pre>
+  <pre><code class='r'>mat.cor[1, 3] &lt;- mat.cor[3, 1] &lt;- pearsonCoef(quga.oct4.nanog)</code></pre>
+</div>
+
+
+
+
+<div>
+  <pre><code class='text'>## Warning: longer object length is not a multiple of shorter object length</code></pre>
+</div>
+
+
+
+
+<div>
+  <pre><code class='text'>## Warning: longer object length is not a multiple of shorter object length</code></pre>
+</div>
+
+
+
+
+<div>
+  <pre><code class='r'>mat.cor[2, 3] &lt;- mat.cor[3, 2] &lt;- pearsonCoef(quga.sox2.nanog)</code></pre>
 </div>
 
 

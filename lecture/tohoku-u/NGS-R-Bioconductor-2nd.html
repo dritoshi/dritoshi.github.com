@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>NGS analysis with R and Bioconductor: 2nd. RNA-seq analysis with R/Bioconductor - The Cat Way</title>
+  <title>RNA-seq analysis with R/Bioconductor - The Cat Way</title>
   <meta name="author" content="Itoshi NIKAIDO">
 
   
@@ -99,7 +99,7 @@ MathJax.Hub.Config({
   
   <header>
     
-      <h1 class="entry-title">NGS Analysis With R and Bioconductor: 2nd. RNA-seq Analysis With R/Bioconductor</h1>
+      <h1 class="entry-title">RNA-seq Analysis With R/Bioconductor</h1>
     
     
       <p class="meta">
@@ -177,7 +177,7 @@ MathJax.Hub.Config({
 </span><span class='line'>tophat -p 8 -r 100 -o output_dir/control03 bowtie2_indexes/mm9 control03_1.fastq control03_2.fastq</span></code></pre></td></tr></table></div></figure>
 
 
-<p>それぞれのディレクトリに accepted_hits.bam というファイルができます。これはゲノムの座標とショートリードを格納するバイナリファイルの形式で、非常によく使われる形式です。ちなみに、この bam file を操作するツールとして有名なのが (samtools)[http://samtools.sourceforge.net/] です。</p>
+<p>それぞれのディレクトリに accepted_hits.bam というファイルができます。これはゲノムの座標とショートリードを格納するバイナリファイルの形式で、非常によく使われる形式です。ちなみに、この bam file を操作するツールとして有名なのが <a href="http://samtools.sourceforge.net/">samtools</a> です。</p>
 
 <h3>発現量の定量</h3>
 
